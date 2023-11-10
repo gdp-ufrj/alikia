@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://b6wjwe3k5uxst"]
+[gd_scene load_steps=3 format=3 uid="uid://b6wjwe3k5uxst"]
 
-[node name="Deck" type="Node2D"]
+[ext_resource type="Script" path="res://deck.gd" id="1_pdggs"]
+[ext_resource type="Script" path="res://hand.gd" id="2_himdb"]
+
+[node name="DeckSystem" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
+
+[node name="Deck" type="Node2D" parent="."]
+script = ExtResource("1_pdggs")
+
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck")]
+position = Vector2(30, 30)
+script = ExtResource("2_himdb")
+deck = NodePath("../Deck")
+min_x_hand = 50.0
+max_x_hand = 1100.0
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 55.0
+offset_right = 601.0
+offset_bottom = 86.0
+text = "Comprar"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1054, 616)
+
+[connection signal="pressed" from="Button2" to="Hand" method="_on_button_2_pressed"]
