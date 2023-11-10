@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6wjwe3k5uxst"]
 
-[ext_resource type="Script" path="res://deck.gd" id="1_pdggs"]
-[ext_resource type="Script" path="res://hand.gd" id="2_himdb"]
-[ext_resource type="Script" path="res://card_zoom.gd" id="3_yw3pl"]
+[ext_resource type="Script" path="res://Scripts/DeckSystem/deck.gd" id="1_pdggs"]
+[ext_resource type="Script" path="res://Scripts/DeckSystem/card_zoom.gd" id="3_v0hvi"]
+[ext_resource type="Script" path="res://Scripts/DeckSystem/hand.gd" id="3_yw3pl"]
 
 [node name="DeckSystem" type="Node2D"]
 
@@ -60,7 +60,7 @@ text = "0"
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control")]
 position = Vector2(30, 30)
-script = ExtResource("2_himdb")
+script = ExtResource("3_yw3pl")
 deck = NodePath("../Deck")
 hand_buttons_control = NodePath("Control/HandButtons")
 
@@ -86,15 +86,14 @@ offset_right = 601.0
 offset_bottom = 86.0
 text = "Comprar"
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("card_name_label")]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 435.0
 offset_top = 154.0
 offset_right = 688.0
 offset_bottom = 462.0
-script = ExtResource("3_yw3pl")
-card_name_label = NodePath("CardName")
+script = ExtResource("3_v0hvi")
 
 [node name="CardName" type="Label" parent="Control"]
 layout_mode = 1
