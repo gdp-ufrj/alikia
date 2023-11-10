@@ -30,3 +30,4 @@ func buy_card():
 
 func on_use_card(used_card):
 	discard_deck.push_front(used_card)
+
