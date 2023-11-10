@@ -9,8 +9,54 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
 
-[node name="Deck" type="Node2D" parent="."]
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("deck_count_label", "discard_count_label")]
 script = ExtResource("1_pdggs")
+deck_count_label = NodePath("DeckControl/DeckCount")
+discard_count_label = NodePath("DiscardControl/DiscardCount")
+
+[node name="DeckControl" type="Control" parent="Deck"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 211.0
+offset_top = -1.0
+offset_right = 432.0
+offset_bottom = 97.0
+
+[node name="Label" type="Label" parent="Deck/DeckControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cartas no baralho:"
+
+[node name="DeckCount" type="Label" parent="Deck/DeckControl"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 22.0
+offset_right = 90.0
+offset_bottom = 48.0
+text = "0"
+
+[node name="DiscardControl" type="Control" parent="Deck"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 707.0
+offset_top = 1.0
+offset_right = 864.0
+offset_bottom = 82.0
+
+[node name="Label" type="Label" parent="Deck/DiscardControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cartas no morto:"
+
+[node name="DiscardCount" type="Label" parent="Deck/DiscardControl"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 22.0
+offset_right = 90.0
+offset_bottom = 48.0
+text = "0"
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control")]
 position = Vector2(30, 30)

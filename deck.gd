@@ -1,13 +1,15 @@
 extends Node2D
 
+@export var deck_count_label : Label
+@export var discard_count_label : Label
+
 var cards : Array
 var discard_deck : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cards = ["A", "B", "C"]
-	cards.shuffle()
-	discard_deck = []
+	discard_deck = ["A", "B", "C"]
+	shuffle_deck()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +20,8 @@ func shuffle_deck():
 	cards = discard_deck
 	discard_deck = []
 	cards.shuffle()
+	deck_count_label.text = str(len(cards))
+	discard_count_label.text = str(0)
 	
 func buy_card():
 	if(len(cards) == 0):
@@ -26,8 +30,10 @@ func buy_card():
 	if(len(cards) == 0): return null
 		
 	var card : String = cards.pop_front()
+	deck_count_label.text = str(len(cards))
 	return card
 
 func on_use_card(used_card):
 	discard_deck.push_front(used_card)
+	discard_count_label.text = str(len(discard_deck))
 

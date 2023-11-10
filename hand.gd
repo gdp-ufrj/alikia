@@ -20,6 +20,7 @@ func on_use_card(used_card, used_button):
 	print(used_card)
 	deck.on_use_card(used_card)
 	hand_buttons_control.remove_child(used_button)
+	card_zoom_exit()
 
 func card_zoom_enter(card):
 	on_card_zoom_enter.emit(card)
