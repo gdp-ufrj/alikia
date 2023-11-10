@@ -11,21 +11,37 @@ offset = Vector2(576, 324)
 [node name="Deck" type="Node2D" parent="."]
 script = ExtResource("1_pdggs")
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control")]
 position = Vector2(30, 30)
 script = ExtResource("2_himdb")
 deck = NodePath("../Deck")
-min_x_hand = 50.0
-max_x_hand = 1100.0
+hand_buttons_control = NodePath("Control/HandButtons")
 
-[node name="Button2" type="Button" parent="."]
+[node name="Control" type="Control" parent="Hand"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -30.0
+offset_top = 473.0
+offset_right = 1121.0
+offset_bottom = 617.0
+
+[node name="HandButtons" type="HBoxContainer" parent="Hand/Control"]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 1153.0
+offset_bottom = 146.0
+alignment = 1
+
+[node name="BuyButton" type="Button" parent="."]
 offset_left = 524.0
 offset_top = 55.0
 offset_right = 601.0
 offset_bottom = 86.0
 text = "Comprar"
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(1054, 616)
+[node name="Zoom" type="Node2D" parent="."]
+position = Vector2(568, 302)
 
-[connection signal="pressed" from="Button2" to="Hand" method="_on_button_2_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="Zoom"]
+
+[connection signal="pressed" from="BuyButton" to="Hand" method="_on_button_2_pressed"]
