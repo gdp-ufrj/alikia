@@ -5,13 +5,11 @@ extends Node2D
 
 var cards : Array
 var discard_deck : Array
-var card_buttons : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	discard_deck = ["A", "B", "C"]
 	shuffle_deck()
-	card_buttons = {}
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

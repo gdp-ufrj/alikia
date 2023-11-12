@@ -87,7 +87,6 @@ offset_bottom = 86.0
 text = "Comprar"
 
 [node name="Control" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 435.0
