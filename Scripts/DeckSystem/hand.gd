@@ -19,7 +19,7 @@ func _process(_delta):
 func on_use_card(used_card, used_button):
 	print(used_card)
 	deck.on_use_card(used_card)
-	hand_buttons_control.remove_child(used_button)
+	used_button.queue_free()
 	card_zoom_exit()
 
 func card_zoom_enter(card):

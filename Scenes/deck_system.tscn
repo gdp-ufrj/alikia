@@ -86,7 +86,7 @@ offset_right = 601.0
 offset_bottom = 86.0
 text = "Comprar"
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("card_name_label")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 435.0
@@ -94,6 +94,7 @@ offset_top = 154.0
 offset_right = 688.0
 offset_bottom = 462.0
 script = ExtResource("3_v0hvi")
+card_name_label = NodePath("CardName")
 
 [node name="CardName" type="Label" parent="Control"]
 layout_mode = 1
