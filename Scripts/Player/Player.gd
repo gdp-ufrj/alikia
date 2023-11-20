@@ -12,6 +12,7 @@ var current_position : Vector2i
 
 func _ready():
 	astar_grid = tile_map.astar_grid
+	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
 
 
 func _input(event):
@@ -28,9 +29,12 @@ func _input(event):
 	current_position = tile_map.local_to_map(global_position)
 	
 	var Path = astar_grid.get_id_path(current_position, destination).slice(1)
+	astar_grid.set_point_solid(current_position, false)
+	
 	
 	if !Path.is_empty() and !moving:
 		current_path = Path
+		astar_grid.set_point_solid(current_path.back())
 		
 
 func _physics_process(delta):
@@ -60,7 +64,6 @@ func show_tiles(tiles: Array[Vector2i]):
 	for i in tiles:
 		tile_map.set_cell(1, i, 1, Vector2i(0,0))
 		
-		
 func clear_tiles(tiles: Array[Vector2i]):
 	for i in tiles:
 		tile_map.set_cell(1, i, -1, Vector2i(-1,-1))
@@ -85,4 +88,5 @@ func get_tiles_in_range(start: Vector2i, range_player: int):
 	tiles_in_range.erase(start)
 	return tiles_in_range
 	
-	
+func get_neighbours():
+	return tile_map.get_surrounding_cells(current_position)
