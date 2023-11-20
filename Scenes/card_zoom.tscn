@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqfvh0i6ts4ew"]
+
+[ext_resource type="Script" path="res://Scripts/DeckSystem/card_zoom.gd" id="1_t053v"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("card_name_label", "card_mana_label", "card_description_label", "card_image_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 435.0
+offset_top = 154.0
+offset_right = 688.0
+offset_bottom = 462.0
+script = ExtResource("1_t053v")
+card_name_label = NodePath("CardName")
+card_mana_label = NodePath("Mana")
+card_description_label = NodePath("Description")
+card_image_label = NodePath("Image")
+
+[node name="CardName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.154
+anchor_top = 0.075
+anchor_right = 0.834
+anchor_bottom = 0.179
+offset_left = 0.0379982
+offset_top = -0.1
+offset_right = -0.00201416
+offset_bottom = -0.132
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.454902, 0.0705882, 0.360784, 0.392157)
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.158
+anchor_top = 0.614
+anchor_right = 0.83
+anchor_bottom = 0.951
+offset_left = 0.0259972
+offset_top = -0.112
+offset_right = 0.00999451
+offset_bottom = 0.09198
+
+[node name="Mana" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.826
+anchor_top = 0.052
+anchor_right = 0.953
+anchor_bottom = 0.179
+offset_left = 0.0219879
+offset_top = -0.0160007
+offset_right = -0.109024
+offset_bottom = -0.132
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.154
+anchor_top = 0.292
+anchor_right = 0.81
+anchor_bottom = 0.584
+offset_left = 0.0379982
+offset_top = 0.0639954
+offset_right = 0.0699768
+offset_bottom = 0.127991
