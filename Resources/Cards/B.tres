@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dlac5bp1bw4f7"]
+
+[ext_resource type="Script" path="res://Resources/CardData.gd" id="1_7eowf"]
+[ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/B.png" id="1_p1857"]
+
+[resource]
+script = ExtResource("1_7eowf")
+mainImage = ExtResource("1_p1857")
+mana = 2
+name = "B"
+description = "Carta B"

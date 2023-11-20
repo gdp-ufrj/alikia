@@ -1,6 +1,6 @@
 extends Node2D
 
-signal on_card_zoom_enter(card : String)
+signal on_card_zoom_enter(card : CardData)
 signal on_card_zoom_exit
 
 @export var deck : Node2D
@@ -29,11 +29,11 @@ func card_zoom_exit():
 	on_card_zoom_exit.emit()
 
 func _on_button_2_pressed():
-	var card : String = deck.buy_card()
+	var card : CardData = deck.buy_card()
 	hand.push_back(card)
 	
 	var button : = Button.new()
-	button.text = card
+	button.text = card.name
 	
 	hand_buttons_control.add_child(button)
 	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
