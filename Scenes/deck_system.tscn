@@ -17,6 +17,7 @@ script = ExtResource("1_pdggs")
 deck_count_label = NodePath("DeckControl/DeckCount")
 discard_count_label = NodePath("DiscardControl/DiscardCount")
 equipped_cards = Array[Resource("res://Resources/CardData.gd")]([ExtResource("2_bqs1d"), ExtResource("3_ur5lm"), ExtResource("4_t3snl")])
+equipped_cards_quantity = Array[int]([6, 3, 4])
 
 [node name="DeckControl" type="Control" parent="Deck"]
 layout_mode = 3
