@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpm7lq1u5rc80"]
+[gd_scene load_steps=11 format=3 uid="uid://bpm7lq1u5rc80"]
 
 [ext_resource type="Texture2D" uid="uid://cdkwnboi12wc6" path="res://Assets/Tile.png" id="1_u3tvo"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="2_5l8xe"]
 [ext_resource type="PackedScene" uid="uid://x3kx1qwj8efj" path="res://Scenes/Player.tscn" id="2_c5tmv"]
 [ext_resource type="Texture2D" uid="uid://cp7cue2ma2tp6" path="res://Assets/icon.svg" id="3_ku65w"]
+[ext_resource type="Script" path="res://Scripts/grid.gd" id="4_cce2n"]
+[ext_resource type="PackedScene" uid="uid://cbbvbnmd7l68d" path="res://Scenes/enemy.tscn" id="6_ot51i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
 texture = ExtResource("1_u3tvo")
@@ -78,10 +80,32 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(65533, 2, 0, 131069, 2, 1, 65534, 65538, 0, 131070, 65538, 1, 2, 131074, 0, 65538, 131074, 1, 3, 196610, 0, 65539, 196610, 1, 196607, 65538, 2, 262143, 65538, 3, 131072, 131074, 2, 196608, 131074, 3, -262151, 2, 0, -196615, 2, 1, -262150, 65538, 0, -196614, 65538, 1, 65530, 2, 0, 131066, 2, 1, 65531, 65538, 0, 131067, 65538, 1, -262143, 2, 0, -196607, 2, 1, -262142, 65538, 0, -196606, 65538, 1, -65530, 2, 0, 6, 2, 1, -65529, 65538, 0, 7, 65538, 1, -262138, 2, 0, -196602, 2, 1, -262137, 65538, 0, -196601, 65538, 1, -131076, 2, 0, -65540, 2, 1, -131075, 65538, 0, -65539, 65538, 1)
+layer_2/tile_data = PackedInt32Array(-131070, 2, 0, -65534, 2, 1, -131069, 65538, 0, -65533, 65538, 1)
+script = ExtResource("4_cce2n")
 
 [node name="Player" parent="." instance=ExtResource("2_c5tmv")]
 position = Vector2(15, -17)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+
+[node name="Enemy" parent="." instance=ExtResource("6_ot51i")]
+position = Vector2(175, -18)
+
+[node name="Move" type="Button" parent="."]
+offset_left = -60.0
+offset_top = -213.0
+offset_right = 60.0
+offset_bottom = -170.0
+text = "Mover Inimigo
+"
+
+[node name="Enemy2" parent="." instance=ExtResource("6_ot51i")]
+position = Vector2(175, 14)
+
+[node name="Enemy3" parent="." instance=ExtResource("6_ot51i")]
+position = Vector2(175, -51)
+
+[connection signal="pressed" from="Move" to="Enemy" method="_on_move_pressed"]
+[connection signal="pressed" from="Move" to="Enemy2" method="_on_move_pressed"]
+[connection signal="pressed" from="Move" to="Enemy3" method="_on_move_pressed"]
