@@ -1,29 +1,32 @@
 extends Node2D
 
-@onready var tile_map = $"../TileMap"
+@onready var tile_map = $"../../TileMap"
+@onready var player = $"../../Player"
 
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
+var target: Vector2i
 
 func _ready():
 	astar_grid = tile_map.astar_grid
 	
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
 
-func _on_move_pressed():
+func move(target):
 	
-	current_position = tile_map.local_to_map(global_position)
-	var destination = tile_map.local_to_map( Vector2(global_position.x, global_position.y) ) 
-	destination.x = destination.x - 1
+	current_position = tile_map.local_to_map(global_position) 
+
+	if current_position in player.get_neighbours(): #ignora o movimento do inimigo se ele ja estiver do lado do jogador
+		return
 	
-	#Tratar possiveis caminhos bloqueados
-	print(current_position, destination)
+	var Path = astar_grid.get_id_path(current_position, target).slice(1)
 	
-	var Path = astar_grid.get_id_path(current_position, destination).slice(1)
+	current_path.append(Path.front())
 	
-	current_path = Path
-	astar_grid.set_point_solid(current_position, false)
+	if Path.front(): #atualizar o local anterior o proximo como solido ou não
+		astar_grid.set_point_solid(current_position, false)
+		astar_grid.set_point_solid(Path.front(), true)
 
 func _physics_process(delta):
 	if current_path.is_empty():
