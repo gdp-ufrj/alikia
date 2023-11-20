@@ -2,13 +2,15 @@ extends Node2D
 
 @export var deck_count_label : Label
 @export var discard_count_label : Label
+@export var equipped_cards: Array[CardData]
 
 var cards : Array
 var discard_deck : Array
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	discard_deck = ["A", "B", "C"]
+	discard_deck = [] + equipped_cards
 	shuffle_deck()
 
 
@@ -29,7 +31,7 @@ func buy_card():
 		
 	if(len(cards) == 0): return null
 		
-	var card : String = cards.pop_front()
+	var card : CardData = cards.pop_front()
 	deck_count_label.text = str(len(cards))
 	return card
 

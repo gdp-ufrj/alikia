@@ -26,6 +26,8 @@ offset_left = 0.0379982
 offset_top = -0.1
 offset_right = -0.00201416
 offset_bottom = -0.132
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,6 +49,8 @@ offset_left = 0.0259972
 offset_top = -0.112
 offset_right = 0.00999451
 offset_bottom = 0.09198
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Mana" type="Label" parent="."]
 layout_mode = 1
@@ -59,6 +63,8 @@ offset_left = 0.0219879
 offset_top = -0.0160007
 offset_right = -0.109024
 offset_bottom = -0.132
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 1
@@ -71,3 +77,4 @@ offset_left = 0.0379982
 offset_top = 0.0639954
 offset_right = 0.0699768
 offset_bottom = 0.127991
+stretch_mode = 5
