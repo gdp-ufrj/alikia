@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/DeckSystem/card_zoom.gd" id="1_t053v"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("card_name_label", "card_mana_label", "card_description_label", "card_image_label")]
+[node name="CardZoomControl" type="Control" node_paths=PackedStringArray("card_name_label", "card_mana_label", "card_description_label", "card_image_label")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 435.0
@@ -11,9 +11,18 @@ offset_right = 688.0
 offset_bottom = 462.0
 script = ExtResource("1_t053v")
 card_name_label = NodePath("CardName")
-card_mana_label = NodePath("Mana")
-card_description_label = NodePath("Description")
-card_image_label = NodePath("Image")
+card_mana_label = NodePath("CardMana")
+card_description_label = NodePath("CardDescription")
+card_image_label = NodePath("CardImage")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.454902, 0.0705882, 0.360784, 0.392157)
 
 [node name="CardName" type="Label" parent="."]
 layout_mode = 1
@@ -29,16 +38,7 @@ offset_bottom = -0.132
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.454902, 0.0705882, 0.360784, 0.392157)
-
-[node name="Description" type="Label" parent="."]
+[node name="CardDescription" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.158
@@ -52,7 +52,7 @@ offset_bottom = 0.09198
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mana" type="Label" parent="."]
+[node name="CardMana" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.826
@@ -66,7 +66,7 @@ offset_bottom = -0.132
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Image" type="TextureRect" parent="."]
+[node name="CardImage" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.154
