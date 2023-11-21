@@ -102,12 +102,18 @@ text = "Mover Inimigo
 script = ExtResource("6_epmfg")
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("6_ot51i")]
-position = Vector2(175, -18)
+position = Vector2(290, -257)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_ot51i")]
 position = Vector2(175, 14)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_ot51i")]
 position = Vector2(175, -51)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(274, -146)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(271, 77)
 
 [connection signal="pressed" from="Move" to="Enemies" method="_on_move_pressed"]
