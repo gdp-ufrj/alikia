@@ -18,7 +18,7 @@ script = ExtResource("1_pdggs")
 deck_count_label = NodePath("DeckControl/DeckCount")
 discard_count_label = NodePath("DiscardControl/DiscardCount")
 equipped_cards = Array[Resource("res://Resources/CardData.gd")]([ExtResource("2_bqs1d"), ExtResource("3_ur5lm"), ExtResource("4_t3snl")])
-equipped_cards_quantity = Array[int]([6, 3, 4])
+equipped_cards_quantity = Array[int]([10, 10, 10])
 
 [node name="DeckControl" type="Control" parent="Deck"]
 layout_mode = 3
@@ -110,18 +110,10 @@ offset_right = 1153.0
 offset_bottom = 146.0
 alignment = 1
 
-[node name="BuyButton" type="Button" parent="."]
-offset_left = 524.0
-offset_top = 55.0
-offset_right = 601.0
-offset_bottom = 86.0
-text = "Comprar"
-
 [node name="CardZoomControl" parent="." instance=ExtResource("3_mfhcc")]
 
 [node name="TurnManager" parent="." instance=ExtResource("7_43hh3")]
 
 [connection signal="on_card_zoom_enter" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_enter"]
 [connection signal="on_card_zoom_exit" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_exit"]
-[connection signal="pressed" from="BuyButton" to="Hand" method="_on_button_2_pressed"]
 [connection signal="pass_turn" from="TurnManager" to="Hand" method="_on_turn_manager_pass_turn"]
