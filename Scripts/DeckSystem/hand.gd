@@ -3,23 +3,29 @@ extends Node2D
 signal on_card_zoom_enter(card : CardData)
 signal on_card_zoom_exit
 
+@export var starting_mana : int = 1
+@export var max_mana : int = 20
 @export var deck : Node2D
 @export var hand_buttons_control : HBoxContainer
+@export var mana_count_label : Label
 
 var hand : Array
+var currentMana : int
 
 func _ready():
-	pass
-
-
-func _process(_delta):
-	pass
-
+	currentMana = starting_mana
+	mana_count_label.text = str(currentMana)
 
 func on_use_card(used_card, used_button):
-	print(used_card)
+	if(currentMana < used_card.mana): return
+	print(used_card.name)
+	
+	currentMana -= used_card.mana
+	mana_count_label.text = str(currentMana)
+	
 	deck.on_use_card(used_card)
 	used_button.queue_free()
+	
 	card_zoom_exit()
 
 func card_zoom_enter(card):
@@ -42,3 +48,10 @@ func _on_button_2_pressed():
 	button.mouse_entered.connect(self.card_zoom_enter.bind(card))
 	button.mouse_exited.connect(self.card_zoom_exit.bind())
 	
+
+func _on_turn_manager_pass_turn(turn):
+	currentMana = clamp(currentMana + turn, 0, max_mana)
+	mana_count_label.text = str(currentMana)
+	print('--------------')
+	print('Turn: ', turn)
+	print('CurrentMana: ', currentMana)

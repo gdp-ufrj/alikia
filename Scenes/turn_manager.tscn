@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsv8p07wfxpi"]
+
+[ext_resource type="Script" path="res://Scripts/Turn/turn_manager.gd" id="1_n7uk5"]
+
+[node name="TurnManager" type="Node2D" node_paths=PackedStringArray("turn_label_count")]
+script = ExtResource("1_n7uk5")
+turn_label_count = NodePath("UI/TurnLabelCount")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TurnButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 25.225
+anchor_top = 7.35
+anchor_right = 27.9
+anchor_bottom = 8.125
+text = "Passar turno"
+
+[node name="TurnLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.5
+anchor_top = 8.475
+anchor_right = 26.875
+anchor_bottom = 9.125
+offset_left = -6.10352e-05
+offset_right = -0.00012207
+text = "Turno atual:"
+
+[node name="TurnLabelCount" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 27.0
+anchor_top = 8.45
+anchor_right = 27.3
+anchor_bottom = 9.1
+offset_left = -0.00012207
+offset_top = -3.05176e-05
+text = "0"
+
+[connection signal="pressed" from="UI/TurnButton" to="." method="_on_turn_button_pressed"]

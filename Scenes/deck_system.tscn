@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6wjwe3k5uxst"]
+[gd_scene load_steps=8 format=3 uid="uid://b6wjwe3k5uxst"]
 
 [ext_resource type="Script" path="res://Scripts/DeckSystem/deck.gd" id="1_pdggs"]
 [ext_resource type="Resource" uid="uid://bi1morduw4kr7" path="res://Resources/Cards/A.tres" id="2_bqs1d"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dlac5bp1bw4f7" path="res://Resources/Cards/B.tres" id="3_ur5lm"]
 [ext_resource type="Script" path="res://Scripts/DeckSystem/hand.gd" id="3_yw3pl"]
 [ext_resource type="Resource" uid="uid://bm7toebap67gy" path="res://Resources/Cards/C.tres" id="4_t3snl"]
+[ext_resource type="PackedScene" uid="uid://bsv8p07wfxpi" path="res://Scenes/turn_manager.tscn" id="7_43hh3"]
 
 [node name="DeckSystem" type="Node2D"]
 
@@ -63,11 +64,12 @@ offset_right = 90.0
 offset_bottom = 48.0
 text = "0"
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control", "mana_count_label")]
 position = Vector2(30, 30)
 script = ExtResource("3_yw3pl")
 deck = NodePath("../Deck")
 hand_buttons_control = NodePath("Control/HandButtons")
+mana_count_label = NodePath("Control/ManaLabelCount")
 
 [node name="Control" type="Control" parent="Hand"]
 layout_mode = 3
@@ -76,6 +78,30 @@ offset_left = -30.0
 offset_top = 473.0
 offset_right = 1121.0
 offset_bottom = 617.0
+
+[node name="ManaLabel" type="Label" parent="Hand/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.257
+anchor_right = 0.08
+anchor_bottom = -0.062
+offset_top = 0.00799942
+offset_right = -0.0800095
+offset_bottom = -0.0719995
+text = "Mana atual:"
+
+[node name="ManaLabelCount" type="Label" parent="Hand/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = -0.243
+anchor_right = 0.096
+anchor_bottom = -0.062
+offset_left = -0.231003
+offset_top = -0.00799942
+offset_right = 0.503998
+offset_bottom = -0.0719995
+text = "0"
 
 [node name="HandButtons" type="HBoxContainer" parent="Hand/Control"]
 layout_mode = 0
@@ -93,6 +119,9 @@ text = "Comprar"
 
 [node name="CardZoomControl" parent="." instance=ExtResource("3_mfhcc")]
 
+[node name="TurnManager" parent="." instance=ExtResource("7_43hh3")]
+
 [connection signal="on_card_zoom_enter" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_enter"]
 [connection signal="on_card_zoom_exit" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_exit"]
 [connection signal="pressed" from="BuyButton" to="Hand" method="_on_button_2_pressed"]
+[connection signal="pass_turn" from="TurnManager" to="Hand" method="_on_turn_manager_pass_turn"]
