@@ -36,21 +36,20 @@ func shuffle_deck():
 	discard_count_label.text = str(0)
 	
 func buy_cards(quantity : int = 1):
-	if(len(cards) == 0):
-		shuffle_deck()
-		
 	var bought_cards : Array[CardData] = []
 	
 	for i in range(quantity):
-		if(len(cards) == 0): break
-		var card : CardData = cards.pop_front()
+		var card : CardData = _get_card()
 		bought_cards.append(card)
 	
 	deck_count_label.text = str(len(cards))
 	return bought_cards
+	
+func _get_card():
+	if(len(cards) == 0): shuffle_deck()
+	return cards.pop_front()
 
 func on_use_card(used_card):
 	discard_deck.push_front(used_card)
 	discard_count_label.text = str(len(discard_deck))
 	
-
