@@ -8,6 +8,7 @@ signal on_card_zoom_exit
 @export var max_mana : int = 20
 @export var starting_hand_size : int = 7
 @export var buying_hand_size : int = 3
+@export var max_hand_size : int = 7
 
 @export_category("Nodes")
 @export var deck : Node2D
@@ -31,6 +32,7 @@ func on_use_card(used_card, used_button):
 	mana_count_label.text = str(current_mana)
 	
 	deck.on_use_card(used_card)
+	hand.erase(used_card)
 	used_button.queue_free()
 	
 	card_zoom_exit()
@@ -58,7 +60,7 @@ func _on_turn_manager_pass_turn(turn):
 	current_mana = clamp(current_mana + turn, 0, max_mana)
 	mana_count_label.text = str(current_mana)
 	
-	var new_cards : Array[CardData] = deck.buy_cards(buying_hand_size)
+	var new_cards : Array[CardData] = deck.buy_cards(min(buying_hand_size, max_hand_size - len(hand)))
 	hand += new_cards
 	_create_cards_button(new_cards)
 	print('--------------')
