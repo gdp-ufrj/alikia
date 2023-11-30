@@ -9,7 +9,6 @@ var range_path : Array[Vector2i]
 var show_range : bool = true
 var current_position : Vector2i
 
-
 func _ready():
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
