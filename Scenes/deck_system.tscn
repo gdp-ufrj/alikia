@@ -10,10 +10,8 @@
 
 [node name="DeckSystem" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(576, 324)
-
 [node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("deck_count_label", "discard_count_label")]
+position = Vector2(-555, -330)
 script = ExtResource("1_pdggs")
 deck_count_label = NodePath("DeckControl/DeckCount")
 discard_count_label = NodePath("DiscardControl/DiscardCount")
@@ -27,12 +25,14 @@ offset_left = 211.0
 offset_top = -1.0
 offset_right = 432.0
 offset_bottom = 97.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Deck/DeckControl"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Cartas no baralho:"
+metadata/_edit_use_anchors_ = true
 
 [node name="DeckCount" type="Label" parent="Deck/DeckControl"]
 layout_mode = 0
@@ -41,6 +41,7 @@ offset_top = 22.0
 offset_right = 90.0
 offset_bottom = 48.0
 text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="DiscardControl" type="Control" parent="Deck"]
 layout_mode = 3
@@ -49,12 +50,14 @@ offset_left = 707.0
 offset_top = 1.0
 offset_right = 864.0
 offset_bottom = 82.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Deck/DiscardControl"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Cartas no morto:"
+metadata/_edit_use_anchors_ = true
 
 [node name="DiscardCount" type="Label" parent="Deck/DiscardControl"]
 layout_mode = 0
@@ -63,9 +66,10 @@ offset_top = 22.0
 offset_right = 90.0
 offset_bottom = 48.0
 text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control", "mana_count_label")]
-position = Vector2(30, 30)
+position = Vector2(-555, -330)
 script = ExtResource("3_yw3pl")
 deck = NodePath("../Deck")
 hand_buttons_control = NodePath("Control/HandButtons")
@@ -78,6 +82,7 @@ offset_left = -30.0
 offset_top = 473.0
 offset_right = 1121.0
 offset_bottom = 617.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ManaLabel" type="Label" parent="Hand/Control"]
 layout_mode = 1
@@ -89,6 +94,7 @@ offset_top = 0.00799942
 offset_right = -0.0800095
 offset_bottom = -0.0719995
 text = "Mana atual:"
+metadata/_edit_use_anchors_ = true
 
 [node name="ManaLabelCount" type="Label" parent="Hand/Control"]
 layout_mode = 1
@@ -102,6 +108,7 @@ offset_top = -0.00799942
 offset_right = 0.503998
 offset_bottom = -0.0719995
 text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="HandButtons" type="HBoxContainer" parent="Hand/Control"]
 layout_mode = 0
@@ -109,10 +116,17 @@ offset_top = -12.0
 offset_right = 1153.0
 offset_bottom = 146.0
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CardZoomControl" parent="." instance=ExtResource("3_mfhcc")]
+offset_left = -120.0
+offset_top = -176.0
+offset_right = 133.0
+offset_bottom = 132.0
+metadata/_edit_use_anchors_ = true
 
 [node name="TurnManager" parent="." instance=ExtResource("7_43hh3")]
+position = Vector2(-555, -330)
 
 [connection signal="on_card_zoom_enter" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_enter"]
 [connection signal="on_card_zoom_exit" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_exit"]
