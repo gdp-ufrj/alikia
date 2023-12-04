@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var tile_map = $"../TileMap"
+@onready var player_health_bar = $"../PlayerHealthBar"
 
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
@@ -8,11 +9,14 @@ var moving : bool = false
 var range_path : Array[Vector2i]
 var show_range : bool = true
 var current_position : Vector2i
+var hp: int
 
 func _ready():
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-
+	hp = 100
+	update_health_bar()
+	
 
 func _input(event):
 	if event.is_action_pressed("MouseClick") == false:
@@ -78,10 +82,11 @@ func get_tiles_in_range(start: Vector2i, range_player: int):
 	while  step < range_player:
 		var new_neighbours : Array[Vector2i] = []
 		for i in neighbours:
-			var neighbour_path = astar_grid.get_id_path(start, i)
-			if astar_grid.is_in_boundsv(i) and (i not in tiles_in_range) and (len(neighbour_path) <= range_player + 1 ) and !(astar_grid.is_point_solid(i)):
-				tiles_in_range.append(i)
-				new_neighbours.append_array(tile_map.get_surrounding_cells(i))
+			if astar_grid.is_in_boundsv(i):
+				var neighbour_path = astar_grid.get_id_path(start, i)
+				if (i not in tiles_in_range) and (len(neighbour_path) <= range_player + 1 ) and !(astar_grid.is_point_solid(i)):
+					tiles_in_range.append(i)
+					new_neighbours.append_array(tile_map.get_surrounding_cells(i))
 		neighbours.append_array(new_neighbours)
 		step += 1
 	tiles_in_range.erase(start)
@@ -89,3 +94,17 @@ func get_tiles_in_range(start: Vector2i, range_player: int):
 	
 func get_neighbours():
 	return tile_map.get_surrounding_cells(current_position)
+
+func take_damage(damage):
+	hp = hp - damage
+	update_health_bar()
+
+func update_health_bar():
+	player_health_bar.value = hp
+	
+	
+
+	
+
+
+

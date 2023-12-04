@@ -35,17 +35,17 @@ func _on_move_pressed():
 	
 		#var enemy_spawn = randf_range(0, enemies.size())
 		
-	if count % 3 == 0:
-		var scene = enemy_1.instantiate()
-		scene.position = marker_2d.position
-		add_child(scene)
-		enemies.append(scene)
+	#if count % 3 == 0:
+	#	var scene = enemy_1.instantiate()
+	#	scene.position = marker_2d.position
+	#	add_child(scene)
+	#	enemies.append(scene)
 	
-	if count % 7 == 0:
-		var scene = enemy_1.instantiate()
-		scene.position = marker_2d_2.position
-		add_child(scene)
-		enemies.append(scene)
+	#if count % 7 == 0:
+	#	var scene = enemy_1.instantiate()
+	#	scene.position = marker_2d_2.position
+	#	add_child(scene)
+	#	enemies.append(scene)
 		
 	#if test == true:
 		#$Enemy.position = marker_2d.position
