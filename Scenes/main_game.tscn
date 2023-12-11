@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvprqudv22o52"]
+[gd_scene load_steps=4 format=3 uid="uid://cvprqudv22o52"]
 
 [ext_resource type="PackedScene" uid="uid://bpm7lq1u5rc80" path="res://Scenes/battle.tscn" id="1_qgbnj"]
 [ext_resource type="PackedScene" uid="uid://b6wjwe3k5uxst" path="res://Scenes/deck_system.tscn" id="2_5g71h"]
+[ext_resource type="AudioStream" uid="uid://v8fi87qwdgqd" path="res://Áudio/mockup.mp3" id="3_6bjhu"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,3 +11,7 @@
 [node name="DeckSystem" parent="." instance=ExtResource("2_5g71h")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="mockupBackground" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6bjhu")
+autoplay = true
