@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6wjwe3k5uxst"]
+[gd_scene load_steps=10 format=3 uid="uid://b6wjwe3k5uxst"]
 
 [ext_resource type="Script" path="res://Scripts/DeckSystem/deck.gd" id="1_pdggs"]
 [ext_resource type="Resource" uid="uid://bi1morduw4kr7" path="res://Resources/Cards/A.tres" id="2_bqs1d"]
@@ -6,7 +6,9 @@
 [ext_resource type="Resource" uid="uid://dlac5bp1bw4f7" path="res://Resources/Cards/B.tres" id="3_ur5lm"]
 [ext_resource type="Script" path="res://Scripts/DeckSystem/hand.gd" id="3_yw3pl"]
 [ext_resource type="Resource" uid="uid://bm7toebap67gy" path="res://Resources/Cards/C.tres" id="4_t3snl"]
+[ext_resource type="AudioStream" uid="uid://j1pa3cacq70c" path="res://Áudio/mouse_on_card.mp3" id="6_uliy8"]
 [ext_resource type="PackedScene" uid="uid://bsv8p07wfxpi" path="res://Scenes/turn_manager.tscn" id="7_43hh3"]
+[ext_resource type="AudioStream" uid="uid://cd7jxnbv1aysn" path="res://Áudio/Ui_1.mp3" id="9_3jgg2"]
 
 [node name="DeckSystem" type="Node2D"]
 
@@ -118,6 +120,9 @@ offset_bottom = 146.0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="mouseOnCard" type="AudioStreamPlayer2D" parent="Hand"]
+stream = ExtResource("6_uliy8")
+
 [node name="CardZoomControl" parent="." instance=ExtResource("3_mfhcc")]
 offset_left = -120.0
 offset_top = -176.0
@@ -127,6 +132,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TurnManager" parent="." instance=ExtResource("7_43hh3")]
 position = Vector2(-555, -330)
+
+[node name="uiClick" type="AudioStreamPlayer2D" parent="TurnManager"]
+stream = ExtResource("9_3jgg2")
 
 [connection signal="on_card_zoom_enter" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_enter"]
 [connection signal="on_card_zoom_exit" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_exit"]

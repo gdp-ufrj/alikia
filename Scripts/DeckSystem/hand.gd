@@ -15,6 +15,8 @@ signal on_card_zoom_exit
 @export var hand_buttons_control : HBoxContainer
 @export var mana_count_label : Label
 
+@onready var mouse_on_card = $mouseOnCard
+
 var hand : Array[CardData]
 var current_mana : int
 
@@ -39,6 +41,7 @@ func on_use_card(used_card, used_button):
 
 func card_zoom_enter(card):
 	on_card_zoom_enter.emit(card)
+	mouse_on_card.play()
 	
 func card_zoom_exit():
 	on_card_zoom_exit.emit()

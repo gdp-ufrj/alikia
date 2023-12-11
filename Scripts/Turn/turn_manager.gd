@@ -4,6 +4,8 @@ signal pass_turn(turn : int)
 
 @export var turn_label_count : Label
 
+@onready var ui_click = $uiClick
+
 var turn : int
 
 func _ready():
@@ -15,3 +17,5 @@ func _on_turn_button_pressed():
 	turn += 1
 	turn_label_count.text = str(turn)
 	pass_turn.emit(turn)
+	ui_click.play()
+	
