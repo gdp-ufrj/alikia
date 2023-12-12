@@ -36,7 +36,7 @@ func _input(event):
 		astar_grid.set_point_solid(current_path.back())
 		
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if show_range and !moving:
 		current_position = tile_map.local_to_map(global_position)
 		range_path = get_tiles_in_range(current_position, 3)

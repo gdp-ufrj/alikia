@@ -16,11 +16,6 @@ func _ready():
 	discard_deck = _create_deck() 
 	shuffle_deck()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _create_deck():
 	var deck = []
 	for card_index in range(len(equipped_cards)):

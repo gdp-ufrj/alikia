@@ -6,7 +6,6 @@ extends Node2D
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
-var target: Vector2i
 
 func _ready():
 	astar_grid = tile_map.astar_grid
@@ -28,7 +27,7 @@ func move(target):
 		astar_grid.set_point_solid(current_position, false)
 		astar_grid.set_point_solid(Path.front(), true)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if current_path.is_empty():
 		return
 	
@@ -39,7 +38,3 @@ func _physics_process(delta):
 	if global_position == target:
 		current_path.pop_front()
 		astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-		
-		
-		
-		

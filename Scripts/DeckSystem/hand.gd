@@ -57,9 +57,8 @@ func _create_cards_button(cards : Array[CardData]):
 		button.pressed.connect(self.on_use_card.bind(card, button))
 		button.mouse_entered.connect(self.card_zoom_enter.bind(card))
 		button.mouse_exited.connect(self.card_zoom_exit.bind())
-		
 
-func _on_turn_manager_pass_turn(turn):
+func _on_deck_system_pass_turn(turn):
 	current_mana = clamp(current_mana + turn, 0, max_mana)
 	mana_count_label.text = str(current_mana)
 	

@@ -18,5 +18,3 @@ func _ready():
 			var tile_data = tile_map.get_cell_tile_data(2, tile_position)
 			if !(tile_data == null or tile_data.get_custom_data("obstacle") == false):
 				astar_grid.set_point_solid(tile_position, true)
-				
-				

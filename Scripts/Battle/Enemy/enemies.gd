@@ -18,8 +18,7 @@ func _ready():
 	enemies = get_children()
 	astar_grid = tile_map.astar_grid
 
-func _on_move_pressed():
-	
+func _on_battle_move_enemies():
 	count = count + 1
 	for enemy in enemies:
 		if !(target == tile_map.local_to_map(player.global_position)) :

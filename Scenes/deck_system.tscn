@@ -1,16 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6wjwe3k5uxst"]
+[gd_scene load_steps=9 format=3 uid="uid://b6wjwe3k5uxst"]
 
+[ext_resource type="Script" path="res://Scripts/DeckSystem/deck_system.gd" id="1_15g3y"]
 [ext_resource type="Script" path="res://Scripts/DeckSystem/deck.gd" id="1_pdggs"]
 [ext_resource type="Resource" uid="uid://bi1morduw4kr7" path="res://Resources/Cards/A.tres" id="2_bqs1d"]
-[ext_resource type="PackedScene" uid="uid://cqfvh0i6ts4ew" path="res://Scenes/card_zoom.tscn" id="3_mfhcc"]
+[ext_resource type="PackedScene" path="res://Scenes/card_zoom.tscn" id="3_mfhcc"]
 [ext_resource type="Resource" uid="uid://dlac5bp1bw4f7" path="res://Resources/Cards/B.tres" id="3_ur5lm"]
 [ext_resource type="Script" path="res://Scripts/DeckSystem/hand.gd" id="3_yw3pl"]
 [ext_resource type="Resource" uid="uid://bm7toebap67gy" path="res://Resources/Cards/C.tres" id="4_t3snl"]
 [ext_resource type="AudioStream" uid="uid://j1pa3cacq70c" path="res://Áudio/mouse_on_card.mp3" id="6_uliy8"]
-[ext_resource type="PackedScene" uid="uid://bsv8p07wfxpi" path="res://Scenes/turn_manager.tscn" id="7_43hh3"]
-[ext_resource type="AudioStream" uid="uid://cd7jxnbv1aysn" path="res://Áudio/Ui_1.mp3" id="9_3jgg2"]
 
 [node name="DeckSystem" type="Node2D"]
+script = ExtResource("1_15g3y")
 
 [node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("deck_count_label", "discard_count_label")]
 position = Vector2(-555, -330)
@@ -23,21 +23,32 @@ equipped_cards_quantity = Array[int]([10, 10, 10])
 [node name="DeckControl" type="Control" parent="Deck"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 211.0
-offset_top = -1.0
-offset_right = 432.0
-offset_bottom = 97.0
+offset_left = 230.0
+offset_top = 344.0
+offset_right = 451.0
+offset_bottom = 442.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Deck/DeckControl"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0361991
+anchor_top = 0.0102041
+anchor_right = 0.190045
+anchor_bottom = 0.306122
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Cartas no baralho:"
+text = "Cartas no
+baralho:"
 metadata/_edit_use_anchors_ = true
 
 [node name="DeckCount" type="Label" parent="Deck/DeckControl"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113122
+anchor_top = 0.0612245
+anchor_right = 0.113122
+anchor_bottom = 0.0612245
 offset_left = 50.0
 offset_top = 22.0
 offset_right = 90.0
@@ -48,21 +59,32 @@ metadata/_edit_use_anchors_ = true
 [node name="DiscardControl" type="Control" parent="Deck"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 707.0
-offset_top = 1.0
-offset_right = 864.0
-offset_bottom = 82.0
+offset_left = 234.0
+offset_top = 293.0
+offset_right = 391.0
+offset_bottom = 374.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Deck/DiscardControl"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0318471
+anchor_top = 0.0493827
+anchor_right = 0.248408
+anchor_bottom = 0.407407
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Cartas no morto:"
+text = "Cartas no
+morto:"
 metadata/_edit_use_anchors_ = true
 
 [node name="DiscardCount" type="Label" parent="Deck/DiscardControl"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0636943
+anchor_top = 0.0987654
+anchor_right = 0.0636943
+anchor_bottom = 0.0987654
 offset_left = 50.0
 offset_top = 22.0
 offset_right = 90.0
@@ -89,22 +111,24 @@ metadata/_edit_use_anchors_ = true
 [node name="ManaLabel" type="Label" parent="Hand/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.257
-anchor_right = 0.08
-anchor_bottom = -0.062
+anchor_left = 0.231972
+anchor_top = -0.513944
+anchor_right = 0.311972
+anchor_bottom = -0.318944
 offset_top = 0.00799942
 offset_right = -0.0800095
 offset_bottom = -0.0719995
-text = "Mana atual:"
+text = "Mana
+atual:"
 metadata/_edit_use_anchors_ = true
 
 [node name="ManaLabelCount" type="Label" parent="Hand/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.081
-anchor_top = -0.243
-anchor_right = 0.096
-anchor_bottom = -0.062
+anchor_left = 0.273876
+anchor_top = -0.333278
+anchor_right = 0.288876
+anchor_bottom = -0.152278
 offset_left = -0.231003
 offset_top = -0.00799942
 offset_right = 0.503998
@@ -113,10 +137,16 @@ text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="HandButtons" type="HBoxContainer" parent="Hand/Control"]
-layout_mode = 0
-offset_top = -12.0
-offset_right = 1153.0
-offset_bottom = 146.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.229
+anchor_top = -0.229
+anchor_right = 0.784
+anchor_bottom = 0.243
+offset_left = 0.42099
+offset_top = -0.0239983
+offset_right = -0.384033
+offset_bottom = 0.00799942
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -130,12 +160,10 @@ offset_right = 133.0
 offset_bottom = 132.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TurnManager" parent="." instance=ExtResource("7_43hh3")]
-position = Vector2(-555, -330)
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
 
-[node name="uiClick" type="AudioStreamPlayer2D" parent="TurnManager"]
-stream = ExtResource("9_3jgg2")
-
+[connection signal="pass_turn" from="." to="Hand" method="_on_deck_system_pass_turn"]
 [connection signal="on_card_zoom_enter" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_enter"]
 [connection signal="on_card_zoom_exit" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_exit"]
-[connection signal="pass_turn" from="TurnManager" to="Hand" method="_on_turn_manager_pass_turn"]
