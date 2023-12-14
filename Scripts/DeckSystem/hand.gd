@@ -2,6 +2,7 @@ extends Node2D
 
 signal on_card_zoom_enter(card : CardData)
 signal on_card_zoom_exit
+signal on_use_card_signal(card : CardData)
 
 @export_category("Starting Values")
 @export var starting_mana : int = 1
@@ -33,7 +34,7 @@ func on_use_card(used_card, used_button):
 	current_mana -= used_card.mana
 	mana_count_label.text = str(current_mana)
 	
-	deck.on_use_card(used_card)
+	on_use_card_signal.emit(used_card)
 	hand.erase(used_card)
 	used_button.queue_free()
 	

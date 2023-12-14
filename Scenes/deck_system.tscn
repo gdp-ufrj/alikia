@@ -167,3 +167,5 @@ enabled = false
 [connection signal="pass_turn" from="." to="Hand" method="_on_deck_system_pass_turn"]
 [connection signal="on_card_zoom_enter" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_enter"]
 [connection signal="on_card_zoom_exit" from="Hand" to="CardZoomControl" method="_on_hand_on_card_zoom_exit"]
+[connection signal="on_use_card_signal" from="Hand" to="." method="_on_hand_on_use_card_signal"]
+[connection signal="on_use_card_signal" from="Hand" to="Deck" method="_on_hand_on_use_card_signal"]

@@ -44,7 +44,6 @@ func _get_card():
 	if(len(cards) == 0): shuffle_deck()
 	return cards.pop_front()
 
-func on_use_card(used_card):
-	discard_deck.push_front(used_card)
+func _on_hand_on_use_card_signal(card):
+	discard_deck.push_front(card)
 	discard_count_label.text = str(len(discard_deck))
-	
