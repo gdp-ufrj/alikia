@@ -8,3 +8,7 @@ script = ExtResource("1_p5a8s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wx0l2")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0

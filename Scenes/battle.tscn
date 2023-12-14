@@ -86,6 +86,14 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(-131069, 65538, 0, -65533, 65538, 1, 65540, 2, 0, 131076, 2, 1, 65538, 2, 1, -262140, 2, 0, -196604, 2, 1)
 script = ExtResource("5_apr0j")
 
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+offset_left = -35.0
+offset_top = 137.0
+offset_right = 56.0
+offset_bottom = 157.0
+step = 1.0
+show_percentage = false
+
 [node name="Player" parent="." instance=ExtResource("2_c5tmv")]
 position = Vector2(15, -17)
 
