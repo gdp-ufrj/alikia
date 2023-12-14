@@ -120,4 +120,5 @@ position = Vector2(271, 77)
 [node name="obstacle" parent="." instance=ExtResource("9_gnhac")]
 position = Vector2(64, -1)
 
+[connection signal="allow_player_move" from="." to="Player" method="_on_battle_allow_player_move"]
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]
