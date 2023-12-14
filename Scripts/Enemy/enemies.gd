@@ -26,9 +26,9 @@ func _on_move_pressed():
 			target = tile_map.local_to_map(player.global_position) #seta o alvo como a posição do jogador
 			neighbours = tile_map.get_surrounding_cells(target) #pega os vizinhos do alvo 
 		
-		print(neighbours)
+		
 		if(astar_grid.is_point_solid(neighbours.front())):
-			print('Vizinhos novos', neighbours)
+			
 			neighbours = neighbours.slice(1) #Tira o primeiro vizinho da lista se ja estiver ocupado o local
 			
 		enemy.move(neighbours.front())	
@@ -53,3 +53,20 @@ func _on_move_pressed():
 	
 		
 		#await get_tree().create_timer(0.5).timeout #timer para o movimento de cada inimigo
+
+func get_enemies():
+	var enemies: Array[Node2D]
+	
+	for enemy in enemies:
+		
+		enemies.append(enemy)
+	
+	return enemies
+	
+func check_for_enemy(position: Vector2i):
+	for enemy in enemies:
+		print(tile_map.local_to_map(position), tile_map.local_to_map(enemy.global_position))
+		if (position == tile_map.local_to_map(enemy.global_position)):
+			return true
+		else:
+			return false

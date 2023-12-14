@@ -7,19 +7,19 @@
 script = ExtResource("1_enacl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(16, -16)
-scale = Vector2(0.25, 0.25)
+position = Vector2(8, -8)
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_l4se7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(16, 15)
-scale = Vector2(0.25, 0.25)
+position = Vector2(8, 8)
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_l4se7")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_top = 32.0
-offset_right = 32.0
-offset_bottom = 46.0
+offset_top = 17.0
+offset_right = 16.0
+offset_bottom = 25.0
 max_value = 20.0
 step = 1.0
 show_percentage = false

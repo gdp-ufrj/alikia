@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpm7lq1u5rc80"]
+[gd_scene load_steps=17 format=3 uid="uid://bpm7lq1u5rc80"]
 
 [ext_resource type="Texture2D" uid="uid://cdkwnboi12wc6" path="res://Assets/Tile.png" id="1_u3tvo"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="2_5l8xe"]
@@ -8,6 +8,47 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/enemies.gd" id="6_epmfg"]
 [ext_resource type="PackedScene" uid="uid://cbbvbnmd7l68d" path="res://Scenes/enemy.tscn" id="6_ot51i"]
 [ext_resource type="PackedScene" uid="uid://3rhwyh8j1vdy" path="res://Scenes/obstacle.tscn" id="8_ksmt3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i8w0y"]
+texture = ExtResource("1_u3tvo")
+use_texture_padding = false
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_78f8b"]
+texture = ExtResource("2_5l8xe")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7enfq"]
+sources/0 = SubResource("TileSetAtlasSource_i8w0y")
+sources/1 = SubResource("TileSetAtlasSource_78f8b")
+
+[sub_resource type="GDScript" id="GDScript_5x3xo"]
+script/source = "extends Node2D
+
+@onready var tile_map = $\"../TileMap\"
+
+
+var astar_grid: AStarGrid2D
+
+func _ready():
+	astar_grid = AStarGrid2D.new()
+	astar_grid.region = tile_map.get_used_rect()
+	astar_grid.cell_size = Vector2(16,16)
+	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_grid.update()
+	
+	for x in tile_map.get_used_rect().size.x:
+		for y in tile_map.get_used_rect().size.y:
+			var tile_position = Vector2i(x + tile_map.get_used_rect().position.x, y + tile_map.get_used_rect().position.y)
+			var tile_data = tile_map.get_cell_tile_data(2, tile_position)
+			if !(tile_data == null or tile_data.get_custom_data(\"obstacle\") == false):
+				astar_grid.set_point_solid(tile_position, true)
+				
+				
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
 texture = ExtResource("1_u3tvo")
@@ -66,6 +107,28 @@ sources/2 = SubResource("TileSetAtlasSource_0e7hr")
 [node name="Battle" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_7enfq")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(65533, 0, 0, 131069, 0, 0, 65534, 0, 0, 131070, 0, 0, -131075, 0, 0, -65539, 0, 0, -3, 0, 0, -131074, 0, 0, -65538, 0, 0, -2, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, -196607, 0, 0, -131071, 0, 0, -65535, 0, 0, -196606, 0, 0, -131070, 0, 0, -65534, 0, 0, 65535, 0, 0, 131071, 0, 0, 0, 0, 0, 65536, 0, 0, 1, 0, 0, 65537, 0, 0, 2, 0, 0, 65538, 0, 0, -131076, 0, 0, -65540, 0, 0, -4, 0, 0, 65532, 0, 0, 131068, 0, 0, -196605, 0, 0, -131069, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, -196604, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, -196603, 0, 0, -131067, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, -196602, 0, 0, -131066, 0, 0, -65530, 0, 0, 6, 0, 0, 65542, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, -131077, 0, 0, -65541, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 196603, 0, 0, -131078, 0, 0, -65542, 0, 0, -6, 0, 0, 65530, 0, 0, 131066, 0, 0, 196602, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, -196614, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, -196615, 0, 0, -262137, 0, 0, -196616, 0, 0, -131080, 0, 0, -65544, 0, 0, -8, 0, 0, 65528, 0, 0, 131064, 0, 0, 196600, 0, 0, 262136, 0, 0, 327672, 0, 0, -131079, 0, 0, -65543, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, 196601, 0, 0, 262137, 0, 0, 327673, 0, 0, -196601, 0, 0, -131065, 0, 0, -65529, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0)
+layer_1/name = ""
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = ""
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+script = SubResource("GDScript_5x3xo")
+
+[node name="TileMap_Antigo" type="TileMap" parent="."]
+visible = false
 tile_set = SubResource("TileSet_6o5ni")
 format = 2
 layer_0/tile_data = PackedInt32Array(-262151, 0, 0, -196615, 0, 0, -131079, 0, 0, -65543, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, 196601, 0, 0, 262137, 0, 0, -262150, 0, 0, -196614, 0, 0, -131078, 0, 0, -65542, 0, 0, -6, 0, 0, 65530, 0, 0, 131066, 0, 0, 196602, 0, 0, 262138, 0, 0, -262149, 0, 0, -196613, 0, 0, -131077, 0, 0, -65541, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 196603, 0, 0, 262139, 0, 0, -262148, 0, 0, -196612, 0, 0, -131076, 0, 0, -65540, 0, 0, -4, 0, 0, 65532, 0, 0, 131068, 0, 0, 196604, 0, 0, 262140, 0, 0, -262147, 0, 0, -196611, 0, 0, -131075, 0, 0, -65539, 0, 0, -3, 0, 0, 65533, 0, 0, 131069, 0, 0, 196605, 0, 0, 262141, 0, 0, -262146, 0, 0, -196610, 0, 0, -131074, 0, 0, -65538, 0, 0, -2, 0, 0, 65534, 0, 0, 131070, 0, 0, 196606, 0, 0, 262142, 0, 0, -262145, 0, 0, -196609, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, 65535, 0, 0, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0, -327680, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, -327679, 0, 0, -262143, 0, 0, -196607, 0, 0, -131071, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, -327678, 0, 0, -262142, 0, 0, -196606, 0, 0, -131070, 0, 0, -65534, 0, 0, 2, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, -327677, 0, 0, -262141, 0, 0, -196605, 0, 0, -131069, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, -327676, 0, 0, -262140, 0, 0, -196604, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, -327675, 0, 0, -262139, 0, 0, -196603, 0, 0, -131067, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 196613, 0, 0, -327674, 0, 0, -262138, 0, 0, -196602, 0, 0, -131066, 0, 0, -65530, 0, 0, 6, 0, 0, 65542, 0, 0, 131078, 0, 0, 196614, 0, 0, -327673, 0, 0, -262137, 0, 0, -196601, 0, 0, -131065, 0, 0, -65529, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, -327672, 0, 0, -262136, 0, 0, -196600, 0, 0, -131064, 0, 0, -65528, 0, 0, 8, 0, 0, 65544, 0, 0, 131080, 0, 0, 196616, 0, 0)
@@ -86,7 +149,7 @@ layer_2/tile_data = PackedInt32Array()
 script = ExtResource("4_cce2n")
 
 [node name="Player" parent="." instance=ExtResource("2_c5tmv")]
-position = Vector2(15, -17)
+position = Vector2(8, -9)
 
 [node name="Move" type="Button" parent="."]
 offset_left = -60.0
@@ -105,10 +168,10 @@ visible = false
 position = Vector2(335, -32)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_ot51i")]
-position = Vector2(175, 14)
+position = Vector2(87, -10)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_ot51i")]
-position = Vector2(175, -51)
+position = Vector2(106, -10)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(274, -146)
@@ -117,14 +180,14 @@ position = Vector2(274, -146)
 position = Vector2(271, 77)
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="."]
-offset_left = -89.0
-offset_top = 169.0
-offset_right = 90.0
-offset_bottom = 204.0
+offset_left = -431.0
+offset_top = -18.0
+offset_right = -252.0
+offset_bottom = 17.0
 step = 1.0
 show_percentage = false
 
 [node name="obstacle" parent="." instance=ExtResource("8_ksmt3")]
-position = Vector2(96, -31)
+position = Vector2(48, -1)
 
 [connection signal="pressed" from="Move" to="Enemies" method="_on_move_pressed"]
