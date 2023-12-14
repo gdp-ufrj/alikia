@@ -25,5 +25,6 @@ autoplay = true
 [node name="TurnManager" parent="." instance=ExtResource("4_ticpk")]
 position = Vector2(-13, 3)
 
+[connection signal="use_card" from="DeckSystem" to="Battle" method="_on_deck_system_use_card"]
 [connection signal="pass_turn" from="TurnManager" to="Battle" method="_on_turn_manager_pass_turn"]
 [connection signal="pass_turn" from="TurnManager" to="DeckSystem" method="_on_turn_manager_pass_turn"]

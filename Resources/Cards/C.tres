@@ -7,5 +7,6 @@
 script = ExtResource("1_8dnsg")
 mainImage = ExtResource("1_n4cbu")
 mana = 3
-name = "C"
+name = "Lufada"
 description = "Carta C"
+card_type = 2

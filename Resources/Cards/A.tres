@@ -7,5 +7,6 @@
 script = ExtResource("1_at0a7")
 mainImage = ExtResource("1_xspl1")
 mana = 1
-name = "A"
+name = "Ataque"
 description = "Carta A"
+card_type = 0
