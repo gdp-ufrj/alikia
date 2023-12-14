@@ -9,4 +9,3 @@ mainImage = ExtResource("1_p1857")
 mana = 2
 name = "Barreira"
 description = "Carta B"
-card_type = 1

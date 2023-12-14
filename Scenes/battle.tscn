@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpm7lq1u5rc80"]
+[gd_scene load_steps=14 format=3 uid="uid://bpm7lq1u5rc80"]
 
 [ext_resource type="Texture2D" uid="uid://cdkwnboi12wc6" path="res://Assets/Tile.png" id="1_u3tvo"]
 [ext_resource type="Script" path="res://Scripts/Battle/battle.gd" id="1_yti07"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Battle/grid.gd" id="5_apr0j"]
 [ext_resource type="PackedScene" uid="uid://cbbvbnmd7l68d" path="res://Scenes/enemy.tscn" id="6_ot51i"]
 [ext_resource type="Script" path="res://Scripts/Battle/Enemy/enemies.gd" id="7_fmiyn"]
+[ext_resource type="PackedScene" uid="uid://di6jpi8skxc8h" path="res://Scenes/obstacle.tscn" id="9_gnhac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
 texture = ExtResource("1_u3tvo")
@@ -83,7 +84,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(-131069, 65538, 0, -65533, 65538, 1, 65540, 2, 0, 131076, 2, 1, 65538, 2, 1, -262140, 2, 0, -196604, 2, 1)
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("5_apr0j")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="."]
@@ -115,5 +116,8 @@ position = Vector2(274, -146)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(271, 77)
+
+[node name="obstacle" parent="." instance=ExtResource("9_gnhac")]
+position = Vector2(64, -1)
 
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]
