@@ -9,3 +9,4 @@ mainImage = ExtResource("1_n4cbu")
 mana = 3
 name = "Lufada"
 description = "Carta C"
+card_type = 2

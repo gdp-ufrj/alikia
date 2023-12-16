@@ -9,3 +9,4 @@ mainImage = ExtResource("1_xspl1")
 mana = 1
 name = "Ataque"
 description = "Carta A"
+card_type = 0

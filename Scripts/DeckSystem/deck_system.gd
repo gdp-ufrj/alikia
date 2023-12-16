@@ -8,3 +8,5 @@ func _on_turn_manager_pass_turn(turn):
 
 func _on_hand_on_use_card_signal(card):
 	use_card.emit(card)
+
+
