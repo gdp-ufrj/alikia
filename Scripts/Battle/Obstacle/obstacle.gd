@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var tile_map = $"../TileMap"
+@onready var tile_map = $"../../TileMap"
 @onready var sprite = $Sprite2D
 @onready var sprite2 = $Sprite2D2
 
@@ -30,5 +30,4 @@ func update_health_bar():
 	var health_bar = $HealthBar
 	health_bar.value = hp
 	
-
 	

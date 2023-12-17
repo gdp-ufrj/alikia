@@ -17,15 +17,17 @@ var count = 0
 func _ready():
 	enemies = get_children()
 	astar_grid = tile_map.astar_grid
+	
+	target = tile_map.local_to_map(player.global_position) #seta o alvo como a posição do jogador
+	neighbours = tile_map.get_surrounding_cells(target) #pega os vizinhos do alvo 
 
 func _on_battle_move_enemies():
 	count = count + 1
 	for enemy in enemies:
-		if !(target == tile_map.local_to_map(player.global_position)) :
+		if !(target == tile_map.local_to_map(player.global_position)):
 			target = tile_map.local_to_map(player.global_position) #seta o alvo como a posição do jogador
 			neighbours = tile_map.get_surrounding_cells(target) #pega os vizinhos do alvo 
 		
-		print(neighbours)
 		if(astar_grid.is_point_solid(neighbours.front())):
 			print('Vizinhos novos', neighbours)
 			neighbours = neighbours.slice(1) #Tira o primeiro vizinho da lista se ja estiver ocupado o local
