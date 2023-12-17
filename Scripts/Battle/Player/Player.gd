@@ -5,6 +5,8 @@ extends Node2D
 @onready var enemies = $"../Enemies"
 @onready var obstacles = $"../Obstacles"
 
+var obstacle = load("res://Scenes/obstacle.tscn")
+
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var range_path: Array[Vector2i]
@@ -15,8 +17,12 @@ var moving: bool = false
 var show_range: bool = false
 var allow_movement: bool = true
 var showing_tiles: bool = false
+var attack_card: bool = false
+var thunder_card: bool = false
+var barrier_card: bool = false
 
 var in_range_enemies = {}
+var in_range_fire = {}
 
 var hp: int
 var range: int
@@ -38,39 +44,24 @@ func _input(event):
 	var destination = tile_map.local_to_map(get_global_mouse_position())
 	
 	#Tratar input no ataque basico
-	if !in_range_enemies.is_empty():
-		if in_range_enemies.has(destination):
-			print("Atacou  ", destination)
-			print(in_range_enemies.get(destination))
-			in_range_enemies.get(destination).take_damage(3)
-			
-			for key in in_range_enemies.keys():
-				tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
-			in_range_enemies = {}
-		
+	if !in_range_enemies.is_empty() and attack_card:
+		atack_input(destination, 3)
+	
+	#Tratar input do raio
+	if !in_range_enemies.is_empty() and thunder_card:
+		atack_input(destination, 6)
+	
+	#Tratar input do ataque de fogo
+	if !(in_range_fire.is_empty()):
+		fire_input(destination)
+	
+	#Tratar input de spaw da barreira
+	if barrier_card:
+		barrier_input(destination)
+	
 	#tratar input no movimento
 	if (event.is_action("MouseClick") == true and allow_movement == true) and range > 0:
 		move(destination)
-	
-	
-	
-	#if destination == current_position:
-		#show_range = true
-		#in_range_enemies = show_enemies_in_range(current_position, 1)
-	
-	#if destination not in range_path and !(in_range_enemies.has(destination)):
-	#	return
-		
-		
-	#if in_range_enemies.has(destination):
-	#	print("Atacou  ", destination)
-	#	in_range_enemies.get(destination).take_damage(3)
-	#	
-	#	for key in in_range_enemies.keys():
-	#		tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
-	#	in_range_enemies = {}
-	
-	
 
 func _physics_process(delta):
 	
@@ -147,39 +138,35 @@ func get_enemies_in_range(start: Vector2i, range: int):
 	
 	list_enemies = enemies.get_children()
 	list_obstacles = obstacles.get_children()
-
 	
 	for enemy in list_enemies:
 		var enemy_position = tile_map.local_to_map(enemy.global_position)
 		enemies_dict[enemy_position] = enemy
 	
-	
-	
 	for obstacle in list_obstacles:
 		var positions = obstacle.current_position
-		print('Posiçoes', positions)
 		for position in positions:
 			var obstacle_position = tile_map.local_to_map(position)
 			obstacle_dict[obstacle_position] = obstacle
 	
-	print(obstacle_dict)
-	
 	for x in range(-range, range+1):
-		for y in range(-range,range+1):
-			var i = Vector2i(x + start.x, y + start.y)
-			if enemies_dict.has(i):
-				list_enemies_in_range[i] = enemies_dict.get(i)
-			if obstacle_dict.has(i):
-				list_enemies_in_range[i] = obstacle_dict.get(i)
-	
+		var i = Vector2i(start.x, x + start.y)
+		var j = Vector2i(x + start.x,  start.y)
+		
+		if enemies_dict.has(i):
+			list_enemies_in_range[i] = enemies_dict.get(i)
+		if obstacle_dict.has(i):
+			list_enemies_in_range[i] = obstacle_dict.get(i)
+		if enemies_dict.has(j):
+			list_enemies_in_range[j] = enemies_dict.get(j)
+		if obstacle_dict.has(j):
+			list_enemies_in_range[j] = obstacle_dict.get(j)
 	
 	return list_enemies_in_range
 
-func show_enemies_in_range(start: Vector2i, range: int):
-	var enemies_in_range = get_enemies_in_range(start, range)
+func show_enemies_in_range(enemies_in_range):
 	
 	for key in enemies_in_range.keys():
-		print(key)
 		tile_map.set_cell(1, key, 1, Vector2i(0,0))
 	
 	return enemies_in_range
@@ -212,14 +199,115 @@ func move(destination: Vector2i):
 	pass
 
 func atack():
-	in_range_enemies = show_enemies_in_range(current_position, 1)
+	var enemies_in_range = get_enemies_in_range(current_position, 1)
+	in_range_enemies = show_enemies_in_range(enemies_in_range)
+	attack_card = true
 	
 	if in_range_enemies.is_empty():
 		return false
 
+func atack_input(destination, damage):
+	if in_range_enemies.has(destination):
+		print("Atacou  ", destination)
+		in_range_enemies.get(destination).take_damage(damage)
+		
+		for key in in_range_enemies.keys():
+			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
+		in_range_enemies = {}
+	
+	attack_card = false
+	thunder_card = false
+
 func gust():
 	for enemy in enemies.get_children():
 		enemy.push_back()
+
+func fire_tornado():
+	var range_fire = get_enemies_in_range(current_position, 3)
+	in_range_fire = show_enemies_in_range(range_fire)
+
+func fire_input(destination):
+	if in_range_fire.has(destination):
+		if destination.x == current_position.x and destination.y < current_position.y:
+			for key in in_range_fire.keys():
+				if key.x == current_position.x and key.y < current_position.y:
+					in_range_fire.get(key).take_damage(7)
+		
+		if destination.x == current_position.x and destination.y > current_position.y:
+			for key in in_range_fire.keys():
+				if key.x == current_position.x and key.y > current_position.y:
+					in_range_fire.get(key).take_damage(7)
+		
+		if destination.y == current_position.y and destination.x < current_position.x:
+			for key in in_range_fire.keys():
+				if key.y == current_position.y and key.x < current_position.x:
+					in_range_fire.get(key).take_damage(7)
+		
+		if destination.y == current_position.y and destination.x > current_position.x:
+			for key in in_range_fire.keys():
+				if key.y == current_position.y and key.x > current_position.x:
+					in_range_fire.get(key).take_damage(7)
+		
+		for key in in_range_fire.keys():
+			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
+		in_range_fire = {}
+
+func thunder_range(start: Vector2i, range: int):
+	var list_enemies: Array[Node]
+	var list_enemies_in_range = {}
+	var list_obstacles: Array[Node]
+	
+	var enemies_dict = {}
+	var obstacle_dict = {}
+	
+	list_enemies = enemies.get_children()
+	list_obstacles = obstacles.get_children()
+	
+	for enemy in list_enemies:
+		var enemy_position = tile_map.local_to_map(enemy.global_position)
+		enemies_dict[enemy_position] = enemy
+	
+	for obstacle in list_obstacles:
+		var positions = obstacle.current_position
+		for position in positions:
+			var obstacle_position = tile_map.local_to_map(position)
+			obstacle_dict[obstacle_position] = obstacle
+	
+	for x in range(-range, range+1):
+		for y in range(-(range - abs(x)), (range - abs(x))+1):
+			var i = Vector2i( x + start.x, y + start.y)
+			
+			if enemies_dict.has(i):
+				list_enemies_in_range[i] = enemies_dict.get(i)
+			if obstacle_dict.has(i):
+				list_enemies_in_range[i] = obstacle_dict.get(i)
+			
+	
+	return list_enemies_in_range
+
+func thunder():
+	var enemies_in_range = thunder_range(current_position, 6)
+	in_range_enemies = show_enemies_in_range(enemies_in_range)
+	thunder_card = true
+
+func barrier():
+	barrier_card = true
+
+func barrier_input(destination):
+	var destination_2 = Vector2i(destination.x, destination.y + 1)
+	if (!astar_grid.is_in_boundsv(destination) or (astar_grid.is_point_solid(destination_2)) and tile_map.map_to_local(destination_2)):
+		return
+	
+	print("Destino mapa ", destination)
+	print("Destino local ", tile_map.map_to_local(destination))
+	
+	var scene = obstacle.instantiate()
+	
+	scene.position = tile_map.map_to_local(destination) 
+	obstacles.add_child(scene)
+	
+	barrier_card = false
+
 
 func _on_battle_used_card(card):
 	
@@ -236,6 +324,12 @@ func _on_battle_used_card(card):
 	
 	if card_type == Enums.CardTypes.LUFADA:
 		gust()
+	if card_type == Enums.CardTypes.TURBILHAO_CHAMAS:
+		fire_tornado()
+	if card_type == Enums.CardTypes.BARREIRA_ROCHOSA:
+		barrier()
+	if card_type == Enums.CardTypes.RAIO:
+		thunder()
 
 func _on_battle_allow_player_move():
 	allow_movement = true

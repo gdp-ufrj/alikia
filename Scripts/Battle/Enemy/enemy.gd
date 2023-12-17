@@ -15,16 +15,18 @@ func _ready():
 	hp = 20
 	update_health_bar()
 	
-func move(target, range = 1):
+func move(target, range = 1, is_push = false):
 	
 	current_position = tile_map.local_to_map(global_position) 
 	
 	print("Current Postion", current_position, name)
 	
-	if current_position in player.get_neighbours(): #ignora o movimento do inimigo se ele ja estiver do lado do jogador
+	if (current_position in player.get_neighbours()) and !is_push: #ignora o movimento do inimigo se ele ja estiver do lado do jogador
+		print("Ataque")
 		attack()
 		return
 		
+	astar_grid.set_point_solid(current_position, false)
 	var Path = astar_grid.get_id_path(current_position, target).slice(range)
 	
 	
@@ -53,6 +55,7 @@ func attack():
 	player.take_damage(damage)
 	
 func take_damage(damage):
+	print(name, " Levou ", damage, "de dano")
 	hp = hp - damage
 	update_health_bar()
 
@@ -67,11 +70,13 @@ func push_back():
 	var target_2 = Vector2i(current_position.x+2, current_position.y)
 	
 	if !astar_grid.is_in_boundsv(target_1):
+		print("Out of Bound ", name)
 		return
 	if astar_grid.is_point_solid(target_1):
+		print("Solid ", name , target_1)
 		return
 	if astar_grid.is_in_boundsv(target_2) and !astar_grid.is_point_solid(target_2):
-		move(target_2, 2)
+		move(target_2, 2, true)
 	else:
-		move(target_1)
+		move(target_1, 1, true)
 	
