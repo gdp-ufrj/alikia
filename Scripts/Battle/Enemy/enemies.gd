@@ -31,7 +31,7 @@ func _on_battle_move_enemies():
 		if(astar_grid.is_point_solid(neighbours.front())):
 			print('Vizinhos novos', neighbours)
 			neighbours = neighbours.slice(1) #Tira o primeiro vizinho da lista se ja estiver ocupado o local
-			
+		
 		enemy.move(neighbours.front())	
 	
 		#var enemy_spawn = randf_range(0, enemies.size())

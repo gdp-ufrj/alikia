@@ -6,7 +6,6 @@ extends Node2D
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
-var target: Vector2i
 var damage: int = 3
 var hp: int
 
@@ -16,17 +15,21 @@ func _ready():
 	hp = 20
 	update_health_bar()
 	
-func move(target):
+func move(target, range = 1):
 	
 	current_position = tile_map.local_to_map(global_position) 
-
+	
+	print("Current Postion", current_position, name)
+	
 	if current_position in player.get_neighbours(): #ignora o movimento do inimigo se ele ja estiver do lado do jogador
 		attack()
 		return
+		
+	var Path = astar_grid.get_id_path(current_position, target).slice(range)
 	
-	var Path = astar_grid.get_id_path(current_position, target).slice(1)
 	
 	current_path.append(Path.front())
+	
 	
 	if Path.front(): #atualizar o local anterior o proximo como solido ou não
 		astar_grid.set_point_solid(Path.front(), true)
@@ -37,8 +40,10 @@ func _physics_process(delta):
 		return
 	
 	var target = tile_map.map_to_local(current_path.front())
+
 	
 	global_position = global_position.move_toward(target, 10)
+	
 	
 	if global_position == target:
 		current_path.pop_front()
@@ -54,6 +59,19 @@ func take_damage(damage):
 func update_health_bar():
 	var health_bar = $HealthBar
 	health_bar.value = hp
-		
-		
-		
+
+func push_back():
+	current_position = tile_map.local_to_map(global_position) 
+	
+	var target_1 = Vector2i(current_position.x+1, current_position.y)
+	var target_2 = Vector2i(current_position.x+2, current_position.y)
+	
+	if !astar_grid.is_in_boundsv(target_1):
+		return
+	if astar_grid.is_point_solid(target_1):
+		return
+	if astar_grid.is_in_boundsv(target_2) and !astar_grid.is_point_solid(target_2):
+		move(target_2, 2)
+	else:
+		move(target_1)
+	
