@@ -216,8 +216,10 @@ func atack():
 	
 	if in_range_enemies.is_empty():
 		return false
-	
-	
+
+func gust():
+	for enemy in enemies.get_children():
+		enemy.push_back()
 
 func _on_battle_used_card(card):
 	
@@ -232,9 +234,9 @@ func _on_battle_used_card(card):
 		else:
 			print("Ataque usado")
 	
-	
+	if card_type == Enums.CardTypes.LUFADA:
+		gust()
 
 func _on_battle_allow_player_move():
 	allow_movement = true
 	range = 3
-	
