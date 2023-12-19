@@ -61,7 +61,11 @@ func attack():
 func take_damage(damage):
 	print(name, " Levou ", damage, "de dano")
 	hp = hp - damage
+	if(hp <= 0): _die()
 	update_health_bar()
+	
+func _die():
+	queue_free()
 
 func update_health_bar():
 	var health_bar = $HealthBar
