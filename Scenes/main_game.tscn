@@ -43,6 +43,7 @@ offset_bottom = -150.0
 texture_normal = ExtResource("6_ryqfn")
 stretch_mode = 3
 
+[connection signal="allow_new_card_use" from="Battle" to="DeckSystem" method="_on_battle_allow_new_card_use"]
 [connection signal="use_card" from="DeckSystem" to="Battle" method="_on_deck_system_use_card"]
 [connection signal="pass_turn" from="TurnManager" to="Battle" method="_on_turn_manager_pass_turn"]
 [connection signal="pass_turn" from="TurnManager" to="DeckSystem" method="_on_turn_manager_pass_turn"]

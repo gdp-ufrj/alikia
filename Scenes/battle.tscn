@@ -122,3 +122,4 @@ position = Vector2(64, -1)
 [connection signal="allow_player_move" from="." to="Player" method="_on_battle_allow_player_move"]
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]
 [connection signal="used_card" from="." to="Player" method="_on_battle_used_card"]
+[connection signal="end_card_effect" from="Player" to="." method="_on_player_end_card_effect"]

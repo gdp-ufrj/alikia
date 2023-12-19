@@ -1,5 +1,7 @@
 extends Node2D
 
+signal end_card_effect
+
 @onready var tile_map = $"../TileMap"
 @onready var player_health_bar = $"../PlayerHealthBar"
 @onready var enemies = $"../Enemies"
@@ -54,10 +56,15 @@ func _input(event):
 	#Tratar input do ataque de fogo
 	if !(in_range_fire.is_empty()):
 		fire_input(destination)
+		end_card_effect.emit()
 	
 	#Tratar input de spaw da barreira
 	if barrier_card:
 		barrier_input(destination)
+		end_card_effect.emit()
+		
+	# Se estiver com efeito, nao anda
+	if _is_in_effect(): return
 	
 	#tratar input no movimento
 	if (event.is_action("MouseClick") == true and allow_movement == true) and range > 0:
@@ -221,10 +228,12 @@ func atack_input(destination, damage):
 func gust():
 	for enemy in enemies.get_children():
 		enemy.push_back()
+	end_card_effect.emit()
 
 func fire_tornado():
 	var range_fire = get_enemies_in_range(current_position, 3)
 	in_range_fire = show_enemies_in_range(range_fire)
+	end_card_effect.emit()
 
 func fire_input(destination):
 	if in_range_fire.has(destination):
@@ -295,10 +304,9 @@ func barrier():
 
 func water_drop():
 	var list_enemies = enemies.get_children()
-	
-	
 	for enemy in list_enemies:
 		enemy.stun()
+	end_card_effect.emit()
 
 func barrier_input(destination):
 	var destination_2 = Vector2i(destination.x, destination.y + 1)
@@ -335,6 +343,9 @@ func _on_battle_used_card(card):
 		thunder()
 	if card_type == Enums.CardTypes.NO_DAGUA:
 		water_drop()
+		
+func _is_in_effect():
+	return barrier_card or thunder_card or attack_card
 
 func _on_battle_allow_player_move():
 	allow_movement = true

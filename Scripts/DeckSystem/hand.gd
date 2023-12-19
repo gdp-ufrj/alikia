@@ -20,14 +20,18 @@ signal on_use_card_signal(card : CardData)
 
 var hand : Array[CardData]
 var current_mana : int
+var can_use_card : bool
 
 func _ready():
 	current_mana = starting_mana
 	mana_count_label.text = str(current_mana)
 	hand = deck.buy_cards(starting_hand_size)
 	_create_cards_button(hand)
+	can_use_card = true
 
 func on_use_card(used_card, used_button):
+	if !can_use_card: return
+	
 	if(current_mana < used_card.mana): return
 	print(used_card.name)
 	
@@ -69,3 +73,6 @@ func _on_deck_system_pass_turn(turn):
 	print('--------------')
 	print('Turn: ', turn)
 	print('CurrentMana: ', current_mana)
+
+func _on_deck_system_allow_new_card_use():
+	can_use_card = true
