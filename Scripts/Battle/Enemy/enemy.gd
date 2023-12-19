@@ -8,6 +8,7 @@ var current_path: Array[Vector2i]
 var current_position: Vector2i
 var damage: int = 3
 var hp: int
+var is_stunned: bool = false
 
 func _ready():
 	astar_grid = tile_map.astar_grid
@@ -16,6 +17,9 @@ func _ready():
 	update_health_bar()
 	
 func move(target, range = 1, is_push = false):
+	if !is_push and is_stunned:
+		is_stunned = false
+		return
 	
 	current_position = tile_map.local_to_map(global_position) 
 	
@@ -79,4 +83,6 @@ func push_back():
 		move(target_2, 2, true)
 	else:
 		move(target_1, 1, true)
-	
+
+func stun():
+	is_stunned = true
