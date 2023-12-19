@@ -12,10 +12,8 @@ func _ready():
 	turn = 1
 	turn_label_count.text = str(turn)
 
-
 func _on_turn_button_pressed():
 	turn += 1
 	turn_label_count.text = str(turn)
 	pass_turn.emit(turn)
 	ui_click.play()
-	

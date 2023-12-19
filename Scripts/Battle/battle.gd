@@ -11,6 +11,3 @@ func _on_turn_manager_pass_turn(_turn):
 
 func _on_deck_system_use_card(card):
 	used_card.emit(card)
-	
-	
-	

@@ -316,13 +316,10 @@ func barrier_input(destination):
 	barrier_card = false
 
 func _on_battle_used_card(card):
-	
 	var card_type = card.card_type
-	
 	
 	if card_type == Enums.CardTypes.ATAQUE:
 		var result = atack()
-		
 		if result == false:
 			print("Não usar carta")
 		else:
