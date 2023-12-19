@@ -1,5 +1,7 @@
 extends Node2D
 
+signal die(enemy)
+
 @onready var tile_map = $"../../TileMap"
 @onready var player = $"../../Player"
 
@@ -13,7 +15,7 @@ var is_stunned: bool = false
 func _ready():
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-	hp = 20
+	hp = 5
 	update_health_bar()
 	
 func move(target, range = 1, is_push = false):
@@ -65,7 +67,7 @@ func take_damage(damage):
 	update_health_bar()
 	
 func _die():
-	queue_free()
+	die.emit(self)
 
 func update_health_bar():
 	var health_bar = $HealthBar

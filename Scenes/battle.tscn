@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpm7lq1u5rc80"]
+[gd_scene load_steps=12 format=3 uid="uid://bpm7lq1u5rc80"]
 
 [ext_resource type="Texture2D" uid="uid://cdkwnboi12wc6" path="res://Assets/Tile.png" id="1_u3tvo"]
 [ext_resource type="Script" path="res://Scripts/Battle/battle.gd" id="1_yti07"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://x3kx1qwj8efj" path="res://Scenes/Player.tscn" id="2_c5tmv"]
 [ext_resource type="Texture2D" uid="uid://cp7cue2ma2tp6" path="res://Assets/icon.svg" id="3_ku65w"]
 [ext_resource type="Script" path="res://Scripts/Battle/grid.gd" id="5_apr0j"]
-[ext_resource type="PackedScene" uid="uid://cbbvbnmd7l68d" path="res://Scenes/enemy.tscn" id="6_ot51i"]
 [ext_resource type="Script" path="res://Scripts/Battle/Enemy/enemies.gd" id="7_fmiyn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
@@ -99,16 +98,6 @@ position = Vector2(15, -17)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("7_fmiyn")
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("6_ot51i")]
-visible = false
-position = Vector2(335, -32)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("6_ot51i")]
-position = Vector2(175, 14)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("6_ot51i")]
-position = Vector2(175, -51)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(274, -146)

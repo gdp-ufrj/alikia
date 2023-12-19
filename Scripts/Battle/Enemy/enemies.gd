@@ -37,16 +37,9 @@ func _on_battle_move_enemies():
 		#var enemy_spawn = randf_range(0, enemies.size())
 		
 	if count % 3 == 0:
-		var scene = enemy_1.instantiate()
-		scene.position = marker_2d.position
-		add_child(scene)
-		enemies.append(scene)
-	
+		_create_enemy()
 	if count % 7 == 0:
-		var scene = enemy_1.instantiate()
-		scene.position = marker_2d_2.position
-		add_child(scene)
-		enemies.append(scene)
+		_create_enemy()
 		
 	#if test == true:
 		#$Enemy.position = marker_2d.position
@@ -54,3 +47,15 @@ func _on_battle_move_enemies():
 	
 		
 		#await get_tree().create_timer(0.5).timeout #timer para o movimento de cada inimigo
+
+func _create_enemy():
+	var scene = enemy_1.instantiate()
+	scene.position = marker_2d.position
+	add_child(scene)
+	enemies.append(scene)
+	scene.die.connect(self._on_enemy_die)
+	
+func _on_enemy_die(enemy):
+	enemies.erase(enemy)
+	astar_grid.set_point_solid(tile_map.local_to_map(enemy.global_position), false)
+	enemy.queue_free()
