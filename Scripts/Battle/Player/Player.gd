@@ -7,6 +7,10 @@ signal end_card_effect
 @onready var enemies = $"../Enemies"
 @onready var obstacles = $"../Obstacles"
 
+@onready var rock_barrier_sound = $rockBarrier
+@onready var fire_attack_sound = $fireAttack
+@onready var air_attack_sound = $airAttack
+
 var obstacle = load("res://Scenes/obstacle.tscn")
 
 var astar_grid: AStarGrid2D
@@ -225,17 +229,19 @@ func atack_input(destination, damage):
 	attack_card = false
 	thunder_card = false
 
-func gust():
-	for enemy in enemies.get_children():
+func gust(): #aqui vento
+	for enemy in enemies.get_children():		
 		enemy.push_back()
+	air_attack_sound.play()	
 	end_card_effect.emit()
+		
 
-func fire_tornado():
+func fire_tornado():  
 	var range_fire = get_enemies_in_range(current_position, 3)
 	in_range_fire = show_enemies_in_range(range_fire)
 	end_card_effect.emit()
 
-func fire_input(destination):
+func fire_input(destination): #aqui fogo 
 	if in_range_fire.has(destination):
 		if destination.x == current_position.x and destination.y < current_position.y:
 			for key in in_range_fire.keys():
@@ -260,8 +266,9 @@ func fire_input(destination):
 		for key in in_range_fire.keys():
 			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
 		in_range_fire = {}
+		#fire_attack_sound.play()
 
-func thunder_range(start: Vector2i, range: int):
+func thunder_range(start: Vector2i, range: int): #aqui raio
 	var list_enemies: Array[Node]
 	var list_enemies_in_range = {}
 	var list_obstacles: Array[Node]
@@ -299,7 +306,7 @@ func thunder():
 	in_range_enemies = show_enemies_in_range(enemies_in_range)
 	thunder_card = true
 
-func barrier():
+func barrier(): 
 	barrier_card = true
 
 func water_drop():
@@ -317,6 +324,7 @@ func barrier_input(destination):
 	print("Destino local ", tile_map.map_to_local(destination))
 	
 	var scene = obstacle.instantiate()
+	rock_barrier_sound.play()
 	
 	scene.position = tile_map.map_to_local(destination) 
 	obstacles.add_child(scene)
