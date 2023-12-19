@@ -293,6 +293,13 @@ func thunder():
 func barrier():
 	barrier_card = true
 
+func water_drop():
+	var list_enemies = enemies.get_children()
+	
+	
+	for enemy in list_enemies:
+		enemy.stun()
+
 func barrier_input(destination):
 	var destination_2 = Vector2i(destination.x, destination.y + 1)
 	if (!astar_grid.is_in_boundsv(destination) or (astar_grid.is_point_solid(destination_2)) and tile_map.map_to_local(destination_2)):
@@ -307,7 +314,6 @@ func barrier_input(destination):
 	obstacles.add_child(scene)
 	
 	barrier_card = false
-
 
 func _on_battle_used_card(card):
 	
@@ -330,6 +336,8 @@ func _on_battle_used_card(card):
 		barrier()
 	if card_type == Enums.CardTypes.RAIO:
 		thunder()
+	if card_type == Enums.CardTypes.NO_DAGUA:
+		water_drop()
 
 func _on_battle_allow_player_move():
 	allow_movement = true
