@@ -51,11 +51,11 @@ func _input(event):
 	
 	#Tratar input no ataque basico
 	if !in_range_enemies.is_empty() and attack_card:
-		atack_input(destination, 3)
+		attack_input(destination, 3)
 	
 	#Tratar input do raio
 	if !in_range_enemies.is_empty() and thunder_card:
-		atack_input(destination, 6)
+		attack_input(destination, 6)
 	
 	#Tratar input do ataque de fogo
 	if !(in_range_fire.is_empty()):
@@ -209,15 +209,16 @@ func move(destination: Vector2i):
 	
 	pass
 
-func atack():
+func attack():
 	var enemies_in_range = get_enemies_in_range(current_position, 1)
+	if enemies_in_range.is_empty():
+		return false
+		
 	in_range_enemies = show_enemies_in_range(enemies_in_range)
 	attack_card = true
-	
-	if in_range_enemies.is_empty():
-		return false
+	return true
 
-func atack_input(destination, damage):
+func attack_input(destination, damage):
 	if in_range_enemies.has(destination):
 		print("Atacou  ", destination)
 		in_range_enemies.get(destination).take_damage(damage)
@@ -229,19 +230,18 @@ func atack_input(destination, damage):
 	attack_card = false
 	thunder_card = false
 
-func gust(): #aqui vento
-	for enemy in enemies.get_children():		
+func gust():
+	for enemy in enemies.get_children():
 		enemy.push_back()
-	air_attack_sound.play()	
+	air_attack_sound.play()
 	end_card_effect.emit()
-		
 
 func fire_tornado():  
 	var range_fire = get_enemies_in_range(current_position, 3)
 	in_range_fire = show_enemies_in_range(range_fire)
 	end_card_effect.emit()
 
-func fire_input(destination): #aqui fogo 
+func fire_input(destination):
 	if in_range_fire.has(destination):
 		if destination.x == current_position.x and destination.y < current_position.y:
 			for key in in_range_fire.keys():
@@ -297,14 +297,15 @@ func thunder_range(start: Vector2i, range: int): #aqui raio
 				list_enemies_in_range[i] = enemies_dict.get(i)
 			if obstacle_dict.has(i):
 				list_enemies_in_range[i] = obstacle_dict.get(i)
-			
 	
 	return list_enemies_in_range
 
 func thunder():
 	var enemies_in_range = thunder_range(current_position, 6)
+	if(enemies_in_range.is_empty()): return false
 	in_range_enemies = show_enemies_in_range(enemies_in_range)
 	thunder_card = true
+	return true
 
 func barrier(): 
 	barrier_card = true
@@ -335,12 +336,8 @@ func _on_battle_used_card(card):
 	var card_type = card.card_type
 	
 	if card_type == Enums.CardTypes.ATAQUE:
-		var result = atack()
-		if result == false:
-			print("Não usar carta")
-		else:
-			print("Ataque usado")
-	
+		var result = attack()
+		if !result: end_card_effect.emit()
 	if card_type == Enums.CardTypes.LUFADA:
 		gust()
 	if card_type == Enums.CardTypes.TURBILHAO_CHAMAS:
@@ -348,7 +345,8 @@ func _on_battle_used_card(card):
 	if card_type == Enums.CardTypes.BARREIRA_ROCHOSA:
 		barrier()
 	if card_type == Enums.CardTypes.RAIO:
-		thunder()
+		var result = thunder()
+		if !result: end_card_effect.emit()
 	if card_type == Enums.CardTypes.NO_DAGUA:
 		water_drop()
 		
