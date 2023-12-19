@@ -5,7 +5,7 @@ extends Control
 
 func _on_começar_pressed():
 	ui_accept.play()
-	get_tree().change_scene_to_file("res://Scenes/main_game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/cutscene.tscn")
 
 
 func _on_creditos_pressed():
@@ -16,6 +16,5 @@ func _on_creditos_pressed():
 func _on_sair_pressed():
 	print("Sair")
 	ui_decline.play()
-	#print("Sair")
 	get_tree().quit()
 	
