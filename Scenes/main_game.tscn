@@ -34,16 +34,34 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_oo28y")
 
-[node name="Button" type="TextureButton" parent="PauseMenu"]
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
 layout_mode = 0
-offset_left = 289.0
-offset_top = -182.0
-offset_right = 321.0
-offset_bottom = -150.0
+offset_left = -122.0
+offset_top = -176.0
+offset_right = 129.0
+offset_bottom = 131.0
+color = Color(0.117647, 0.219608, 0, 1)
+
+[node name="ContinueButton" type="TextureButton" parent="PauseMenu"]
+layout_mode = 0
+offset_left = -78.0
+offset_top = 7.0
+offset_right = 78.0
+offset_bottom = 49.0
+texture_normal = ExtResource("6_ryqfn")
+stretch_mode = 3
+
+[node name="ExitButton" type="TextureButton" parent="PauseMenu"]
+layout_mode = 0
+offset_left = -77.0
+offset_top = 70.0
+offset_right = 79.0
+offset_bottom = 112.0
 texture_normal = ExtResource("6_ryqfn")
 stretch_mode = 3
 
 [connection signal="use_card" from="DeckSystem" to="Battle" method="_on_deck_system_use_card"]
 [connection signal="pass_turn" from="TurnManager" to="Battle" method="_on_turn_manager_pass_turn"]
 [connection signal="pass_turn" from="TurnManager" to="DeckSystem" method="_on_turn_manager_pass_turn"]
-[connection signal="pressed" from="PauseMenu/Button" to="PauseMenu" method="_on_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ContinueButton" to="PauseMenu" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ExitButton" to="PauseMenu" method="_on_exit_button_pressed"]

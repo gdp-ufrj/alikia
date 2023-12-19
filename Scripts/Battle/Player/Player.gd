@@ -47,7 +47,6 @@ func _input(event):
 	if event.is_action_pressed("MouseClick") == false:
 		return
 	
-	
 	current_position = tile_map.local_to_map(global_position)
 	var destination = tile_map.local_to_map(get_global_mouse_position())
 	
