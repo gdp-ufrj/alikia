@@ -9,7 +9,7 @@ signal die(enemy)
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
-var damage: int = 3
+var damage: int = 7
 var hp: int
 var is_stunned: bool = false
 
@@ -17,7 +17,7 @@ func _ready():
 	var health_bar = $HealthBar
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-	hp = 5
+	hp = 20
 	health_bar.max_value = hp
 	update_health_bar()
 	
