@@ -4,6 +4,7 @@ signal die(enemy)
 
 @onready var tile_map = $"../../TileMap"
 @onready var player = $"../../Player"
+@onready var obstacles = $"../../Obstacles"
 
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
@@ -23,21 +24,32 @@ func move(target, range = 1, is_push = false):
 		is_stunned = false
 		return
 	
+	
 	current_position = tile_map.local_to_map(global_position) 
+	var front = Vector2i(current_position.x - 1, current_position.y)
 	
-	print("Current Postion", current_position, name)
-	
-	if (current_position in player.get_neighbours()) and !is_push: #ignora o movimento do inimigo se ele ja estiver do lado do jogador
+	if (front == tile_map.local_to_map(player.global_position)) and !is_push: #ignora o movimento do inimigo se ele ja estiver do lado do jogador
 		print("Ataque")
 		attack()
 		return
-		
+	
+	#ignora o movimento do inimigo se ele ja estiver do lado do obastaculo
+	for ob in obstacles.get_children():
+		var neighbours: Array
+		for pos in ob.current_position:
+			if front == tile_map.local_to_map(pos):
+				ob.take_damage(3)
+				return
+	
+	if astar_grid.is_point_solid(front):
+		return
+	elif !is_push:
+		target = front
+	
 	astar_grid.set_point_solid(current_position, false)
 	var Path = astar_grid.get_id_path(current_position, target).slice(range)
 	
-	
 	current_path.append(Path.front())
-	
 	
 	if Path.front(): #atualizar o local anterior o proximo como solido ou não
 		astar_grid.set_point_solid(Path.front(), true)
