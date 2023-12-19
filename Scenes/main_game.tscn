@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvprqudv22o52"]
+[gd_scene load_steps=7 format=3 uid="uid://cvprqudv22o52"]
 
 [ext_resource type="PackedScene" uid="uid://bpm7lq1u5rc80" path="res://Scenes/battle.tscn" id="1_qgbnj"]
 [ext_resource type="PackedScene" uid="uid://b6wjwe3k5uxst" path="res://Scenes/deck_system.tscn" id="2_5g71h"]
 [ext_resource type="AudioStream" uid="uid://v8fi87qwdgqd" path="res://Áudio/mockup.mp3" id="3_6bjhu"]
 [ext_resource type="PackedScene" uid="uid://bsv8p07wfxpi" path="res://Scenes/turn_manager.tscn" id="4_ticpk"]
+[ext_resource type="Script" path="res://Scripts/Pause/PauseMenu.gd" id="5_oo28y"]
+[ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="6_ryqfn"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -25,6 +27,23 @@ autoplay = true
 [node name="TurnManager" parent="." instance=ExtResource("4_ticpk")]
 position = Vector2(-13, 3)
 
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_oo28y")
+
+[node name="Button" type="TextureButton" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = -182.0
+offset_right = 321.0
+offset_bottom = -150.0
+texture_normal = ExtResource("6_ryqfn")
+stretch_mode = 3
+
 [connection signal="use_card" from="DeckSystem" to="Battle" method="_on_deck_system_use_card"]
 [connection signal="pass_turn" from="TurnManager" to="Battle" method="_on_turn_manager_pass_turn"]
 [connection signal="pass_turn" from="TurnManager" to="DeckSystem" method="_on_turn_manager_pass_turn"]
+[connection signal="pressed" from="PauseMenu/Button" to="PauseMenu" method="_on_button_pressed"]
