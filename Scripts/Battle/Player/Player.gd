@@ -10,6 +10,8 @@ signal end_card_effect
 @onready var rock_barrier_sound = $rockBarrier
 @onready var fire_attack_sound = $fireAttack
 @onready var air_attack_sound = $airAttack
+@onready var basic_attack_sound = $basicAttack
+@onready var water_attack_sound = $waterAttack
 
 var obstacle = load("res://Scenes/obstacle.tscn")
 
@@ -221,6 +223,7 @@ func atack_input(destination, damage):
 	if in_range_enemies.has(destination):
 		print("Atacou  ", destination)
 		in_range_enemies.get(destination).take_damage(damage)
+		basic_attack_sound.play()
 		
 		for key in in_range_enemies.keys():
 			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
@@ -266,7 +269,7 @@ func fire_input(destination): #aqui fogo
 		for key in in_range_fire.keys():
 			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
 		in_range_fire = {}
-		#fire_attack_sound.play()
+		fire_attack_sound.play()
 
 func thunder_range(start: Vector2i, range: int): #aqui raio
 	var list_enemies: Array[Node]
@@ -313,6 +316,7 @@ func water_drop():
 	var list_enemies = enemies.get_children()
 	for enemy in list_enemies:
 		enemy.stun()
+	water_attack_sound.play()
 	end_card_effect.emit()
 
 func barrier_input(destination):

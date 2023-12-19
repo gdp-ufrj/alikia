@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0v05n0q5w0c"
+path="res://.godot/imported/Aliki - Música da Fase - Versão Final.mp3-dca9f4d5727c6e9fcf9ac5971f078ef7.mp3str"
+
+[deps]
+
+source_file="res://Áudio/Aliki - Música da Fase - Versão Final.mp3"
+dest_files=["res://.godot/imported/Aliki - Música da Fase - Versão Final.mp3-dca9f4d5727c6e9fcf9ac5971f078ef7.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

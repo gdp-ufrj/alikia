@@ -17,6 +17,8 @@ signal on_use_card_signal(card : CardData)
 @export var mana_count_label : Label
 
 @onready var mouse_on_card = $mouseOnCard
+@onready var use_card_sound = $useCard
+
 
 var hand : Array[CardData]
 var current_mana : int
@@ -33,6 +35,7 @@ func on_use_card(used_card, used_button):
 	if !can_use_card: return
 	
 	if(current_mana < used_card.mana): return
+	use_card_sound.play()
 	print(used_card.name)
 	
 	current_mana -= used_card.mana
