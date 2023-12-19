@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6wjwe3k5uxst"]
+[gd_scene load_steps=10 format=3 uid="uid://b6wjwe3k5uxst"]
 
 [ext_resource type="Script" path="res://Scripts/DeckSystem/deck_system.gd" id="1_15g3y"]
 [ext_resource type="Script" path="res://Scripts/DeckSystem/deck.gd" id="1_pdggs"]
 [ext_resource type="PackedScene" uid="uid://cqfvh0i6ts4ew" path="res://Scenes/card_zoom.tscn" id="3_mfhcc"]
-[ext_resource type="Resource" uid="uid://bi1morduw4kr7" path="res://Resources/Cards/Ataque.tres" id="3_t6yxa"]
+[ext_resource type="Resource" path="res://Resources/Cards/Ataque.tres" id="3_t6yxa"]
 [ext_resource type="Script" path="res://Scripts/DeckSystem/hand.gd" id="3_yw3pl"]
 [ext_resource type="Resource" path="res://Resources/Cards/Barreira.tres" id="4_5iqxl"]
 [ext_resource type="Resource" path="res://Resources/Cards/Lufada.tres" id="5_13pb0"]
 [ext_resource type="AudioStream" uid="uid://j1pa3cacq70c" path="res://Áudio/mouse_on_card.mp3" id="6_uliy8"]
+[ext_resource type="AudioStream" uid="uid://crnljttsi2035" path="res://Áudio/UI_use_card.mp3" id="11_he1cp"]
 
 [node name="DeckSystem" type="Node2D"]
 script = ExtResource("1_15g3y")
@@ -152,6 +153,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="mouseOnCard" type="AudioStreamPlayer2D" parent="Hand"]
 stream = ExtResource("6_uliy8")
+
+[node name="useCard" type="AudioStreamPlayer2D" parent="Hand"]
+stream = ExtResource("11_he1cp")
+volume_db = 15.236
 
 [node name="CardZoomControl" parent="." instance=ExtResource("3_mfhcc")]
 offset_left = -120.0

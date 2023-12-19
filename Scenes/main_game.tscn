@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bpm7lq1u5rc80" path="res://Scenes/battle.tscn" id="1_qgbnj"]
 [ext_resource type="PackedScene" uid="uid://b6wjwe3k5uxst" path="res://Scenes/deck_system.tscn" id="2_5g71h"]
-[ext_resource type="AudioStream" uid="uid://v8fi87qwdgqd" path="res://Áudio/mockup.mp3" id="3_6bjhu"]
+[ext_resource type="AudioStream" uid="uid://0v05n0q5w0c" path="res://Áudio/Aliki - Música da Fase - Versão Final.mp3" id="3_vcbyy"]
 [ext_resource type="PackedScene" uid="uid://bsv8p07wfxpi" path="res://Scenes/turn_manager.tscn" id="4_ticpk"]
 [ext_resource type="Script" path="res://Scripts/Pause/PauseMenu.gd" id="5_oo28y"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="6_ryqfn"]
@@ -21,7 +21,7 @@ limit_bottom = 180
 limit_smoothed = true
 
 [node name="mockupBackground" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_6bjhu")
+stream = ExtResource("3_vcbyy")
 autoplay = true
 
 [node name="TurnManager" parent="." instance=ExtResource("4_ticpk")]

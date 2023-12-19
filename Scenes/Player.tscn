@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://x3kx1qwj8efj"]
+[gd_scene load_steps=8 format=3 uid="uid://x3kx1qwj8efj"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/Player/Player.gd" id="1_aw1lq"]
 [ext_resource type="Texture2D" uid="uid://fciyppfnocbr" path="res://Assets/Player.png" id="2_51fms"]
 [ext_resource type="AudioStream" uid="uid://jww1574yb4kk" path="res://Áudio/barreira_rochosa.wav" id="3_6h6b1"]
+[ext_resource type="AudioStream" uid="uid://bxjbnxctfinjr" path="res://Áudio/turbilhao_de_chamas.mp3" id="4_1gvab"]
 [ext_resource type="AudioStream" uid="uid://cfxqp4a20iacx" path="res://Áudio/lufada.mp3" id="4_x77rb"]
+[ext_resource type="AudioStream" uid="uid://xb3rwub6j7vx" path="res://Áudio/basic_attack.mp3" id="6_8oyiq"]
+[ext_resource type="AudioStream" uid="uid://cg4j3tys7aeqs" path="res://Áudio/no_d'agua.mp3" id="7_uyopa"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_aw1lq")
@@ -15,6 +18,13 @@ texture = ExtResource("2_51fms")
 stream = ExtResource("3_6h6b1")
 
 [node name="fireAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1gvab")
 
 [node name="airAttack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_x77rb")
+
+[node name="basicAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8oyiq")
+
+[node name="waterAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_uyopa")
