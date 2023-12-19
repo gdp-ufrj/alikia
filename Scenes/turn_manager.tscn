@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsv8p07wfxpi"]
 
 [ext_resource type="Script" path="res://Scripts/Turn/turn_manager.gd" id="1_n7uk5"]
-[ext_resource type="AudioStream" uid="uid://cd7jxnbv1aysn" path="res://Áudio/Ui_1.mp3" id="2_n7xp1"]
+[ext_resource type="AudioStream" uid="uid://mlh3x4fyl5h8" path="res://Áudio/UI_turn_passed.mp3" id="2_opb0v"]
 
 [node name="TurnManager" type="Node2D" node_paths=PackedStringArray("turn_label_count")]
 script = ExtResource("1_n7uk5")
@@ -9,7 +9,8 @@ turn_label_count = NodePath("TurnUI/TurnLabelCount")
 
 [node name="uiClick" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-533, -249)
-stream = ExtResource("2_n7xp1")
+stream = ExtResource("2_opb0v")
+volume_db = 2.066
 
 [node name="TurnUI" type="Control" parent="."]
 layout_mode = 3
