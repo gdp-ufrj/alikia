@@ -8,5 +8,5 @@ script = ExtResource("1_7eowf")
 mainImage = ExtResource("1_p1857")
 mana = 2
 name = "Barreira"
-description = "Carta B"
+description = "Cria uma barreira em determinado local que impede que inimigos avancem."
 card_type = 1

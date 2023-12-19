@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dwp2adbghk2ng"]
+
+[ext_resource type="Texture2D" uid="uid://e5h4o5bxnlvs" path="res://Assets/CardsTextures/D.png" id="1_q42nn"]
+[ext_resource type="Script" path="res://Resources/CardData.gd" id="2_5ospo"]
+
+[resource]
+script = ExtResource("2_5ospo")
+mainImage = ExtResource("1_q42nn")
+mana = 2
+name = "Nó D'água"
+description = "Impede que os inimigos afetados se movam no próximo turno."
+card_type = 3

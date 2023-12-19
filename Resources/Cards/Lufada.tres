@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_8dnsg")
 mainImage = ExtResource("1_n4cbu")
-mana = 3
+mana = 2
 name = "Lufada"
-description = "Carta C"
+description = "Empurra inimigos 2 casas para trás."
 card_type = 2
