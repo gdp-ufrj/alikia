@@ -318,7 +318,9 @@ func water_drop():
 
 func barrier_input(destination):
 	var destination_2 = Vector2i(destination.x, destination.y + 1)
-	if (!astar_grid.is_in_boundsv(destination) or (astar_grid.is_point_solid(destination_2)) and tile_map.map_to_local(destination_2)):
+	if !astar_grid.is_in_boundsv(destination) or astar_grid.is_point_solid(destination):
+		return
+	if  !astar_grid.is_in_boundsv(destination_2) or astar_grid.is_point_solid(destination_2):
 		return
 	
 	print("Destino mapa ", destination)

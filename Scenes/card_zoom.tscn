@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://il40p8pdapuq"]
+[gd_scene load_steps=2 format=3 uid="uid://cqfvh0i6ts4ew"]
 
 [ext_resource type="Script" path="res://Scripts/DeckSystem/card_zoom.gd" id="1_t053v"]
 

@@ -9,8 +9,9 @@ var enemy_1 = load("res://Scenes/enemy.tscn")
 
 var enemies: Array
 var astar_grid: AStarGrid2D
-var target: Vector2i
 var neighbours: Array[Vector2i]
+var player_position: Vector2i
+var targets: Array[Vector2i]
 var test = true
 var count = 0
 
@@ -18,23 +19,48 @@ func _ready():
 	enemies = get_children()
 	astar_grid = tile_map.astar_grid
 	
-	target = tile_map.local_to_map(player.global_position) #seta o alvo como a posição do jogador
-	neighbours = tile_map.get_surrounding_cells(target) #pega os vizinhos do alvo 
+	for i in range(0, tile_map.get_used_rect().size.y):
+		targets.append(Vector2i(tile_map.get_used_rect().position.x ,tile_map.get_used_rect().position.y + i ))
+	
+	
+	
 
 func _on_battle_move_enemies():
 	count = count + 1
 	for enemy in enemies:
-		if !(target == tile_map.local_to_map(player.global_position)):
-			target = tile_map.local_to_map(player.global_position) #seta o alvo como a posição do jogador
-			neighbours = tile_map.get_surrounding_cells(target) #pega os vizinhos do alvo 
-		
-		if(astar_grid.is_point_solid(neighbours.front())):
-			print('Vizinhos novos', neighbours)
-			neighbours = neighbours.slice(1) #Tira o primeiro vizinho da lista se ja estiver ocupado o local
-		
-		enemy.move(neighbours.front())	
-	
-		#var enemy_spawn = randf_range(0, enemies.size())
+		if tile_map.local_to_map(enemy.global_position) in targets:
+			player.take_damage(3)
+		else:
+			var total_distance = 1000000
+			var target = tile_map.local_to_map(enemy.global_position)
+			for i in targets:
+				var path_size = astar_grid.get_id_path(tile_map.local_to_map(enemy.global_position), i).size()
+				
+				if !astar_grid.is_point_solid(i) and path_size < total_distance:
+					target = i
+					total_distance = path_size
+			
+			if target != tile_map.local_to_map(enemy.global_position):
+				enemy.move(target)
+			else:
+				var total_cost = 1000000
+				
+				player_position = tile_map.local_to_map(player.global_position) #seta o alvo como a posição do jogador
+				neighbours = tile_map.get_surrounding_cells(player_position) #pega os vizinhos do alvo 
+				print(neighbours)
+				
+				var destination = target
+				
+				for i in neighbours:
+					var path_size = astar_grid.get_id_path(tile_map.local_to_map(enemy.global_position), i).size()
+					print(path_size)
+					
+					if !astar_grid.is_point_solid(i) and path_size < total_cost:
+						destination = i
+						total_cost = path_size
+				if destination != target:	
+					enemy.move(target)
+			
 		
 	if count % 3 == 0:
 		_create_enemy()
