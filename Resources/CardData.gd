@@ -7,3 +7,4 @@ class_name CardData
 @export var name: String
 @export var description: String
 @export var card_type : Enums.CardTypes 
+
