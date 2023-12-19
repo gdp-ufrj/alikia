@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch8cjc1s6wy5a"]
+[gd_scene load_steps=6 format=3 uid="uid://ch8cjc1s6wy5a"]
 
 [ext_resource type="Texture2D" uid="uid://cp7cue2ma2tp6" path="res://Assets/icon.svg" id="1_5ffko"]
 [ext_resource type="Script" path="res://Scripts/Menu/menu.gd" id="1_r7msc"]
+[ext_resource type="AudioStream" uid="uid://c6t0dxg1ssu26" path="res://Áudio/UI_accept.mp3" id="3_yn1vq"]
+[ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="4_r68dd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7o456"]
 font_size = 31
@@ -56,6 +58,12 @@ text = "Créditos"
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sair"
+
+[node name="uiAccept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yn1vq")
+
+[node name="uiDecline" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_r68dd")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Começar" to="." method="_on_começar_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]

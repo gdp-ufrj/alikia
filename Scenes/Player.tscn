@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://x3kx1qwj8efj"]
+[gd_scene load_steps=5 format=3 uid="uid://x3kx1qwj8efj"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/Player/Player.gd" id="1_aw1lq"]
 [ext_resource type="Texture2D" uid="uid://fciyppfnocbr" path="res://Assets/Player.png" id="2_51fms"]
+[ext_resource type="AudioStream" uid="uid://jww1574yb4kk" path="res://Áudio/barreira_rochosa.wav" id="3_6h6b1"]
+[ext_resource type="AudioStream" uid="uid://cfxqp4a20iacx" path="res://Áudio/lufada.mp3" id="4_x77rb"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_aw1lq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_51fms")
+
+[node name="rockBarrier" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6h6b1")
+
+[node name="fireAttack" type="AudioStreamPlayer2D" parent="."]
+
+[node name="airAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_x77rb")
