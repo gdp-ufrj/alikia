@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch8cjc1s6wy5a"]
+
+[ext_resource type="Texture2D" uid="uid://cp7cue2ma2tp6" path="res://Assets/icon.svg" id="1_5ffko"]
+[ext_resource type="Script" path="res://Scripts/Menu/menu.gd" id="1_r7msc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7o456"]
+font_size = 31
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r7msc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 363.0
+texture = ExtResource("1_5ffko")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 135.0
+grow_horizontal = 2
+text = "Nome do jogo"
+label_settings = SubResource("LabelSettings_7o456")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 194.0
+offset_right = 391.0
+offset_bottom = 295.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Começar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Começar"
+
+[node name="Creditos" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Créditos"
+
+[node name="Sair" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sair"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Começar" to="." method="_on_começar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
