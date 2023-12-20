@@ -24,10 +24,14 @@ func _ready():
 
 func take_damage(damage):
 	hp = hp - damage
+	if(hp <= 0): _die()
 	update_health_bar()
+	
+func _die():
+	astar_grid.set_point_solid(tile_map.local_to_map(sprite.global_position), false)
+	astar_grid.set_point_solid(tile_map.local_to_map(sprite2.global_position), false)
+	queue_free()
 
 func update_health_bar():
 	var health_bar = $HealthBar
 	health_bar.value = hp
-	
-	
