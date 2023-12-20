@@ -47,15 +47,15 @@ offset_bottom = 295.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Começar" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Começar"
 
-[node name="Creditos" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Créditos"
 
-[node name="Sair" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sair"
 
@@ -65,6 +65,6 @@ stream = ExtResource("3_yn1vq")
 [node name="uiDecline" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_r68dd")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Começar" to="." method="_on_começar_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
