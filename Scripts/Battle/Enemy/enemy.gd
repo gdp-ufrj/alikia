@@ -35,13 +35,14 @@ func move(target, range = 1, is_push = false):
 		attack()
 		return
 	
-	#ignora o movimento do inimigo se ele ja estiver do lado do obastaculo
-	for ob in obstacles.get_children():
-		var neighbours: Array
-		for pos in ob.current_position:
-			if front == tile_map.local_to_map(pos):
-				ob.take_damage(damage)
-				return
+	if !is_push:
+		#ignora o movimento do inimigo se ele ja estiver do lado do obastaculo
+		for ob in obstacles.get_children():
+			var neighbours: Array
+			for pos in ob.current_position:
+				if front == tile_map.local_to_map(pos):
+					ob.take_damage(damage)
+					return
 	
 	if (astar_grid.is_point_solid(front) or !astar_grid.is_in_boundsv(front)) and !is_push:
 		
