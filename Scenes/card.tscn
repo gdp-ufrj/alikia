@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://p4wkgbe2mfik"]
+[gd_scene load_steps=5 format=3 uid="uid://p4wkgbe2mfik"]
 
 [ext_resource type="Script" path="res://Scripts/DeckSystem/card.gd" id="1_h7hhm"]
+[ext_resource type="Texture2D" uid="uid://b7cblqxowkig6" path="res://Assets/Tileset/TilesArena.png" id="1_l70yr"]
 [ext_resource type="Texture2D" uid="uid://vmggg3iq01t5" path="res://Assets/CardsTextures/A.png" id="2_tikts"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p2q4w"]
+texture = ExtResource("1_l70yr")
+
 [node name="Card" type="Button" node_paths=PackedStringArray("card_img", "card_mana")]
-offset_right = 46.0
-offset_bottom = 60.0
+anchors_preset = -1
+anchor_right = 0.072
+anchor_bottom = 0.167
+offset_right = -0.0800018
+offset_bottom = -0.120003
+theme_override_styles/normal = SubResource("StyleBoxTexture_p2q4w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p2q4w")
 script = ExtResource("1_h7hhm")
 card_img = NodePath("CardImage")
 card_mana = NodePath("CardMana")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.454902, 0.0705882, 0.360784, 0.392157)
 
 [node name="CardMana" type="Label" parent="."]
 layout_mode = 1

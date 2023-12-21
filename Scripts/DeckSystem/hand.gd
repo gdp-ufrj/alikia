@@ -55,7 +55,7 @@ func card_zoom_enter(card):
 func card_zoom_exit():
 	on_card_zoom_exit.emit()
 
-func _create_cards_button(cards : Array[CardData]):	
+func _create_cards_button(cards : Array[CardData]):
 	for card in cards:
 		var card_mini = CardMiniNode.instantiate()
 		card_mini.set_card_info(card)
@@ -80,3 +80,4 @@ func _on_deck_system_pass_turn(turn):
 
 func _on_deck_system_allow_new_card_use():
 	can_use_card = true
+
