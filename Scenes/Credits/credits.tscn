@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhjp1q3jarsr3"]
 
-[ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_522et"]
+[ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_nhg0e"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_522et")
+script = ExtResource("1_nhg0e")
 
 [node name="voltar" type="Button" parent="."]
 layout_mode = 0

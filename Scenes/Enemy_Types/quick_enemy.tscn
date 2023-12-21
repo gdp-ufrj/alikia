@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjc3qm3n4who3"]
 
-[ext_resource type="Script" path="res://Scripts/Battle/Enemy/quick_enemy.gd" id="1_jmnpt"]
-[ext_resource type="Texture2D" uid="uid://c4c80d5fpdb01" path="res://Assets/Enemy.png" id="2_s7dn2"]
+[ext_resource type="Script" path="res://Scripts/Battle/Enemy/quick_enemy.gd" id="1_c2s3p"]
+[ext_resource type="Texture2D" uid="uid://c4c80d5fpdb01" path="res://Assets/Enemy.png" id="2_6y8s3"]
 
 [node name="Quick_Enemy" type="Node2D"]
-script = ExtResource("1_jmnpt")
+script = ExtResource("1_c2s3p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_s7dn2")
+texture = ExtResource("2_6y8s3")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -7.0
