@@ -233,8 +233,23 @@ func attack_input(destination, damage):
 	thunder_card = false
 
 func gust():
-	for enemy in enemies.get_children():
-		enemy.push_back()
+	
+	var list_enemies: Array[Node]
+	var list_enemies_position: Array[Vector2i]
+	
+	var enemies_dict = {}
+	
+	list_enemies = enemies.get_children()
+	
+	for enemy in list_enemies:
+		var enemy_position = tile_map.local_to_map(enemy.global_position)
+		enemies_dict[enemy_position] = enemy
+		list_enemies_position.append(enemy_position)
+	
+	list_enemies_position.sort()
+	
+	for enemy_position in list_enemies_position:
+		enemies_dict[enemy_position].push_back()
 	air_attack_sound.play()
 	end_card_effect.emit()
 
@@ -320,7 +335,7 @@ func water_drop():
 	end_card_effect.emit()
 
 func barrier_input(destination):
-	var destination_2 = Vector2i(destination.x, destination.y + 1)
+	var destination_2 = Vector2i(destination.x + 1, destination.y )
 	if !astar_grid.is_in_boundsv(destination) or astar_grid.is_point_solid(destination):
 		return
 	if  !astar_grid.is_in_boundsv(destination_2) or astar_grid.is_point_solid(destination_2):

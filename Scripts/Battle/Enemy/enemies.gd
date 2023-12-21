@@ -21,8 +21,11 @@ func _ready():
 	enemies = get_children()
 	astar_grid = tile_map.astar_grid
 	
-	for i in range(0, tile_map.get_used_rect().size.y):
-		targets.append(Vector2i(tile_map.get_used_rect().position.x ,tile_map.get_used_rect().position.y + i ))
+	print(tile_map.get_used_rect().end)
+	for i in range(0, tile_map.get_used_rect().size.x):
+		targets.append(Vector2i(tile_map.get_used_rect().end.x - 1 - i ,tile_map.get_used_rect().end.y - 1))
+		#tile_map.set_cell(1, Vector2i(tile_map.get_used_rect().end.x - 1 - i ,tile_map.get_used_rect().end.y -1), 1, Vector2i(0,0))
+	print(targets)
 	
 
 func _on_battle_move_enemies():
@@ -32,7 +35,7 @@ func _on_battle_move_enemies():
 		if tile_map.local_to_map(enemy.global_position) in targets:
 			player.take_damage(enemy.damage)
 		else:
-			
+			print("OI ")
 			var total_distance = 1000000
 			var target = tile_map.local_to_map(enemy.global_position)
 			for i in targets:
@@ -64,7 +67,7 @@ func _on_battle_move_enemies():
 					enemy.move(target)
 			
 		
-	if count % 3 == 0:
+	if count % 7 == 0:
 		_create_enemy()
 	if count % 7 == 0:
 		_create_enemy()

@@ -28,10 +28,10 @@ func move(target, range = 1, is_push = false):
 	
 	
 	current_position = tile_map.local_to_map(global_position) 
-	var front = Vector2i(current_position.x - 1, current_position.y)
+	var front = Vector2i(current_position.x, current_position.y + 1)
 	
 	if (front == tile_map.local_to_map(player.global_position)) and !is_push: #ignora o movimento do inimigo se ele ja estiver do lado do jogador
-		print("Ataque")
+		
 		attack()
 		return
 	
@@ -43,10 +43,13 @@ func move(target, range = 1, is_push = false):
 				ob.take_damage(damage)
 				return
 	
-	if astar_grid.is_point_solid(front) and !is_push:
+	if (astar_grid.is_point_solid(front) or !astar_grid.is_in_boundsv(front)) and !is_push:
+		
+		astar_grid.set_point_solid(tile_map.local_to_map(global_position))
 		return
 	elif !is_push:
 		target = front
+	
 	
 	astar_grid.set_point_solid(current_position, false)
 	var Path = astar_grid.get_id_path(current_position, target).slice(range)
@@ -90,8 +93,8 @@ func update_health_bar():
 func push_back():
 	current_position = tile_map.local_to_map(global_position) 
 	
-	var target_1 = Vector2i(current_position.x+1, current_position.y)
-	var target_2 = Vector2i(current_position.x+2, current_position.y)
+	var target_1 = Vector2i(current_position.x, current_position.y-1)
+	var target_2 = Vector2i(current_position.x, current_position.y-2)
 	
 	if !astar_grid.is_in_boundsv(target_1):
 		print("Out of Bound ", name)
