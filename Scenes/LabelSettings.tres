@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://vtljrvo4rlle"]
+
+[ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="1_lpkaw"]
+
+[resource]
+resource_local_to_scene = true
+font = ExtResource("1_lpkaw")

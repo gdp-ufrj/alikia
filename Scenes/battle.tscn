@@ -248,6 +248,7 @@ position = Vector2(15, -17)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("7_fmiyn")
+max_enemies = 5
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(113, -147)
@@ -261,3 +262,5 @@ position = Vector2(64, -1)
 [connection signal="allow_player_move" from="." to="Player" method="_on_battle_allow_player_move"]
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]
 [connection signal="used_card" from="." to="Player" method="_on_battle_used_card"]
+[connection signal="value_changed" from="PlayerHealthBar" to="." method="_on_player_health_bar_value_changed"]
+[connection signal="killed_all_enemies" from="Enemies" to="." method="_on_enemies_killed_all_enemies"]

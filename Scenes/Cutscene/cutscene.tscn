@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsi513m5ay7ut"]
+[gd_scene load_steps=3 format=3 uid="uid://dsi513m5ay7ut"]
 
-[ext_resource type="Script" path="res://Scripts/Cutscene/cutscene.gd" id="1"]
-[ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="2_tv0kl"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_pxmck"]
-resource_local_to_scene = true
-font = ExtResource("2_tv0kl")
+[ext_resource type="Script" path="res://Scripts/Cutscene/cutscene.gd" id="1_mjv4t"]
+[ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="2_1wkf6"]
 
 [node name="GodotCredits" type="Node2D"]
-script = ExtResource("1")
+script = ExtResource("1_mjv4t")
 timer_delay = 0.075
 empty_lines = 19
 
@@ -66,6 +62,6 @@ Three days college. I'm glad I took a day and hitchhiked around The Hive.
 You did come back different.
 Hi, Barry. Artie, growing a mustache? Looks good.
 Hear about Frankie?"
-label_settings = SubResource("LabelSettings_pxmck")
+label_settings = ExtResource("2_1wkf6")
 horizontal_alignment = 1
 autowrap_mode = 3

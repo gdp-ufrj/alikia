@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvprqudv22o52"]
+[gd_scene load_steps=8 format=3 uid="uid://cvprqudv22o52"]
 
+[ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_m670m"]
 [ext_resource type="PackedScene" uid="uid://bpm7lq1u5rc80" path="res://Scenes/battle.tscn" id="1_qgbnj"]
 [ext_resource type="PackedScene" uid="uid://b6wjwe3k5uxst" path="res://Scenes/deck_system.tscn" id="2_5g71h"]
 [ext_resource type="AudioStream" uid="uid://0v05n0q5w0c" path="res://Áudio/Aliki - Música da Fase - Versão Final.mp3" id="3_vcbyy"]
@@ -7,7 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/Pause/PauseMenu.gd" id="5_oo28y"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="6_ryqfn"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_m670m")
 
 [node name="Battle" parent="." instance=ExtResource("1_qgbnj")]
 
@@ -28,6 +30,7 @@ autoplay = true
 position = Vector2(-13, 3)
 
 [node name="PauseMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -60,6 +63,7 @@ offset_bottom = 112.0
 texture_normal = ExtResource("6_ryqfn")
 stretch_mode = 3
 
+[connection signal="end_game" from="Battle" to="." method="_on_battle_end_game"]
 [connection signal="use_card" from="DeckSystem" to="Battle" method="_on_deck_system_use_card"]
 [connection signal="pass_turn" from="TurnManager" to="Battle" method="_on_turn_manager_pass_turn"]
 [connection signal="pass_turn" from="TurnManager" to="DeckSystem" method="_on_turn_manager_pass_turn"]

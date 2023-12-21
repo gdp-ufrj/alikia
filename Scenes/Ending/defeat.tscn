@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://yd7ecc0orj8b"]
+
+[ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_x4c2r"]
+[ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/B.png" id="2_t7d2x"]
+[ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_7qvq5"]
+
+[node name="Defeat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4c2r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 358.0
+texture = ExtResource("2_t7d2x")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 103.0
+offset_right = 275.0
+offset_bottom = 126.0
+text = "Você perdeu!"
+label_settings = ExtResource("3_7qvq5")
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 212.0
+offset_right = 351.0
+offset_bottom = 243.0
+text = "Retornar"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

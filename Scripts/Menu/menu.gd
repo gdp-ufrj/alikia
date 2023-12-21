@@ -5,7 +5,7 @@ extends Control
 
 func _on_start_pressed():
 	ui_accept.play()
-	get_tree().change_scene_to_file("res://Scenes/cutscene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Cutscene/cutscene.tscn")
 
 func _on_credits_pressed():
 	ui_accept.play()
