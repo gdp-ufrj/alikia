@@ -88,12 +88,11 @@ func update_health_bar():
 	var health_bar = $HealthBar
 	health_bar.value = hp
 	
-
 func push_back():
 	current_position = tile_map.local_to_map(global_position) 
 	
-	var target_1 = Vector2i(current_position.x+1, current_position.y)
-	var target_2 = Vector2i(current_position.x+2, current_position.y)
+	var target_1 = Vector2i(current_position.x, current_position.y-1)
+	var target_2 = Vector2i(current_position.x, current_position.y-2)
 	
 	if !astar_grid.is_in_boundsv(target_1):
 		print("Out of Bound ", name)
