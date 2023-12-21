@@ -10,6 +10,5 @@ func _on_turn_manager_pass_turn(turn):
 func _on_hand_on_use_card_signal(card):
 	use_card.emit(card)
 
-
 func _on_battle_allow_new_card_use():
 	allow_new_card_use.emit()

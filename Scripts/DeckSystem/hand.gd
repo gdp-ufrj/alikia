@@ -16,6 +16,7 @@ signal on_use_card_signal(card : CardData)
 @export var hand_buttons_control : HBoxContainer
 @export var mana_count_label : Label
 
+@onready var CardMiniNode : = load("res://Scenes/card.tscn")
 @onready var mouse_on_card = $mouseOnCard
 @onready var use_card_sound = $useCard
 
@@ -56,15 +57,15 @@ func card_zoom_exit():
 
 func _create_cards_button(cards : Array[CardData]):	
 	for card in cards:
-		var button : = Button.new()
-		button.text = card.name
+		var card_mini = CardMiniNode.instantiate()
+		card_mini.set_card_info(card)
+		card_mini.custom_minimum_size = Vector2(46,60)
 		
-		hand_buttons_control.add_child(button)
-		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		hand_buttons_control.add_child(card_mini)
 		
-		button.pressed.connect(self.on_use_card.bind(card, button))
-		button.mouse_entered.connect(self.card_zoom_enter.bind(card))
-		button.mouse_exited.connect(self.card_zoom_exit.bind())
+		card_mini.pressed.connect(self.on_use_card.bind(card, card_mini))
+		card_mini.mouse_entered.connect(self.card_zoom_enter.bind(card))
+		card_mini.mouse_exited.connect(self.card_zoom_exit.bind())
 
 func _on_deck_system_pass_turn(turn):
 	current_mana = clamp(current_mana + turn, 0, max_mana)

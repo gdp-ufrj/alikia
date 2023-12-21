@@ -16,3 +16,4 @@ func _on_exit_pressed():
 	print("Sair")
 	ui_decline.play()
 	get_tree().quit()
+
