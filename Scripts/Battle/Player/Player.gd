@@ -13,7 +13,7 @@ signal end_card_effect
 @onready var basic_attack_sound = $basicAttack
 @onready var water_attack_sound = $waterAttack
 
-var obstacle = load("res://Scenes/obstacle.tscn")
+var obstacleNode = load("res://Scenes/obstacle.tscn")
 
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
@@ -33,13 +33,13 @@ var in_range_enemies = {}
 var in_range_fire = {}
 
 var hp: int
-var range: int
+var move_range: int
 
 func _ready():
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
 	hp = 100
-	range = 3
+	move_range = 3
 	
 	update_health_bar()
 
@@ -72,14 +72,14 @@ func _input(event):
 	if _is_in_effect(): return
 	
 	#tratar input no movimento
-	if (event.is_action("MouseClick") == true and allow_movement == true) and range > 0:
+	if (event.is_action("MouseClick") == true and allow_movement == true) and move_range > 0:
 		move(destination)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if show_range and !moving:
 		current_position = tile_map.local_to_map(global_position)
-		range_path = get_tiles_in_range(current_position, range)
+		range_path = get_tiles_in_range(current_position, move_range)
 		show_tiles(range_path)
 		show_range = false
 	
@@ -139,7 +139,7 @@ func take_damage(damage: int):
 func update_health_bar():
 	player_health_bar.value = hp
 
-func get_enemies_in_range(start: Vector2i, range: int):
+func get_enemies_in_range(start: Vector2i, enemies_range: int):
 	
 	var list_enemies: Array[Node]
 	var list_enemies_in_range = {}
@@ -156,12 +156,12 @@ func get_enemies_in_range(start: Vector2i, range: int):
 		enemies_dict[enemy_position] = enemy
 	
 	for obstacle in list_obstacles:
-		var positions = obstacle.current_position
-		for position in positions:
-			var obstacle_position = tile_map.local_to_map(position)
-			obstacle_dict[obstacle_position] = obstacle
+		var obstacle_positions = obstacle.current_position
+		for obstacle_position in obstacle_positions:
+			var map_obstacle_position = tile_map.local_to_map(obstacle_position)
+			obstacle_dict[map_obstacle_position] = obstacle
 	
-	for x in range(-range, range+1):
+	for x in range(-enemies_range, enemies_range+1):
 		var i = Vector2i(start.x, x + start.y)
 		var j = Vector2i(x + start.x,  start.y)
 		
@@ -199,7 +199,7 @@ func move(destination: Vector2i):
 	
 	var Path = astar_grid.get_id_path(current_position, destination).slice(1)
 	
-	range = range - Path.size()
+	move_range = move_range - Path.size()
 	
 	astar_grid.set_point_solid(current_position, false)
 	
@@ -235,7 +235,7 @@ func attack_input(destination, damage):
 func gust():
 	
 	var list_enemies: Array[Node]
-	var list_enemies_position: Array[Vector2i]
+	var list_enemies_position: Array[Vector2i] = []
 	
 	var enemies_dict = {}
 	
@@ -285,7 +285,7 @@ func fire_input(destination):
 		in_range_fire = {}
 		fire_attack_sound.play()
 
-func thunder_range(start: Vector2i, range: int): #aqui raio
+func thunder_range(start: Vector2i, effect_range: int): #aqui raio
 	var list_enemies: Array[Node]
 	var list_enemies_in_range = {}
 	var list_obstacles: Array[Node]
@@ -301,13 +301,13 @@ func thunder_range(start: Vector2i, range: int): #aqui raio
 		enemies_dict[enemy_position] = enemy
 	
 	for obstacle in list_obstacles:
-		var positions = obstacle.current_position
-		for position in positions:
-			var obstacle_position = tile_map.local_to_map(position)
-			obstacle_dict[obstacle_position] = obstacle
+		var obstacle_positions = obstacle.current_position
+		for obstacle_position in obstacle_positions:
+			var map_obstacle_position = tile_map.local_to_map(obstacle_position)
+			obstacle_dict[map_obstacle_position] = obstacle
 	
-	for x in range(-range, range+1):
-		for y in range(-(range - abs(x)), (range - abs(x))+1):
+	for x in range(-effect_range, effect_range+1):
+		for y in range(-(effect_range - abs(x)), (effect_range - abs(x))+1):
 			var i = Vector2i( x + start.x, y + start.y)
 			
 			if enemies_dict.has(i):
@@ -344,7 +344,7 @@ func barrier_input(destination):
 	print("Destino mapa ", destination)
 	print("Destino local ", tile_map.map_to_local(destination))
 	
-	var scene = obstacle.instantiate()
+	var scene = obstacleNode.instantiate()
 	rock_barrier_sound.play()
 	
 	scene.position = tile_map.map_to_local(destination) 
@@ -375,4 +375,4 @@ func _is_in_effect():
 
 func _on_battle_allow_player_move():
 	allow_movement = true
-	range = 3
+	move_range = 3

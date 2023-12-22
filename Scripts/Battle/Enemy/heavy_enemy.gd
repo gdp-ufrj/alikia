@@ -21,7 +21,7 @@ func _ready():
 	health_bar.max_value = hp
 	update_health_bar()
 	
-func move(target, range = 1, is_push = false):
+func move(target, move_range = 1, is_push = false):
 	if !is_push and is_stunned:
 		is_stunned = false
 		return
@@ -38,7 +38,6 @@ func move(target, range = 1, is_push = false):
 	if !is_push:
 		#ignora o movimento do inimigo se ele ja estiver do lado do obastaculo
 		for ob in obstacles.get_children():
-			var neighbours: Array
 			for pos in ob.current_position:
 				if front == tile_map.local_to_map(pos):
 					ob.take_damage(damage)
@@ -50,7 +49,7 @@ func move(target, range = 1, is_push = false):
 		target = front
 	
 	astar_grid.set_point_solid(current_position, false)
-	var Path = astar_grid.get_id_path(current_position, target).slice(range)
+	var Path = astar_grid.get_id_path(current_position, target).slice(move_range)
 	
 	current_path.append(Path.front())
 	
@@ -58,7 +57,7 @@ func move(target, range = 1, is_push = false):
 		astar_grid.set_point_solid(Path.front(), true)
 		astar_grid.set_point_solid(current_position, false)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if current_path.is_empty():
 		return
 	
@@ -75,9 +74,9 @@ func _physics_process(delta):
 func attack():
 	player.take_damage(damage)
 	
-func take_damage(damage):
-	print(name, " Levou ", damage, "de dano")
-	hp = hp - damage
+func take_damage(damage_took):
+	print(name, " Levou ", damage_took, "de dano")
+	hp = hp - damage_took
 	if(hp <= 0): _die()
 	update_health_bar()
 	

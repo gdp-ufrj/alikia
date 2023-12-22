@@ -21,7 +21,7 @@ func _ready():
 	health_bar.max_value = hp
 	update_health_bar()
 	
-func move(target, range = 2, is_push = false):
+func move(target, move_range = 2, is_push = false):
 	if !is_push and is_stunned:
 		is_stunned = false
 		return
@@ -42,10 +42,10 @@ func move(target, range = 2, is_push = false):
 	
 	
 	
-	if Path.size() > range:
-		Path = Path.slice(0, range+1)
+	if Path.size() > move_range:
+		Path = Path.slice(0, move_range+1)
 	else:
-		Path = Path.slice(range - 1)
+		Path = Path.slice(move_range - 1)
 	
 	current_path = Path
 	
@@ -55,18 +55,13 @@ func move(target, range = 2, is_push = false):
 		astar_grid.set_point_solid(Path.back(), true)
 		astar_grid.set_point_solid(current_position, false)
 
-func _physics_process(delta):
-	
+func _physics_process(_delta):
 	if current_path.is_empty():
 		return
 	
 	var target = tile_map.map_to_local(current_path.front())
-	var previous = tile_map.local_to_map(global_position)
-	
-
 	
 	global_position = global_position.move_toward(target, 7)
-	
 	
 	if global_position == target:
 		current_path.pop_front()
@@ -75,9 +70,9 @@ func _physics_process(delta):
 func attack():
 	player.take_damage(damage)
 	
-func take_damage(damage):
-	print(name, " Levou ", damage, "de dano")
-	hp = hp - damage
+func take_damage(damage_took):
+	print(name, " Levou ", damage_took, "de dano")
+	hp = hp - damage_took
 	if(hp <= 0): _die()
 	update_health_bar()
 	

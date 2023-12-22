@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yd7ecc0orj8b"]
 
 [ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_x4c2r"]
-[ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/B.png" id="2_t7d2x"]
+[ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/Debug/B.png" id="2_t7d2x"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_7qvq5"]
 
 [node name="Defeat" type="Control"]

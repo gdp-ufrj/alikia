@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bm7toebap67gy"]
 
 [ext_resource type="Script" path="res://Resources/CardData.gd" id="1_8dnsg"]
-[ext_resource type="Texture2D" uid="uid://8hib4v0ljtca" path="res://Assets/CardsTextures/C.png" id="1_n4cbu"]
+[ext_resource type="Texture2D" uid="uid://8hib4v0ljtca" path="res://Assets/CardsTextures/Debug/C.png" id="1_n4cbu"]
 
 [resource]
 script = ExtResource("1_8dnsg")
