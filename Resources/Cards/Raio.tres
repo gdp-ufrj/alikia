@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://t4bi06f0xoes"]
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://t4bi06f0xoes"]
 
-[ext_resource type="Texture2D" uid="uid://clo1bnaja6nok" path="res://Assets/CardsTextures/Debug/F.png" id="1_rljoj"]
 [ext_resource type="Script" path="res://Resources/CardData.gd" id="2_qr1bq"]
 
 [resource]
 script = ExtResource("2_qr1bq")
-mainImage = ExtResource("1_rljoj")
 mana = 1
 name = "Raio"
 description = "Causa 3 de dano a um inimigo."
-card_type = 5
+card_type = 4

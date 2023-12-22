@@ -7,6 +7,9 @@ enum CardTypes {
 	BARREIRA_ROCHOSA,
 	LUFADA,
 	NO_DAGUA,
-	TURBILHAO_CHAMAS,
-	RAIO
+	RAIO,
+	TURBILHAO_CHAMAS
 }
+
+static func card_type_to_str(cardType : CardTypes):
+	return CardTypes.keys()[cardType]
