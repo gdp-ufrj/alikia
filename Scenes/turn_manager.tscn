@@ -1,18 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsv8p07wfxpi"]
+[gd_scene load_steps=5 format=3 uid="uid://bsv8p07wfxpi"]
 
 [ext_resource type="Script" path="res://Scripts/Turn/turn_manager.gd" id="1_n7uk5"]
 [ext_resource type="AudioStream" uid="uid://mlh3x4fyl5h8" path="res://Áudio/UI_turn_passed.mp3" id="2_opb0v"]
 [ext_resource type="Texture2D" uid="uid://dop00ttffq0de" path="res://Assets/UI/BotãoPularTurno1.png" id="3_yekju"]
 [ext_resource type="Texture2D" uid="uid://dv23vrfkkp62x" path="res://Assets/UI/BotaoTurno.png" id="4_wj28y"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_siyfe"]
-texture = ExtResource("3_yekju")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryeit"]
-texture = ExtResource("3_yekju")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2760"]
-texture = ExtResource("4_wj28y")
 
 [node name="TurnManager" type="Node2D" node_paths=PackedStringArray("turn_label_count")]
 script = ExtResource("1_n7uk5")
@@ -29,21 +20,21 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TurnButton" type="Button" parent="TurnUI"]
+[node name="TurnButton" type="TextureButton" parent="TurnUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 173.0
-offset_top = 127.0
-offset_right = 163.0
-offset_bottom = 117.0
+offset_left = 200.0
+offset_top = 135.0
+offset_right = 190.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.746122)
-theme_override_styles/normal = SubResource("StyleBoxTexture_siyfe")
-theme_override_styles/hover = SubResource("StyleBoxTexture_ryeit")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_d2760")
+texture_normal = ExtResource("3_yekju")
+texture_pressed = ExtResource("4_wj28y")
+stretch_mode = 0
 
 [node name="TurnLabel" type="Label" parent="TurnUI"]
 layout_mode = 1

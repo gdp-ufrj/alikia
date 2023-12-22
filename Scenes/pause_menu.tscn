@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://csktyfvwiepng"]
+[gd_scene load_steps=7 format=3 uid="uid://d10lsfltevodr"]
 
 [ext_resource type="Texture2D" uid="uid://bf56fqc1xf5wo" path="res://Assets/UI/MenuPausa6.png" id="1_8bl8s"]
 [ext_resource type="Texture2D" uid="uid://2k87vpwpvl8t" path="res://Assets/UI/BotaoContinuar1.png" id="1_bgpfv"]
@@ -39,17 +39,14 @@ theme_override_constants/separation = 10
 layout_mode = 2
 texture_normal = ExtResource("1_bgpfv")
 texture_pressed = ExtResource("2_ujq8g")
-texture_hover = ExtResource("2_ujq8g")
-texture_disabled = ExtResource("2_ujq8g")
-texture_focused = ExtResource("2_ujq8g")
+texture_hover = ExtResource("1_bgpfv")
 stretch_mode = 0
 
 [node name="quit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_5t843")
 texture_pressed = ExtResource("4_m0e4w")
-texture_hover = ExtResource("4_m0e4w")
-texture_focused = ExtResource("4_m0e4w")
+texture_hover = ExtResource("3_5t843")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
