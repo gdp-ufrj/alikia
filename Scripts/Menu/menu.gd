@@ -9,8 +9,7 @@ func _on_start_pressed():
 
 func _on_credits_pressed():
 	ui_accept.play()
-	#get_tree().change_scene_to_file("res://Scenes/credits.tscn")
-	print("Créditos")
+	get_tree().change_scene_to_file("res://Scenes/Credits/credits.tscn")
 
 func _on_exit_pressed():
 	print("Sair")

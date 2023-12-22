@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhjp1q3jarsr3"]
+[gd_scene load_steps=5 format=3 uid="uid://bhjp1q3jarsr3"]
 
 [ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_nhg0e"]
+[ext_resource type="Texture2D" uid="uid://dkmvwsup1qga0" path="res://Assets/UI/wolf_finished.png" id="2_cux51"]
+[ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="3_0fs04"]
+[ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="4_wuebh"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -11,12 +14,72 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nhg0e")
 
-[node name="voltar" type="Button" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 277.0
-offset_top = 307.0
-offset_right = 367.0
-offset_bottom = 338.0
-text = "Voltar"
+offset_right = 640.0
+offset_bottom = 363.0
+texture = ExtResource("2_cux51")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -167.0
+offset_right = 303.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.572549)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -157.0
+offset_right = 294.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("3_0fs04")
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+text = "[color=#0099DB]Programação[/color] - Breno Natal, Carlos Bravo, Fernanda Carvalho, Giovana Unfer
+
+[color=#E43B44]Arte[/color] - Dan, Gabriel Rodrigues [Sortazar], Misty Gold
+
+[color=#FEE761]Roteiro[/color] - Mikael Magacho, Nana
+
+[color=#F77622]Sonorização[/color] - Matheus Ferreira
+
+[color=#63C74D]Game Design[/color] - Lucas Araujo Carvalho, Silvio Rogerio
+
+Gestão - Theo Luigi"
+fit_content = true
+tab_size = 6
+
+[node name="voltar" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = -46.0
+offset_right = 296.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_wuebh")
 
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]
