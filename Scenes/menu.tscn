@@ -25,9 +25,9 @@ expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 364.0
+offset_left = 475.0
 offset_top = 59.0
-offset_right = 396.0
+offset_right = 508.0
 offset_bottom = 165.0
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -50,36 +50,6 @@ stream = ExtResource("3_yn1vq")
 
 [node name="uiDecline" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_r68dd")
-
-[node name="voltar" type="Button" parent="."]
-layout_mode = 2
-offset_left = 416.0
-offset_top = 113.0
-offset_right = 556.0
-offset_bottom = 151.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "teste"
-
-[node name="voltar2" type="Button" parent="."]
-layout_mode = 2
-offset_left = 415.0
-offset_top = 55.0
-offset_right = 555.0
-offset_bottom = 93.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "teste"
-
-[node name="voltar3" type="Button" parent="."]
-layout_mode = 2
-offset_left = 416.0
-offset_top = 167.0
-offset_right = 556.0
-offset_bottom = 205.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "teste"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Credits" to="." method="_on_credits_pressed"]
