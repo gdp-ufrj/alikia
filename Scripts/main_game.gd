@@ -5,3 +5,7 @@ func _on_battle_end_game(result):
 		get_tree().change_scene_to_file("res://Scenes/Ending/victory.tscn")
 	else:
 		get_tree().change_scene_to_file("res://Scenes/Ending/defeat.tscn")
+
+
+func _on_pause_buttom_pressed():
+	pass # Replace with function body.

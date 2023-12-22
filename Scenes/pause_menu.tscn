@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://csktyfvwiepng"]
+
+[ext_resource type="Texture2D" uid="uid://bf56fqc1xf5wo" path="res://Assets/UI/MenuPausa6.png" id="1_8bl8s"]
+[ext_resource type="Texture2D" uid="uid://2k87vpwpvl8t" path="res://Assets/UI/BotaoContinuar1.png" id="1_bgpfv"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu/pause_menu.gd" id="1_uoi5i"]
+[ext_resource type="Texture2D" uid="uid://ds1nl0vnutcyt" path="res://Assets/UI/BotaoContinuar4.png" id="2_ujq8g"]
+[ext_resource type="Texture2D" uid="uid://rm2xltndwu6q" path="res://Assets/UI/BotaoSair1.png" id="3_5t843"]
+[ext_resource type="Texture2D" uid="uid://b4bpxm4kscvyx" path="res://Assets/UI/BotaoSair4.png" id="4_m0e4w"]
+
+[node name="pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uoi5i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 642.0
+offset_bottom = 362.0
+texture = ExtResource("1_8bl8s")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 165.0
+offset_right = 365.0
+offset_bottom = 242.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="continue" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_bgpfv")
+texture_pressed = ExtResource("2_ujq8g")
+texture_hover = ExtResource("2_ujq8g")
+texture_disabled = ExtResource("2_ujq8g")
+texture_focused = ExtResource("2_ujq8g")
+stretch_mode = 0
+
+[node name="quit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_5t843")
+texture_pressed = ExtResource("4_m0e4w")
+texture_hover = ExtResource("4_m0e4w")
+texture_focused = ExtResource("4_m0e4w")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
