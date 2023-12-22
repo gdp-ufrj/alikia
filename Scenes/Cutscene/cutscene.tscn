@@ -5,8 +5,7 @@
 
 [node name="GodotCredits" type="Node2D"]
 script = ExtResource("1_mjv4t")
-timer_delay = 0.075
-empty_lines = 19
+timer_delay = 0.75
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -23,45 +22,34 @@ layout_mode = 1
 offset_right = 642.0
 offset_bottom = 362.0
 size_flags_horizontal = 3
-text = "According to all known laws of aviation, there is no way a bee should be able to fly.
-Its wings are too small to get its fat little body off the ground.
-The bee, of course, flies anyway because bees don't care what humans think is impossible.
-Yellow, black. Yellow, black. Yellow, black. Yellow, black.
-Ooh, black and yellow!
-Let's shake it up a little.
-Barry! Breakfast is ready!
-Coming!
-Hang on a second.
-Hello?
-Barry?
-Adam?
-Can you believe this is happening?
-I can't.
-I'll pick you up.
-Looking sharp.
-Use the stairs, Your father paid good money for those.
-Sorry. I'm excited.
-Here's the graduate.
-We're very proud of you, son.
-A perfect report card, all B's.
-Very proud.
-Ma! I got a thing going here.
-You got lint on your fuzz.
-Ow! That's me!
-Wave to us! We'll be in row 118,000.
-Bye!
-Barry, I told you, stop flying in the house!
-Hey, Adam.
-Hey, Barry.
-Is that fuzz gel?
-A little. Special day, graduation.
-Never thought I'd make it.
-Three days grade school, three days high school.
-Those were awkward.
-Three days college. I'm glad I took a day and hitchhiked around The Hive.
-You did come back different.
-Hi, Barry. Artie, growing a mustache? Looks good.
-Hear about Frankie?"
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A fantástica e escondida floresta de *[nome_da_floresta]* é um lugar mágico que possui fauna e flora únicas. Lá também é o único lugar no qual se encontram os aguarás que possuem olhos brilhantes como a luz do luar.
+
+Quando um time de mineradores à procura de materiais valiosos encontrou o local de *[nome_da_floresta]*, perceberam que poderiam ganhar rios de dinheiro com os cristais diferentes da floresta, mas ganhariam o triplo com os olhos brilhantes dos aguarás. Sabendo que ficariam ricos com tudo isso, eles chegam com todos os recursos possíveis para adentrar e extrair tudo que aparecesse à sua frente.
+
+O que os mineradores não sabiam é que a beleza e preciosidade da floresta ia muito além de sua superfície; sua magia se faz presente principalmente nas relações e conexões com os seres existentes ali… Sendo assim, a entidade espiritual de *[nome_da_floresta]* deu poderes e apoio para que uma mãe, da espécie aguarás*,* pudesse lutar e defender seu lar e seus filhotes, de qualquer um que quisesse destruir ou invadir esse espaço.
+
+Todavia, até mesmo nossa querida Alikia, não estava ciente desse fator tão poderoso. Mas, quando ela se viu encurralada com seus filhotes por estes mineradores, o instinto materno conectado com a essência da entidade ativou esses poderes mágicos, afastando eles momentaneamente dali.
+
+Mais tarde, ela perceberia que essa batalha estava só começando e eles trariam armas mais potentes para encarar a magia da floresta. Sem tempo para entender o que estava acontecendo consigo mesma, Alikia seguiu seu instinto, escondeu seus filhotes, deu-lhes um abraço forte e partiu para encarar esse perigo iminente..."
 label_settings = ExtResource("2_1wkf6")
 horizontal_alignment = 1
 autowrap_mode = 3
