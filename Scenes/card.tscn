@@ -314,7 +314,7 @@ animatedSprite = NodePath("AnimatedSprite2D")
 position = Vector2(24, 32)
 scale = Vector2(0.943, 1)
 sprite_frames = SubResource("SpriteFrames_ubh30")
-animation = &"ATAQUE"
+animation = &"LUFADA"
 
 [node name="CardMana" type="Label" parent="."]
 layout_mode = 1

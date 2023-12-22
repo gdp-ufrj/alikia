@@ -1,61 +1,9 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=10 format=3 uid="uid://bm7toebap67gy"]
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://lgq6g8otksr"]
 
 [ext_resource type="Script" path="res://Resources/CardData.gd" id="1_8dnsg"]
-[ext_resource type="Texture2D" uid="uid://bp4v50686v302" path="res://Assets/CardsTextures/SS_Lufada.png" id="1_hj7k0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgecs"]
-atlas = ExtResource("1_hj7k0")
-region = Rect2(0, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hoxp8"]
-atlas = ExtResource("1_hj7k0")
-region = Rect2(50, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ythpf"]
-atlas = ExtResource("1_hj7k0")
-region = Rect2(100, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bnqx"]
-atlas = ExtResource("1_hj7k0")
-region = Rect2(150, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0r8t"]
-atlas = ExtResource("1_hj7k0")
-region = Rect2(200, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft8ur"]
-atlas = ExtResource("1_hj7k0")
-region = Rect2(250, 0, 50, 63)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yiint"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pgecs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hoxp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ythpf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3bnqx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0r8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ft8ur")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [resource]
 script = ExtResource("1_8dnsg")
-mainImage = SubResource("SpriteFrames_yiint")
 mana = 2
 name = "Lufada"
 description = "Empurra inimigos 2 casas para trás."
