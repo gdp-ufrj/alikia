@@ -1,61 +1,9 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=10 format=3 uid="uid://dlac5bp1bw4f7"]
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://dlac5bp1bw4f7"]
 
-[ext_resource type="Texture2D" uid="uid://bc0e1e75soarf" path="res://Assets/CardsTextures/SS_Barreira.png" id="1_5hfau"]
 [ext_resource type="Script" path="res://Resources/CardData.gd" id="1_7eowf"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_op487"]
-atlas = ExtResource("1_5hfau")
-region = Rect2(0, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xx24b"]
-atlas = ExtResource("1_5hfau")
-region = Rect2(50, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s50xf"]
-atlas = ExtResource("1_5hfau")
-region = Rect2(100, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7im2"]
-atlas = ExtResource("1_5hfau")
-region = Rect2(150, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qs2ox"]
-atlas = ExtResource("1_5hfau")
-region = Rect2(200, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7br81"]
-atlas = ExtResource("1_5hfau")
-region = Rect2(250, 0, 50, 63)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ofo4h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_op487")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xx24b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s50xf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s7im2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qs2ox")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7br81")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [resource]
 script = ExtResource("1_7eowf")
-mainImage = SubResource("SpriteFrames_ofo4h")
 mana = 2
 name = "Barreira"
 description = "Cria uma barreira em determinado local que impede que inimigos avancem."

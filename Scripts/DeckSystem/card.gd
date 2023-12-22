@@ -1,6 +1,5 @@
 extends Control
 
-@export var card_img : TextureRect
 @export var card_mana : Label
 @export var animatedSprite : AnimatedSprite2D
 

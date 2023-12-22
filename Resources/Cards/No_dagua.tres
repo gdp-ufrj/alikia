@@ -1,61 +1,9 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=10 format=3 uid="uid://b84drrvu7qff6"]
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://b84drrvu7qff6"]
 
-[ext_resource type="Texture2D" uid="uid://caah4ul2tmy7" path="res://Assets/CardsTextures/SS_No.png" id="1_v207o"]
 [ext_resource type="Script" path="res://Resources/CardData.gd" id="2_5ospo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgedg"]
-atlas = ExtResource("1_v207o")
-region = Rect2(0, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ervm"]
-atlas = ExtResource("1_v207o")
-region = Rect2(50, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bclnc"]
-atlas = ExtResource("1_v207o")
-region = Rect2(100, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrwir"]
-atlas = ExtResource("1_v207o")
-region = Rect2(150, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umd27"]
-atlas = ExtResource("1_v207o")
-region = Rect2(200, 0, 50, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dugvk"]
-atlas = ExtResource("1_v207o")
-region = Rect2(250, 0, 50, 63)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r3fwx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kgedg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ervm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bclnc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xrwir")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_umd27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dugvk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [resource]
 script = ExtResource("2_5ospo")
-mainImage = SubResource("SpriteFrames_r3fwx")
 mana = 2
 name = "Nó D'água"
 description = "Impede que os inimigos afetados se movam no próximo turno."

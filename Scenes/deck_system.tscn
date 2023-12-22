@@ -165,10 +165,10 @@ stream = ExtResource("11_he1cp")
 volume_db = 15.236
 
 [node name="CardZoomControl" parent="." instance=ExtResource("3_mfhcc")]
-offset_left = -120.0
-offset_top = -176.0
-offset_right = 133.0
-offset_bottom = 132.0
+offset_left = -108.0
+offset_top = -170.0
+offset_right = 108.0
+offset_bottom = 100.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

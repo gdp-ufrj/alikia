@@ -59,7 +59,7 @@ func _create_cards_button(cards : Array[CardData]):
 	for card in cards:
 		var card_mini = CardMiniNode.instantiate()
 		card_mini.set_card_info(card)
-		card_mini.custom_minimum_size = Vector2(46,60)
+		card_mini.custom_minimum_size = Vector2(48,60)
 		
 		hand_buttons_control.add_child(card_mini)
 		
