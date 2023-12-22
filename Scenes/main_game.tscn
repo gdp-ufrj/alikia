@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b6wjwe3k5uxst" path="res://Scenes/deck_system.tscn" id="2_5g71h"]
 [ext_resource type="AudioStream" uid="uid://0v05n0q5w0c" path="res://Áudio/Aliki - Música da Fase - Versão Final.mp3" id="3_vcbyy"]
 [ext_resource type="PackedScene" uid="uid://bsv8p07wfxpi" path="res://Scenes/turn_manager.tscn" id="4_ticpk"]
-[ext_resource type="PackedScene" uid="uid://csktyfvwiepng" path="res://Scenes/pause_menu.tscn" id="6_e0tgr"]
-[ext_resource type="Texture2D" uid="uid://cpy08tfnuo5tk" path="res://Assets/UI/BotaoPause4.png" id="7_1vp4i"]
+[ext_resource type="PackedScene" uid="uid://d10lsfltevodr" path="res://Scenes/pause_menu.tscn" id="6_e0tgr"]
+[ext_resource type="Texture2D" uid="uid://w68u13ytocli" path="res://Assets/UI/BotaoPauseApertado..png" id="7_e4cyf"]
 [ext_resource type="Texture2D" uid="uid://bl4w1yxj8lck6" path="res://Assets/UI/BotaoPausaNaoApertado.png" id="8_7fonb"]
 
 [node name="MainGame" type="Node2D"]
@@ -31,12 +31,17 @@ autoplay = true
 position = Vector2(-13, 3)
 
 [node name="PauseButtom" type="TextureButton" parent="."]
-offset_left = 227.0
-offset_top = -175.0
-offset_right = 259.0
-offset_bottom = -151.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -207.0
+offset_top = 144.0
+offset_right = -177.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("8_7fonb")
-texture_pressed = ExtResource("7_1vp4i")
+texture_pressed = ExtResource("7_e4cyf")
 
 [node name="pause_menu" parent="." instance=ExtResource("6_e0tgr")]
 offset_left = -328.0

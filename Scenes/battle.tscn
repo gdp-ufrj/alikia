@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="2_5l8xe"]
 [ext_resource type="PackedScene" uid="uid://x3kx1qwj8efj" path="res://Scenes/Player.tscn" id="2_c5tmv"]
 [ext_resource type="Texture2D" uid="uid://cp7cue2ma2tp6" path="res://Assets/icon.svg" id="3_ku65w"]
-[ext_resource type="Texture2D" uid="uid://be6ngmaidpk7g" path="res://Assets/Tileset/BaseCartas.png" id="4_cbtsu"]
 [ext_resource type="Texture2D" uid="uid://tah0yfmn1oes" path="res://Assets/Tileset/Tileset-Sheet.png" id="5_a01gv"]
 [ext_resource type="Script" path="res://Scripts/Battle/grid.gd" id="5_apr0j"]
 [ext_resource type="Texture2D" uid="uid://b7cblqxowkig6" path="res://Assets/Tileset/TilesArena.png" id="6_ixng2"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ixni36tulum" path="res://Assets/Tileset/TilesetRio.png" id="9_r8t33"]
 [ext_resource type="Texture2D" uid="uid://6uf5xqj2y5b2" path="res://Assets/Tileset/ArvoreDir.png" id="12_ydpwp"]
 [ext_resource type="Texture2D" uid="uid://dggy1ea0648j" path="res://Assets/Tileset/ArvoreEsq.png" id="13_ba4ov"]
+[ext_resource type="Texture2D" uid="uid://bxjwa54ii5rpg" path="res://Assets/UI/BaseCartas.png" id="14_5xtg5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
 texture = ExtResource("1_u3tvo")
@@ -255,8 +255,8 @@ texture = ExtResource("12_ydpwp")
 position = Vector2(-261, 0)
 texture = ExtResource("13_ba4ov")
 
-[node name="BaseCartas" type="Sprite2D" parent="."]
-texture = ExtResource("4_cbtsu")
+[node name="BaseCartas2" type="Sprite2D" parent="."]
+texture = ExtResource("14_5xtg5")
 
 [connection signal="allow_player_move" from="." to="Player" method="_on_battle_allow_player_move"]
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]
