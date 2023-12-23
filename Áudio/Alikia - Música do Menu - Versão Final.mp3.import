@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qkxm4x6hdh7v"
+path="res://.godot/imported/Alikia - Música do Menu - Versão Final.mp3-e9b6ab2f05e3dba78b7685baad5cc438.mp3str"
+
+[deps]
+
+source_file="res://Áudio/Alikia - Música do Menu - Versão Final.mp3"
+dest_files=["res://.godot/imported/Alikia - Música do Menu - Versão Final.mp3-e9b6ab2f05e3dba78b7685baad5cc438.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

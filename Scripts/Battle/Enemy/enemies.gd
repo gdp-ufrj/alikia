@@ -11,6 +11,7 @@ var enemies_spawned : int = 0
 @onready var marker_2d = $"../Marker2D"
 @onready var marker_2d_2 = $"../Marker2D2"
 
+
 var enemy_1 = load("res://Scenes/Enemy_Types/enemy.tscn")
 var enemy_heavy = load("res://Scenes/Enemy_Types/heavy_enemy.tscn")
 var quick_enemy = load("res://Scenes/Enemy_Types/quick_enemy.tscn")
