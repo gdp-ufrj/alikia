@@ -1,18 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsi513m5ay7ut"]
+[gd_scene load_steps=5 format=3 uid="uid://dsi513m5ay7ut"]
 
 [ext_resource type="Script" path="res://Scripts/Cutscene/cutscene.gd" id="1_mjv4t"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="2_1wkf6"]
+[ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_q03pe"]
 [ext_resource type="AudioStream" uid="uid://u38bg1jbfrqx" path="res://Áudio/Alikia - História - Versão Final.mp3" id="3_5nd07"]
 
 [node name="GodotCredits" type="Node2D"]
 script = ExtResource("1_mjv4t")
 timer_delay = 0.8
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 1)
+offset_right = 640.0
+offset_bottom = 363.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q03pe")
+expand_mode = 2
 
 [node name="CreditsContainer" type="Control" parent="."]
 layout_mode = 3

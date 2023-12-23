@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvpime6t51s8h"]
+[gd_scene load_steps=8 format=3 uid="uid://dvpime6t51s8h"]
 
 [ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_wdthx"]
-[ext_resource type="Texture2D" uid="uid://8hib4v0ljtca" path="res://Assets/CardsTextures/Debug/C.png" id="2_t3f67"]
+[ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_lsuah"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_cixg2"]
 [ext_resource type="AudioStream" uid="uid://b0qiuwr3t823l" path="res://Áudio/Alikia - Vitória - Versão Final.mp3" id="4_bwnpw"]
+[ext_resource type="Texture2D" uid="uid://c4vmlhpkqy4sg" path="res://Assets/UI/BotaoVoltar1.png" id="4_fjuod"]
+[ext_resource type="Texture2D" uid="uid://caye0be57yyq" path="res://Assets/UI/BotaoVoltar2.png" id="5_jm88p"]
 [ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_vwypr"]
 
 [node name="Defeat" type="Control"]
@@ -19,24 +21,29 @@ script = ExtResource("1_wdthx")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 358.0
-texture = ExtResource("2_t3f67")
+texture = ExtResource("2_lsuah")
+expand_mode = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 235.0
-offset_top = 103.0
-offset_right = 275.0
-offset_bottom = 126.0
+offset_left = 80.0
+offset_top = 96.0
+offset_right = 272.0
+offset_bottom = 119.0
+scale = Vector2(2.5, 2.5)
 text = "Você ganhou!"
 label_settings = ExtResource("3_cixg2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ReturnButton" type="Button" parent="."]
+[node name="ReturnButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 274.0
+offset_left = 263.0
 offset_top = 212.0
-offset_right = 351.0
-offset_bottom = 243.0
-text = "Retornar"
+offset_right = 392.0
+offset_bottom = 244.0
+texture_normal = ExtResource("4_fjuod")
+texture_pressed = ExtResource("5_jm88p")
 
 [node name="victoryBackground" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_bwnpw")
