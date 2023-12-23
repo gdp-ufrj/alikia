@@ -44,7 +44,7 @@ func _on_battle_move_enemies():
 		if tile_map.local_to_map(enemy.global_position) in targets:
 			player.take_damage(enemy.damage)
 		else:
-			print("OI ")
+			
 			var total_distance = 1000000
 			var target = tile_map.local_to_map(enemy.global_position)
 			for i in targets:
@@ -90,6 +90,7 @@ func _on_battle_move_enemies():
 func _create_enemy():
 	if(max_enemies == enemies_spawned): return
 	var scene = enemy_options[randi() % enemy_options.size()].instantiate()
+	#var scene = enemy_1.instantiate()
 	scene.position = marker_2d.position
 	add_child(scene)
 	enemies.append(scene)

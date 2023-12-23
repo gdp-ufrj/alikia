@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch8cjc1s6wy5a"]
+[gd_scene load_steps=12 format=3 uid="uid://ch8cjc1s6wy5a"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/menu.gd" id="1_r7msc"]
 [ext_resource type="Texture2D" uid="uid://dkmvwsup1qga0" path="res://Assets/UI/wolf_finished.png" id="2_5sfi1"]
-[ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="3_un8jg"]
+[ext_resource type="Texture2D" uid="uid://bmyyguc0unsyl" path="res://Assets/UI/BotaoJogar1.png" id="3_fmhed"]
 [ext_resource type="AudioStream" uid="uid://c6t0dxg1ssu26" path="res://Áudio/UI_accept.mp3" id="3_yn1vq"]
+[ext_resource type="Texture2D" uid="uid://br7a24u46y4my" path="res://Assets/UI/BotaoJogar2.png" id="4_b22pe"]
 [ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="4_r68dd"]
+[ext_resource type="Texture2D" uid="uid://xyppney6b4rt" path="res://Assets/UI/BotaoCreditos1.png" id="5_l8nm6"]
 [ext_resource type="AudioStream" uid="uid://qkxm4x6hdh7v" path="res://Áudio/Alikia - Música do Menu - Versão Final.mp3" id="6_cs2ge"]
+[ext_resource type="Texture2D" uid="uid://bhb2g13i67cqx" path="res://Assets/UI/BotaoCreditos2.png" id="6_elsyh"]
+[ext_resource type="Texture2D" uid="uid://cr8jr7x6x7omk" path="res://Assets/UI/BotaoSair1 (1).png" id="7_12ad8"]
+[ext_resource type="Texture2D" uid="uid://xci4h32c6x8b" path="res://Assets/UI/BotaoSair2.png" id="8_ma30j"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -26,25 +31,29 @@ expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 475.0
+offset_left = 418.0
 offset_top = 59.0
-offset_right = 508.0
-offset_bottom = 165.0
+offset_right = 562.0
+offset_bottom = 195.0
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Start" type="TextureButton" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_un8jg")
+texture_normal = ExtResource("3_fmhed")
+texture_pressed = ExtResource("4_b22pe")
 
 [node name="Credits" type="TextureButton" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_un8jg")
+texture_normal = ExtResource("5_l8nm6")
+texture_pressed = ExtResource("6_elsyh")
 
 [node name="Exit" type="TextureButton" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_un8jg")
+texture_normal = ExtResource("7_12ad8")
+texture_pressed = ExtResource("8_ma30j")
 
 [node name="uiPlay" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_yn1vq")

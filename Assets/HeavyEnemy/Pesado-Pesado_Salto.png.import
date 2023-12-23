@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-
-uid="uid://jeskqoefjham"
-
-path="res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"
+uid="uid://wv6kg73svs8u"
+path="res://.godot/imported/Pesado-Pesado_Salto.png-e4424564dfd89d2d9a7c94b79d834e18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BotaoVoltar2.png"
-dest_files=["res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"]
+source_file="res://Assets/HeavyEnemy/Pesado-Pesado_Salto.png"
+dest_files=["res://.godot/imported/Pesado-Pesado_Salto.png-e4424564dfd89d2d9a7c94b79d834e18.ctex"]
 
 [params]
 

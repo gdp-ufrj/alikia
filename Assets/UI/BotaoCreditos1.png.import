@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-
-uid="uid://jeskqoefjham"
-
-path="res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"
+uid="uid://xyppney6b4rt"
+path="res://.godot/imported/BotaoCreditos1.png-557953969aa4c75c3e9f45f3a05a1f3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BotaoVoltar2.png"
-dest_files=["res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"]
+source_file="res://Assets/UI/BotaoCreditos1.png"
+dest_files=["res://.godot/imported/BotaoCreditos1.png-557953969aa4c75c3e9f45f3a05a1f3c.ctex"]
 
 [params]
 

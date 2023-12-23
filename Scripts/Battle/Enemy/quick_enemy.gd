@@ -5,6 +5,9 @@ signal die(enemy)
 @onready var tile_map = $"../../TileMap"
 @onready var player = $"../../Player"
 @onready var obstacles = $"../../Obstacles"
+@onready var effect = $Effect
+@onready var ap = $AnimationPlayer
+@onready var sprite = $Sprite2D
 
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
@@ -49,6 +52,9 @@ func move(target, move_range = 2, is_push = false):
 	
 	current_path = Path
 	
+	if is_push:
+		effect.effect_wind()
+	
 
 	
 	if Path.front(): #atualizar o local anterior o proximo como solido ou não
@@ -57,11 +63,24 @@ func move(target, move_range = 2, is_push = false):
 
 func _physics_process(_delta):
 	if current_path.is_empty():
+		ap.play("idle")
 		return
 	
 	var target = tile_map.map_to_local(current_path.front())
 	
-	global_position = global_position.move_toward(target, 7)
+	if current_position.x < current_path.front().x:
+		sprite.flip_h = false
+		ap.play("jump_side")
+	if current_position.x > current_path.front().x:
+		sprite.flip_h = true
+		print("Esguio para esquerda")
+		ap.play("jump_side")
+	
+	if current_position.y < current_path.front().y:
+		ap.play("jump")
+		
+	global_position = global_position.move_toward(target, 2)
+	
 	
 	if global_position == target:
 		current_path.pop_front()
@@ -70,8 +89,14 @@ func _physics_process(_delta):
 func attack():
 	player.take_damage(damage)
 	
-func take_damage(damage_took):
+func take_damage(damage_took, type = -1):
 	print(name, " Levou ", damage_took, "de dano")
+	match type:
+		0:
+			effect.effect_fire()
+		1:
+			print("Oi")
+			effect.effect_thunder()
 	hp = hp - damage_took
 	if(hp <= 0): _die()
 	update_health_bar()
@@ -107,6 +132,7 @@ func push_back():
 
 func stun():
 	is_stunned = true
+	effect.effect_water()
 
 
 

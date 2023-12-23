@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-
-uid="uid://jeskqoefjham"
-
-path="res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"
+uid="uid://b7ctafvmstbbx"
+path="res://.godot/imported/BasicoAnim-Basico_pulo_volta.png-07b5119c8a085cf89bfc783f511124fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BotaoVoltar2.png"
-dest_files=["res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"]
+source_file="res://Assets/BasicEnemy/BasicoAnim-Basico_pulo_volta.png"
+dest_files=["res://.godot/imported/BasicoAnim-Basico_pulo_volta.png-07b5119c8a085cf89bfc783f511124fc.ctex"]
 
 [params]
 

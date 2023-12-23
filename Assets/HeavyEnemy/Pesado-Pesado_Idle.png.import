@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-
-uid="uid://jeskqoefjham"
-
-path="res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"
+uid="uid://bho0xpx23frvi"
+path="res://.godot/imported/Pesado-Pesado_Idle.png-17cb2d3fddcf98fdf6e5604e0da795a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BotaoVoltar2.png"
-dest_files=["res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"]
+source_file="res://Assets/HeavyEnemy/Pesado-Pesado_Idle.png"
+dest_files=["res://.godot/imported/Pesado-Pesado_Idle.png-17cb2d3fddcf98fdf6e5604e0da795a2.ctex"]
 
 [params]
 

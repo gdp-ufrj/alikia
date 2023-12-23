@@ -18,6 +18,8 @@ signal end_card_effect
 @onready var lightning_attack_sound = $lightningAttack
 
 @onready var dame_player_sound = $damagePlayer
+@onready var hp_label = $"../Control/HPLabel"
+
 
 var obstacleNode = load("res://Scenes/obstacle.tscn")
 
@@ -38,14 +40,15 @@ var barrier_card: bool = false
 var in_range_enemies = {}
 var in_range_fire = {}
 
-var hp: int
+var hp: int = 100
 var move_range: int
+var current_hp: int
 
 func _ready():
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-	hp = 100
 	move_range = 3
+	hp_label.text = str(hp)
 	
 	update_health_bar()
 
@@ -83,14 +86,11 @@ func _input(event):
 
 func _physics_process(_delta):
 	
-	
 	if show_range and !moving:
 		current_position = tile_map.local_to_map(global_position)
 		range_path = get_tiles_in_range(current_position, move_range)
 		show_tiles(range_path)
 		show_range = false
-	
-	
 	
 	if current_path.is_empty():
 		current_position = tile_map.local_to_map(global_position)
@@ -160,6 +160,7 @@ func get_neighbours():
 
 func take_damage(damage: int): #aqui
 	hp = hp - damage
+	hp_label.text = str(hp)
 	dame_player_sound.play()
 	update_health_bar()
 
@@ -249,10 +250,12 @@ func attack():
 func attack_input(destination, damage):
 	if in_range_enemies.has(destination):
 		print("Atacou  ", destination)
-		in_range_enemies.get(destination).take_damage(damage)
+		
 		if attack_card == true:
+			in_range_enemies.get(destination).take_damage(damage)
 			basic_attack_sound.play()
 		if thunder_card == true:
+			in_range_enemies.get(destination).take_damage(damage, 1)
 			lightning_attack_sound.play()
 		for key in in_range_enemies.keys():
 			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
@@ -292,22 +295,22 @@ func fire_input(destination):
 		if destination.x == current_position.x and destination.y < current_position.y:
 			for key in in_range_fire.keys():
 				if key.x == current_position.x and key.y < current_position.y:
-					in_range_fire.get(key).take_damage(7)
+					in_range_fire.get(key).take_damage(7, 0)
 		
 		if destination.x == current_position.x and destination.y > current_position.y:
 			for key in in_range_fire.keys():
 				if key.x == current_position.x and key.y > current_position.y:
-					in_range_fire.get(key).take_damage(7)
+					in_range_fire.get(key).take_damage(7, 0)
 		
 		if destination.y == current_position.y and destination.x < current_position.x:
 			for key in in_range_fire.keys():
 				if key.y == current_position.y and key.x < current_position.x:
-					in_range_fire.get(key).take_damage(7)
+					in_range_fire.get(key).take_damage(7, 0)
 		
 		if destination.y == current_position.y and destination.x > current_position.x:
 			for key in in_range_fire.keys():
 				if key.y == current_position.y and key.x > current_position.x:
-					in_range_fire.get(key).take_damage(7)
+					in_range_fire.get(key).take_damage(7, 0)
 		
 		for key in in_range_fire.keys():
 			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))

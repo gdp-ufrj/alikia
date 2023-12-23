@@ -1,4 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bpm7lq1u5rc80"]
+
+[gd_scene load_steps=25 format=3 uid="uid://bpm7lq1u5rc80"]
+
 
 [ext_resource type="Texture2D" uid="uid://cdkwnboi12wc6" path="res://Assets/Tile.png" id="1_u3tvo"]
 [ext_resource type="Script" path="res://Scripts/Battle/battle.gd" id="1_yti07"]
@@ -14,7 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://6uf5xqj2y5b2" path="res://Assets/Tileset/ArvoreDir.png" id="12_ydpwp"]
 [ext_resource type="Texture2D" uid="uid://dggy1ea0648j" path="res://Assets/Tileset/ArvoreEsq.png" id="13_ba4ov"]
 [ext_resource type="Texture2D" uid="uid://bxjwa54ii5rpg" path="res://Assets/UI/BaseCartas.png" id="14_5xtg5"]
-[ext_resource type="Texture2D" uid="uid://bqdn3f0gcai6i" path="res://Assets/UI/Vida.png" id="15_bi7bf"]
+
+
+[ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="15_70pk4"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
 texture = ExtResource("1_u3tvo")
@@ -182,6 +187,10 @@ sources/4 = SubResource("TileSetAtlasSource_iaol4")
 sources/6 = SubResource("TileSetAtlasSource_6lfpg")
 sources/7 = SubResource("TileSetAtlasSource_vjis1")
 
+[sub_resource type="LabelSettings" id="LabelSettings_qv5nm"]
+font = ExtResource("15_70pk4")
+font_size = 8
+
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_yti07")
 
@@ -259,9 +268,26 @@ texture = ExtResource("13_ba4ov")
 [node name="BaseCartas2" type="Sprite2D" parent="."]
 texture = ExtResource("14_5xtg5")
 
+
 [node name="Vida" type="Sprite2D" parent="."]
 position = Vector2(2, 105)
 texture = ExtResource("15_bi7bf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HPLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 104.0
+offset_right = 7.0
+offset_bottom = 130.0
+text = "0"
+label_settings = SubResource("LabelSettings_qv5nm")
+
 
 [connection signal="allow_player_move" from="." to="Player" method="_on_battle_allow_player_move"]
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]

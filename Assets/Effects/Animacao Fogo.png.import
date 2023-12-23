@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-
-uid="uid://jeskqoefjham"
-
-path="res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"
+uid="uid://cm6uugl03xqh7"
+path="res://.godot/imported/Animacao Fogo.png-fd921f5c877811843d951ba269dcf19f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BotaoVoltar2.png"
-dest_files=["res://.godot/imported/BotaoVoltar2.png-0ad8e03c351348407baeb476dc5d227a.ctex"]
+source_file="res://Assets/Effects/Animacao Fogo.png"
+dest_files=["res://.godot/imported/Animacao Fogo.png-fd921f5c877811843d951ba269dcf19f.ctex"]
 
 [params]
 
