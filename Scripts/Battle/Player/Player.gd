@@ -7,6 +7,9 @@ signal end_card_effect
 @onready var enemies = $"../Enemies"
 @onready var obstacles = $"../Obstacles"
 
+@onready var ap = $AnimationPlayer
+@onready var sprite = $Sprite2D
+
 @onready var rock_barrier_sound = $rockBarrier
 @onready var fire_attack_sound = $fireAttack
 @onready var air_attack_sound = $airAttack
@@ -80,23 +83,43 @@ func _input(event):
 
 func _physics_process(_delta):
 	
+	
 	if show_range and !moving:
 		current_position = tile_map.local_to_map(global_position)
 		range_path = get_tiles_in_range(current_position, move_range)
 		show_tiles(range_path)
 		show_range = false
 	
+	
+	
 	if current_path.is_empty():
 		current_position = tile_map.local_to_map(global_position)
 		moving = false
+		sprite.flip_h = false
+		ap.play("idle")
 		return
 	
 	var target = tile_map.map_to_local(current_path.front())
 	moving = true
-	global_position = global_position.move_toward(target, 10)
+	
+	if current_position.x < current_path.front().x:
+		sprite.flip_h = false
+		ap.play("jump")
+	elif current_position.x > current_path.front().x:
+		sprite.flip_h = true
+		ap.play("jump")
+	if current_position.y > current_path.front().y:
+		ap.play("jump_front")
+	elif current_position.y < current_path.front().y:
+		ap.play("jump_back")
+	
+	global_position = global_position.move_toward(target, 2)
+	
+	
 	
 	if global_position == target:
 		current_path.pop_front()
+		current_position = tile_map.local_to_map(global_position)
 
 func show_tiles(tiles: Array[Vector2i]):
 	for i in tiles:
@@ -329,7 +352,6 @@ func thunder():
 	in_range_enemies = show_enemies_in_range(enemies_in_range)
 	thunder_card = true
 	return true
-	
 
 func barrier(): 
 	barrier_card = true
@@ -376,7 +398,7 @@ func _on_battle_used_card(card):
 		if !result: end_card_effect.emit()
 	if card_type == Enums.CardTypes.NO_DAGUA:
 		water_drop()
-		
+
 func _is_in_effect():
 	return barrier_card or thunder_card or attack_card
 
