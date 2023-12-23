@@ -5,6 +5,7 @@ signal die(enemy)
 @onready var tile_map = $"../../TileMap"
 @onready var player = $"../../Player"
 @onready var obstacles = $"../../Obstacles"
+@onready var ap = $AnimationPlayer
 
 
 var astar_grid: AStarGrid2D
@@ -68,10 +69,11 @@ func _physics_process(_delta):
 	var target = tile_map.map_to_local(current_path.front())
 
 	
-	global_position = global_position.move_toward(target, 10)
-	
+	global_position = global_position.move_toward(target, 1)
+	ap.play("jump")
 	
 	if global_position == target:
+		ap.play("idle")
 		current_path.pop_front()
 		astar_grid.set_point_solid(tile_map.local_to_map(global_position))
 		

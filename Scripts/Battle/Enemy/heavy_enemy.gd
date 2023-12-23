@@ -6,6 +6,9 @@ signal die(enemy)
 @onready var player = $"../../Player"
 @onready var obstacles = $"../../Obstacles"
 
+@onready var ap = $AnimationPlayer
+
+
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
@@ -62,14 +65,16 @@ func _physics_process(_delta):
 		return
 	
 	var target = tile_map.map_to_local(current_path.front())
-
 	
-	global_position = global_position.move_toward(target, 10)
+	ap.play("jump_front")
+	global_position = global_position.move_toward(target, 2)
+	
 	
 	
 	if global_position == target:
 		current_path.pop_front()
 		astar_grid.set_point_solid(tile_map.local_to_map(global_position))
+		ap.play("idle")
 		
 func attack():
 	player.take_damage(damage)
@@ -79,14 +84,12 @@ func take_damage(damage_took):
 	hp = hp - damage_took
 	if(hp <= 0): _die()
 	update_health_bar()
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 func _die():
 	$heavyDeath.play()
 	
 func _on_heavy_death_finished():
 	die.emit(self)
-
 
 func update_health_bar():
 	var health_bar = $HealthBar

@@ -6,6 +6,9 @@ signal die(enemy)
 @onready var player = $"../../Player"
 @onready var obstacles = $"../../Obstacles"
 
+@onready var ap = $AnimationPlayer
+@onready var sprite = $Sprite2D
+
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
@@ -57,11 +60,24 @@ func move(target, move_range = 2, is_push = false):
 
 func _physics_process(_delta):
 	if current_path.is_empty():
+		ap.play("idle")
 		return
 	
 	var target = tile_map.map_to_local(current_path.front())
 	
-	global_position = global_position.move_toward(target, 7)
+	if current_position.x < current_path.front().x:
+		sprite.flip_h = false
+		ap.play("jump_side")
+	if current_position.x > current_path.front().x:
+		sprite.flip_h = true
+		print("Esguio para esquerda")
+		ap.play("jump_side")
+	
+	if current_position.y < current_path.front().y:
+		ap.play("jump")
+		
+	global_position = global_position.move_toward(target, 2)
+	
 	
 	if global_position == target:
 		current_path.pop_front()
