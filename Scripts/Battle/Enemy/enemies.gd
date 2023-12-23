@@ -89,9 +89,8 @@ func _on_battle_move_enemies():
 
 func _create_enemy():
 	if(max_enemies == enemies_spawned): return
-	#var scene = enemy_options[randi() % enemy_options.size()].instantiate()
-	var scene = quick_enemy.instantiate()
-	
+	var scene = enemy_options[randi() % enemy_options.size()].instantiate()
+	#var scene = enemy_1.instantiate()
 	scene.position = marker_2d.position
 	add_child(scene)
 	enemies.append(scene)
