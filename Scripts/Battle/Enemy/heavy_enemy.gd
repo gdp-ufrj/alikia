@@ -79,9 +79,14 @@ func take_damage(damage_took):
 	hp = hp - damage_took
 	if(hp <= 0): _die()
 	update_health_bar()
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 func _die():
+	$heavyDeath.play()
+	
+func _on_heavy_death_finished():
 	die.emit(self)
+
 
 func update_health_bar():
 	var health_bar = $HealthBar
@@ -106,3 +111,5 @@ func push_back():
 
 func stun():
 	is_stunned = true
+
+

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjc3qm3n4who3"]
+[gd_scene load_steps=4 format=3 uid="uid://cjc3qm3n4who3"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/Enemy/quick_enemy.gd" id="1_c2s3p"]
 [ext_resource type="Texture2D" uid="uid://c4c80d5fpdb01" path="res://Assets/Enemy.png" id="2_6y8s3"]
+[ext_resource type="AudioStream" uid="uid://rnv5cis0p0gp" path="res://Áudio/enemy_death.wav" id="3_84rac"]
 
 [node name="Quick_Enemy" type="Node2D"]
 script = ExtResource("1_c2s3p")
@@ -18,3 +19,8 @@ max_value = 20.0
 step = 1.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="quickDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_84rac")
+
+[connection signal="finished" from="quickDie" to="." method="_on_quick_die_finished"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvpime6t51s8h"]
+[gd_scene load_steps=6 format=3 uid="uid://dvpime6t51s8h"]
 
 [ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_wdthx"]
 [ext_resource type="Texture2D" uid="uid://8hib4v0ljtca" path="res://Assets/CardsTextures/Debug/C.png" id="2_t3f67"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_cixg2"]
 [ext_resource type="AudioStream" uid="uid://b0qiuwr3t823l" path="res://Áudio/Alikia - Vitória - Versão Final.mp3" id="4_bwnpw"]
+[ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_vwypr"]
 
 [node name="Defeat" type="Control"]
 layout_mode = 3
@@ -41,4 +42,8 @@ text = "Retornar"
 stream = ExtResource("4_bwnpw")
 autoplay = true
 
+[node name="uiEndReturn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vwypr")
+
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="finished" from="uiEndReturn" to="." method="_on_ui_return_finished"]

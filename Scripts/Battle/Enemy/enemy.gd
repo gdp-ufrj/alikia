@@ -84,7 +84,11 @@ func take_damage(damage_took):
 	if(hp <= 0): _die()
 	update_health_bar()
 	
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
 func _die():
+	$enemyDie.play()
+	
+func _on_enemy_die_finished():
 	die.emit(self)
 		
 func update_health_bar():
@@ -110,3 +114,6 @@ func push_back():
 
 func stun():
 	is_stunned = true
+
+
+

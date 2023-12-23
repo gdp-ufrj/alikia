@@ -9,10 +9,16 @@ func _input(event):
 	visible = !visible
 		
 func _on_continue_pressed():
+	$uiContinue.play()
 	visible = false
 
 func _on_quit_pressed():
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	$uiPauseExit.play()
 
 func _on_pause_buttom_pressed():
+	$uiMainPause.play()
 	visible = !visible
+
+
+func _on_ui_pause_exit_finished():
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

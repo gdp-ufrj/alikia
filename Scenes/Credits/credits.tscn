@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhjp1q3jarsr3"]
+[gd_scene load_steps=7 format=3 uid="uid://bhjp1q3jarsr3"]
 
 [ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_nhg0e"]
 [ext_resource type="Texture2D" uid="uid://dkmvwsup1qga0" path="res://Assets/UI/wolf_finished.png" id="2_cux51"]
 [ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="3_0fs04"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="4_wuebh"]
+[ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_cro62"]
+[ext_resource type="AudioStream" uid="uid://qkxm4x6hdh7v" path="res://Áudio/Alikia - Música do Menu - Versão Final.mp3" id="6_fotfj"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -82,4 +84,12 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("4_wuebh")
 
+[node name="uiCredReturn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cro62")
+
+[node name="creditsBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fotfj")
+autoplay = true
+
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]
+[connection signal="finished" from="uiCredReturn" to="." method="_on_ui_cred_return_finished"]
