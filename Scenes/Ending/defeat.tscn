@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://yd7ecc0orj8b"]
+[gd_scene load_steps=5 format=3 uid="uid://yd7ecc0orj8b"]
 
 [ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_x4c2r"]
 [ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/Debug/B.png" id="2_t7d2x"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_7qvq5"]
+[ext_resource type="AudioStream" uid="uid://daqsxkuvtggbo" path="res://Áudio/Alikia - Derrota - Versão Final.mp3" id="4_0ttt5"]
 
 [node name="Defeat" type="Control"]
 layout_mode = 3
@@ -35,5 +36,9 @@ offset_top = 212.0
 offset_right = 351.0
 offset_bottom = 243.0
 text = "Retornar"
+
+[node name="defeatBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0ttt5")
+autoplay = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

@@ -12,6 +12,9 @@ signal end_card_effect
 @onready var air_attack_sound = $airAttack
 @onready var basic_attack_sound = $basicAttack
 @onready var water_attack_sound = $waterAttack
+@onready var lightning_attack_sound = $lightningAttack
+
+@onready var dame_player_sound = $damagePlayer
 
 var obstacleNode = load("res://Scenes/obstacle.tscn")
 
@@ -132,8 +135,9 @@ func get_tiles_in_range(start: Vector2i, range_player: int):
 func get_neighbours():
 	return tile_map.get_surrounding_cells(current_position)
 
-func take_damage(damage: int):
+func take_damage(damage: int): #aqui
 	hp = hp - damage
+	dame_player_sound.play()
 	update_health_bar()
 
 func update_health_bar():
@@ -223,8 +227,10 @@ func attack_input(destination, damage):
 	if in_range_enemies.has(destination):
 		print("Atacou  ", destination)
 		in_range_enemies.get(destination).take_damage(damage)
-		basic_attack_sound.play()
-		
+		if attack_card == true:
+			basic_attack_sound.play()
+		if thunder_card == true:
+			lightning_attack_sound.play()
 		for key in in_range_enemies.keys():
 			tile_map.set_cell(1, Vector2i(key[0],key[1]), -1, Vector2i(-1,-1))
 		in_range_enemies = {}
@@ -323,6 +329,7 @@ func thunder():
 	in_range_enemies = show_enemies_in_range(enemies_in_range)
 	thunder_card = true
 	return true
+	
 
 func barrier(): 
 	barrier_card = true

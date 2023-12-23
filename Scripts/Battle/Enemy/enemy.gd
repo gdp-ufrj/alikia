@@ -6,6 +6,7 @@ signal die(enemy)
 @onready var player = $"../../Player"
 @onready var obstacles = $"../../Obstacles"
 
+
 var astar_grid: AStarGrid2D
 var current_path: Array[Vector2i]
 var current_position: Vector2i
@@ -85,7 +86,7 @@ func take_damage(damage_took):
 	
 func _die():
 	die.emit(self)
-
+		
 func update_health_bar():
 	var health_bar = $HealthBar
 	health_bar.value = hp
