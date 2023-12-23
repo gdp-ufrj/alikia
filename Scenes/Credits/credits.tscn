@@ -1,7 +1,4 @@
-
-
 [gd_scene load_steps=9 format=3 uid="uid://bhjp1q3jarsr3"]
-
 
 [ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_nhg0e"]
 [ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_pyq56"]

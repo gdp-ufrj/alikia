@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://yd7ecc0orj8b"]
+[gd_scene load_steps=6 format=3 uid="uid://yd7ecc0orj8b"]
 
 [ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_x4c2r"]
-[ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_srmwf"]
+[ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/Debug/B.png" id="2_t7d2x"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_7qvq5"]
 [ext_resource type="AudioStream" uid="uid://daqsxkuvtggbo" path="res://Áudio/Alikia - Derrota - Versão Final.mp3" id="4_0ttt5"]
-[ext_resource type="Texture2D" uid="uid://c4vmlhpkqy4sg" path="res://Assets/UI/BotaoVoltar1.png" id="4_rps4n"]
 [ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_xcd4c"]
-[ext_resource type="Texture2D" uid="uid://caye0be57yyq" path="res://Assets/UI/BotaoVoltar2.png" id="5_yl6bl"]
 
 [node name="Defeat" type="Control"]
 layout_mode = 3
@@ -18,41 +16,27 @@ grow_vertical = 2
 script = ExtResource("1_x4c2r")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 2
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 358.0
-texture = ExtResource("2_srmwf")
-expand_mode = 3
-
-[node name="Panel" type="Panel" parent="."]
-modulate = Color(0.858824, 0, 0.0980392, 1)
-layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(15.9996, 8.94961)
+texture = ExtResource("2_t7d2x")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 96.0
-offset_right = 272.0
-offset_bottom = 119.0
-scale = Vector2(2.5, 2.539)
+offset_left = 235.0
+offset_top = 103.0
+offset_right = 275.0
+offset_bottom = 126.0
 text = "Você perdeu!"
 label_settings = ExtResource("3_7qvq5")
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="ReturnButton" type="TextureButton" parent="."]
+[node name="ReturnButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 263.0
+offset_left = 274.0
 offset_top = 212.0
-offset_right = 392.0
-offset_bottom = 244.0
-scale = Vector2(0.999739, 1.00045)
-texture_normal = ExtResource("4_rps4n")
-texture_pressed = ExtResource("5_yl6bl")
+offset_right = 351.0
+offset_bottom = 243.0
+text = "Retornar"
 
 [node name="defeatBackground" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0ttt5")
