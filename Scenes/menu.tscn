@@ -46,11 +46,14 @@ texture_normal = ExtResource("3_un8jg")
 layout_mode = 2
 texture_normal = ExtResource("3_un8jg")
 
-[node name="uiAccept" type="AudioStreamPlayer2D" parent="."]
+[node name="uiPlay" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_yn1vq")
 
-[node name="uiDecline" type="AudioStreamPlayer2D" parent="."]
+[node name="uiExit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_r68dd")
+
+[node name="uiCredits" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yn1vq")
 
 [node name="menuBackground" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_cs2ge")
@@ -59,3 +62,6 @@ autoplay = true
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="uiPlay" to="." method="_on_ui_play_finished"]
+[connection signal="finished" from="uiExit" to="." method="_on_ui_exit_finished"]
+[connection signal="finished" from="uiCredits" to="." method="_on_ui_credits_finished"]

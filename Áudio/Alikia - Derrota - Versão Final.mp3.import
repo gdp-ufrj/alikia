@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Alikia - Derrota - Versão Final.mp3-5a48809d
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

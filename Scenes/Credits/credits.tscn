@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_pyq56"]
 [ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="3_0fs04"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="4_wuebh"]
+[ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_cro62"]
+[ext_resource type="AudioStream" uid="uid://qkxm4x6hdh7v" path="res://Áudio/Alikia - Música do Menu - Versão Final.mp3" id="6_fotfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwrbb"]
 bg_color = Color(0, 0, 0, 0.643137)
@@ -90,4 +92,12 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("4_wuebh")
 
+[node name="uiCredReturn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cro62")
+
+[node name="creditsBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fotfj")
+autoplay = true
+
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]
+[connection signal="finished" from="uiCredReturn" to="." method="_on_ui_cred_return_finished"]

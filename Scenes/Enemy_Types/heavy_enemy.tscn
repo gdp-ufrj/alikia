@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rtti1pvxrpde"]
+[gd_scene load_steps=4 format=3 uid="uid://rtti1pvxrpde"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/Enemy/heavy_enemy.gd" id="1_7p63m"]
 [ext_resource type="Texture2D" uid="uid://c4c80d5fpdb01" path="res://Assets/Enemy.png" id="2_atuv7"]
+[ext_resource type="AudioStream" uid="uid://rnv5cis0p0gp" path="res://Áudio/enemy_death.wav" id="3_t57d2"]
 
 [node name="Heavy_Enemy" type="Node2D"]
 script = ExtResource("1_7p63m")
@@ -18,3 +19,8 @@ max_value = 20.0
 step = 1.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="heavyDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_t57d2")
+
+[connection signal="finished" from="heavyDeath" to="." method="_on_heavy_death_finished"]

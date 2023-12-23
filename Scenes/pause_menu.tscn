@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d10lsfltevodr"]
+[gd_scene load_steps=9 format=3 uid="uid://d10lsfltevodr"]
 
 [ext_resource type="Texture2D" uid="uid://bf56fqc1xf5wo" path="res://Assets/UI/MenuPausa6.png" id="1_8bl8s"]
 [ext_resource type="Texture2D" uid="uid://2k87vpwpvl8t" path="res://Assets/UI/BotaoContinuar1.png" id="1_bgpfv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ds1nl0vnutcyt" path="res://Assets/UI/BotaoContinuar4.png" id="2_ujq8g"]
 [ext_resource type="Texture2D" uid="uid://rm2xltndwu6q" path="res://Assets/UI/BotaoSair1.png" id="3_5t843"]
 [ext_resource type="Texture2D" uid="uid://b4bpxm4kscvyx" path="res://Assets/UI/BotaoSair4.png" id="4_m0e4w"]
+[ext_resource type="AudioStream" uid="uid://c6t0dxg1ssu26" path="res://Áudio/UI_accept.mp3" id="7_er86b"]
+[ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="7_vl47k"]
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -48,5 +50,15 @@ texture_normal = ExtResource("3_5t843")
 texture_pressed = ExtResource("4_m0e4w")
 texture_hover = ExtResource("3_5t843")
 
+[node name="uiPauseExit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vl47k")
+
+[node name="uiContinue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_er86b")
+
+[node name="uiMainPause" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_er86b")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="uiPauseExit" to="." method="_on_ui_pause_exit_finished"]

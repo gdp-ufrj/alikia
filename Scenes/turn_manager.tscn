@@ -12,7 +12,7 @@ turn_label_count = NodePath("TurnUI/TurnLabelCount")
 [node name="uiClick" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-533, -249)
 stream = ExtResource("2_opb0v")
-volume_db = 2.066
+volume_db = 12.0
 
 [node name="TurnUI" type="Control" parent="."]
 layout_mode = 3
