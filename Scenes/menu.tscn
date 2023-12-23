@@ -51,6 +51,7 @@ stream = ExtResource("3_yn1vq")
 
 [node name="uiExit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_r68dd")
+volume_db = 7.0
 
 [node name="uiCredits" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_yn1vq")
