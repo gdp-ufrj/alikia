@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhjp1q3jarsr3"]
+[gd_scene load_steps=6 format=3 uid="uid://bhjp1q3jarsr3"]
 
 [ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_nhg0e"]
-[ext_resource type="Texture2D" uid="uid://dkmvwsup1qga0" path="res://Assets/UI/wolf_finished.png" id="2_cux51"]
+[ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_pyq56"]
 [ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="3_0fs04"]
 [ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="4_wuebh"]
 [ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_cro62"]
 [ext_resource type="AudioStream" uid="uid://qkxm4x6hdh7v" path="res://Áudio/Alikia - Música do Menu - Versão Final.mp3" id="6_fotfj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwrbb"]
+bg_color = Color(0, 0, 0, 0.643137)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -20,52 +27,53 @@ script = ExtResource("1_nhg0e")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 363.0
-texture = ExtResource("2_cux51")
+texture = ExtResource("2_pyq56")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = -167.0
-offset_right = 303.0
-offset_bottom = 52.0
+offset_left = -238.0
+offset_top = -139.0
+offset_right = 239.0
+offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.572549)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwrbb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = -157.0
-offset_right = 294.0
-offset_bottom = 44.0
+offset_left = -221.0
+offset_top = -119.0
+offset_right = 247.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 5
 theme_override_fonts/normal_font = ExtResource("3_0fs04")
-theme_override_font_sizes/normal_font_size = 9
+theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
 text = "[color=#0099DB]Programação[/color] - Breno Natal, Carlos Bravo, Fernanda Carvalho, Giovana Unfer
 
 [color=#E43B44]Arte[/color] - Dan, Gabriel Rodrigues [Sortazar], Misty Gold
 
-[color=#FEE761]Roteiro[/color] - Mikael Magacho, Nana
+[color=#FEE761]Roteiro[/color] - Mikael Magacho, Nana Branco
 
 [color=#F77622]Sonorização[/color] - Matheus Ferreira
 
 [color=#63C74D]Game Design[/color] - Lucas Araujo Carvalho, Silvio Rogerio
 
-Gestão - Theo Luigi"
+[color=#B55088]Gestão[/color] - Theo Luigi"
 fit_content = true
 tab_size = 6
 
@@ -76,9 +84,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 167.0
-offset_top = -46.0
-offset_right = 296.0
+offset_left = -65.0
+offset_top = -47.0
+offset_right = 64.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
