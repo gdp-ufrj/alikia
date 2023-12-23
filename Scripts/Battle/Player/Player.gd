@@ -18,6 +18,8 @@ signal end_card_effect
 @onready var lightning_attack_sound = $lightningAttack
 
 @onready var dame_player_sound = $damagePlayer
+@onready var hp_label = $"../Control/HPLabel"
+
 
 var obstacleNode = load("res://Scenes/obstacle.tscn")
 
@@ -38,14 +40,15 @@ var barrier_card: bool = false
 var in_range_enemies = {}
 var in_range_fire = {}
 
-var hp: int
+var hp: int = 100
 var move_range: int
+var current_hp: int
 
 func _ready():
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-	hp = 100
 	move_range = 3
+	hp_label.text = str(hp)
 	
 	update_health_bar()
 
@@ -160,6 +163,7 @@ func get_neighbours():
 
 func take_damage(damage: int): #aqui
 	hp = hp - damage
+	hp_label.text = str(hp)
 	dame_player_sound.play()
 	update_health_bar()
 
