@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhjp1q3jarsr3"]
+[gd_scene load_steps=9 format=3 uid="uid://bhjp1q3jarsr3"]
 
 [ext_resource type="Script" path="res://Scripts/Credits/credits.gd" id="1_nhg0e"]
 [ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_pyq56"]
 [ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="3_0fs04"]
-[ext_resource type="Texture2D" uid="uid://mc458hleltqc" path="res://Assets/OverlayTile.png" id="4_wuebh"]
+[ext_resource type="Texture2D" uid="uid://de8t2086mu1mq" path="res://Assets/UI/BotaoVoltar1.png" id="4_53kmn"]
 [ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_cro62"]
+[ext_resource type="Texture2D" uid="uid://jeskqoefjham" path="res://Assets/UI/BotaoVoltar2.png" id="5_ic22a"]
 [ext_resource type="AudioStream" uid="uid://qkxm4x6hdh7v" path="res://Áudio/Alikia - Música do Menu - Versão Final.mp3" id="6_fotfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwrbb"]
@@ -84,13 +85,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -65.0
-offset_top = -47.0
-offset_right = 64.0
-offset_bottom = -15.0
+offset_left = -64.0
+offset_top = -45.0
+offset_right = 65.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("4_wuebh")
+texture_normal = ExtResource("4_53kmn")
+texture_pressed = ExtResource("5_ic22a")
 
 [node name="uiCredReturn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cro62")
