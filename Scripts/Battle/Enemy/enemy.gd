@@ -19,7 +19,7 @@ func _ready():
 	var health_bar = $HealthBar
 	astar_grid = tile_map.astar_grid
 	astar_grid.set_point_solid(tile_map.local_to_map(global_position))
-	hp = 5
+	hp = 10
 	health_bar.max_value = hp
 	update_health_bar()
 	

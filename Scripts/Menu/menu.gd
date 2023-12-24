@@ -3,6 +3,11 @@ extends Control
 @onready var ui_play_sound = $uiPlay
 @onready var ui_credits_sound = $uiCredits
 @onready var ui_exit_sound = $uiExit
+@onready var exitButton = $MarginContainer/HBoxContainer/Exit
+
+func _ready():
+	if OS.get_name() == "Web":
+		exitButton.hide()
 
 func _on_start_pressed():
 	ui_play_sound.play()

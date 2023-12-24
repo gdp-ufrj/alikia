@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="8_afara"]
 
 [node name="CardZoomControl" type="Control" node_paths=PackedStringArray("card_name_label", "card_mana_label", "animatedSprite")]
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_left = 450.0

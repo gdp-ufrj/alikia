@@ -44,6 +44,7 @@ texture_normal = ExtResource("8_7fonb")
 texture_pressed = ExtResource("7_e4cyf")
 
 [node name="pause_menu" parent="." instance=ExtResource("6_e0tgr")]
+z_index = 2
 offset_left = -328.0
 offset_top = -181.0
 offset_right = -328.0

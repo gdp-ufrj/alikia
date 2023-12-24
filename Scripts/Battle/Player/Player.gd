@@ -40,7 +40,7 @@ var barrier_card: bool = false
 var in_range_enemies = {}
 var in_range_fire = {}
 
-var hp: int = 100
+var hp: int = 30
 var move_range: int
 var current_hp: int
 

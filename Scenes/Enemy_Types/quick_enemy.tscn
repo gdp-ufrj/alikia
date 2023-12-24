@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://rnv5cis0p0gp" path="res://Áudio/enemy_death.wav" id="3_84rac"]
 [ext_resource type="Texture2D" uid="uid://deikvehihb5ge" path="res://Assets/QuickEnemy/EsguioAnim-Esguio_Salto.png" id="4_nynxo"]
 [ext_resource type="Texture2D" uid="uid://2ouf37ek8mxn" path="res://Assets/QuickEnemy/EsguioAnim-Esguio_SLateral.png" id="5_wt3l6"]
-[ext_resource type="PackedScene" uid="uid://d22gghi4lok2y" path="res://Scenes/effect.tscn" id="6_ikkcc"]
+[ext_resource type="PackedScene" path="res://Scenes/effect.tscn" id="6_ikkcc"]
 
 [sub_resource type="Animation" id="Animation_bcgy6"]
 length = 0.001

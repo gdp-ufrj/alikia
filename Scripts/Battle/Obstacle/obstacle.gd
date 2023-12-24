@@ -20,7 +20,7 @@ func _ready():
 	astar_grid.set_point_solid(tile_map.local_to_map(sprite2.global_position), true)
 	
 	print(current_position)
-	hp = 20
+	hp = 9
 	update_health_bar()
 	
 
