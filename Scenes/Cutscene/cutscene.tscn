@@ -1,18 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsi513m5ay7ut"]
+[gd_scene load_steps=5 format=3 uid="uid://dsi513m5ay7ut"]
 
 [ext_resource type="Script" path="res://Scripts/Cutscene/cutscene.gd" id="1_mjv4t"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="2_1wkf6"]
+[ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_uqxu1"]
 [ext_resource type="AudioStream" uid="uid://u38bg1jbfrqx" path="res://Áudio/Alikia - História - Versão Final.mp3" id="3_5nd07"]
 
 [node name="GodotCredits" type="Node2D"]
 script = ExtResource("1_mjv4t")
 timer_delay = 0.8
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 1)
+offset_right = 640.0
+offset_bottom = 363.0
+texture = ExtResource("2_uqxu1")
+expand_mode = 1
 
 [node name="CreditsContainer" type="Control" parent="."]
 layout_mode = 3
@@ -42,12 +46,10 @@ text = "
 
 
 
-A fantástica e escondida floresta de *[nome_da_floresta]* é um lugar mágico que possui fauna e flora únicas. Lá também é o único lugar no qual se encontram os aguarás que possuem olhos brilhantes como a luz do luar.
+Há uma fantástica floresta, escondida e mágica, que possui fauna e flora únicas. Ela também é o único lugar no qual se encontram os aguarás que possuem olhos brilhantes como a luz do luar.
 
-Quando um time de mineradores à procura de materiais valiosos encontrou o local de *[nome_da_floresta]*, perceberam que poderiam ganhar rios de dinheiro com os cristais diferentes da floresta, mas ganhariam o triplo com os olhos brilhantes dos aguarás. Sabendo que ficariam ricos com tudo isso, eles chegam com todos os recursos possíveis para adentrar e extrair tudo que aparecesse à sua frente.
-
-O que os mineradores não sabiam é que a beleza e preciosidade da floresta ia muito além de sua superfície; sua magia se faz presente principalmente nas relações e conexões com os seres existentes ali… Sendo assim, a entidade espiritual de *[nome_da_floresta]* deu poderes e apoio para que uma mãe, da espécie aguarás*,* pudesse lutar e defender seu lar e seus filhotes, de qualquer um que quisesse destruir ou invadir esse espaço.
-
+Quando um time de mineradores à procura de materiais valiosos encontrou esse lugar, perceberam que poderiam ganhar rios de dinheiro com os cristais diferentes da região, mas ganhariam o triplo com os olhos brilhantes dos aguarás. Sabendo que ficariam ricos com tudo isso, eles chegam com todos os recursos possíveis para adentrar e extrair tudo que aparecesse à sua frente.
+O que os mineradores não sabiam é que a beleza e preciosidade da floresta ia muito além de sua superfície; sua magia se faz presente principalmente nas relações e conexões com os seres existentes nela… Sendo assim, a entidade espiritual, que é responsável pela floresta, deu poderes e apoio para que uma mãe da espécie aguarás – \"Alikia\" pudesse lutar e defender seu lar e seus filhotes, de qualquer um que quisesse destruir ou invadir esse espaço.
 Todavia, até mesmo nossa querida Alikia, não estava ciente desse fator tão poderoso. Mas, quando ela se viu encurralada com seus filhotes por estes mineradores, o instinto materno conectado com a essência da entidade ativou esses poderes mágicos, afastando eles momentaneamente dali.
 
 Mais tarde, ela perceberia que essa batalha estava só começando e eles trariam armas mais potentes para encarar a magia da floresta. Sem tempo para entender o que estava acontecendo consigo mesma, Alikia seguiu seu instinto, escondeu seus filhotes, deu-lhes um abraço forte e partiu para encarar esse perigo iminente..."

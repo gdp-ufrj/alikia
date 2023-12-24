@@ -22,7 +22,7 @@ script = ExtResource("1_pdggs")
 deck_count_label = NodePath("DeckControl/DeckCount")
 discard_count_label = NodePath("DiscardControl/DiscardCount")
 equipped_cards = Array[Resource("res://Resources/CardData.gd")]([ExtResource("3_t6yxa"), ExtResource("4_5iqxl"), ExtResource("5_13pb0"), ExtResource("6_hyj13"), ExtResource("7_0k3pj"), ExtResource("8_s2hxw")])
-equipped_cards_quantity = Array[int]([4, 4, 4, 4, 4, 4])
+equipped_cards_quantity = Array[int]([8, 2, 2, 2, 4, 2])
 
 [node name="DeckControl" type="Control" parent="Deck"]
 layout_mode = 3
@@ -34,6 +34,7 @@ offset_bottom = 442.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Deck/DeckControl"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0361991
@@ -47,6 +48,7 @@ baralho:"
 metadata/_edit_use_anchors_ = true
 
 [node name="DeckCount" type="Label" parent="Deck/DeckControl"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.113122
@@ -70,6 +72,7 @@ offset_bottom = 374.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Deck/DiscardControl"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0318471
@@ -83,6 +86,7 @@ morto:"
 metadata/_edit_use_anchors_ = true
 
 [node name="DiscardCount" type="Label" parent="Deck/DiscardControl"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0636943
@@ -99,6 +103,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("deck", "hand_buttons_control", "mana_count_label")]
 position = Vector2(-555, -330)
 script = ExtResource("3_yw3pl")
+max_mana = 10
 deck = NodePath("../Deck")
 hand_buttons_control = NodePath("Control/HandButtons")
 mana_count_label = NodePath("Control/ManaLabelCount")
@@ -106,13 +111,14 @@ mana_count_label = NodePath("Control/ManaLabelCount")
 [node name="Control" type="Control" parent="Hand"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -30.0
+offset_left = -42.0
 offset_top = 473.0
-offset_right = 1121.0
+offset_right = 1109.0
 offset_bottom = 617.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ManaLabel" type="Label" parent="Hand/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.231972
@@ -134,9 +140,9 @@ anchor_left = 0.683983
 anchor_top = 0.132
 anchor_right = 0.695983
 anchor_bottom = 0.263778
-offset_left = -0.264038
+offset_left = 7.73553
 offset_top = -0.00799942
-offset_right = 3.92395
+offset_right = 11.9235
 offset_bottom = 7.016
 scale = Vector2(0.598325, 0.530832)
 text = "0"

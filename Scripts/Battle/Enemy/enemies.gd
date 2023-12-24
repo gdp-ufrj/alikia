@@ -10,12 +10,19 @@ var enemies_spawned : int = 0
 @onready var tile_map = $"../TileMap"
 @onready var marker_2d = $"../Marker2D"
 @onready var marker_2d_2 = $"../Marker2D2"
+@onready var marker_2d_3 = $"../Marker2D3"
+@onready var marker_2d_4 = $"../Marker2D4"
+@onready var marker_2d_5 = $"../Marker2D5"
+@onready var marker_2d_6 = $"../Marker2D6"
+@onready var marker_2d_7 = $"../Marker2D7"
+@onready var marker_2d_8 = $"../Marker2D8"
 
 
 var enemy_1 = load("res://Scenes/Enemy_Types/enemy.tscn")
 var enemy_heavy = load("res://Scenes/Enemy_Types/heavy_enemy.tscn")
 var quick_enemy = load("res://Scenes/Enemy_Types/quick_enemy.tscn")
 var enemy_options : Array
+var enemy_position : Array
 
 var enemies: Array
 var astar_grid: AStarGrid2D
@@ -27,6 +34,7 @@ var count = 0
 
 func _ready():
 	enemy_options = [enemy_1, enemy_heavy, quick_enemy]
+	enemy_position = [marker_2d, marker_2d_2, marker_2d_3, marker_2d_4, marker_2d_5, marker_2d_6, marker_2d_7, marker_2d_8]
 	enemies = get_children()
 	astar_grid = tile_map.astar_grid
 	
@@ -35,6 +43,7 @@ func _ready():
 		targets.append(Vector2i(tile_map.get_used_rect().end.x - 1 - i ,tile_map.get_used_rect().end.y - 1))
 		#tile_map.set_cell(1, Vector2i(tile_map.get_used_rect().end.x - 1 - i ,tile_map.get_used_rect().end.y -1), 1, Vector2i(0,0))
 	print(targets)
+	_create_enemy()
 	
 
 func _on_battle_move_enemies():
@@ -75,7 +84,7 @@ func _on_battle_move_enemies():
 				if destination != target:	
 					enemy.move(target)
 			
-	if count % 3 == 0:
+	if count % 2 == 0:
 		_create_enemy()
 	if count % 5 == 0:
 		_create_enemy()
@@ -90,8 +99,9 @@ func _on_battle_move_enemies():
 func _create_enemy():
 	if(max_enemies == enemies_spawned): return
 	var scene = enemy_options[randi() % enemy_options.size()].instantiate()
+	scene.position = enemy_position[randi() % enemy_position.size()].position
 	#var scene = enemy_1.instantiate()
-	scene.position = marker_2d.position
+	#scene.position = marker_2d.position
 	add_child(scene)
 	enemies.append(scene)
 	scene.die.connect(self._on_enemy_die)

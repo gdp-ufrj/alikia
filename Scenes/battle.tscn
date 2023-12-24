@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpm7lq1u5rc80"]
+[gd_scene load_steps=26 format=3 uid="uid://bpm7lq1u5rc80"]
 
 [ext_resource type="Texture2D" uid="uid://cdkwnboi12wc6" path="res://Assets/Tile.png" id="1_u3tvo"]
 [ext_resource type="Script" path="res://Scripts/Battle/battle.gd" id="1_yti07"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dggy1ea0648j" path="res://Assets/Tileset/ArvoreEsq.png" id="13_ba4ov"]
 [ext_resource type="Texture2D" uid="uid://bxjwa54ii5rpg" path="res://Assets/UI/BaseCartas.png" id="14_5xtg5"]
 [ext_resource type="FontFile" uid="uid://bpswqn2p5x7cv" path="res://Fonts/PressStart2P.ttf" id="15_70pk4"]
+[ext_resource type="Texture2D" uid="uid://devjmeehs46mn" path="res://Assets/UI/Vida.png" id="16_hl1f7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypkjx"]
 texture = ExtResource("1_u3tvo")
@@ -241,10 +242,28 @@ position = Vector2(15, -17)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("7_fmiyn")
-max_enemies = 5
+max_enemies = 15
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(113, -147)
+position = Vector2(112, -147)
+
+[node name="Marker2D8" type="Marker2D" parent="."]
+position = Vector2(-48, -147)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(-80, -147)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(80, -147)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(48, -147)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(16, -147)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(-16, -147)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(-112, -147)
@@ -270,13 +289,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HPLabel" type="Label" parent="Control"]
+z_index = 1
 layout_mode = 0
-offset_left = -7.0
-offset_top = 104.0
-offset_right = 7.0
-offset_bottom = 130.0
+offset_left = -8.0
+offset_top = 97.0
+offset_right = 16.0
+offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_qv5nm")
+
+[node name="Vida" type="Sprite2D" parent="."]
+position = Vector2(2, 100)
+texture = ExtResource("16_hl1f7")
 
 [connection signal="allow_player_move" from="." to="Player" method="_on_battle_allow_player_move"]
 [connection signal="move_enemies" from="." to="Enemies" method="_on_battle_move_enemies"]

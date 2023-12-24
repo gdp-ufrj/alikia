@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://yd7ecc0orj8b"]
+[gd_scene load_steps=8 format=3 uid="uid://yd7ecc0orj8b"]
 
 [ext_resource type="Script" path="res://Scripts/Ending/defeat.gd" id="1_x4c2r"]
-[ext_resource type="Texture2D" uid="uid://brdnn478thk2r" path="res://Assets/CardsTextures/Debug/B.png" id="2_t7d2x"]
+[ext_resource type="Texture2D" uid="uid://dywg615qrd1g0" path="res://Assets/UI/bg.png" id="2_b37if"]
 [ext_resource type="LabelSettings" uid="uid://vtljrvo4rlle" path="res://Scenes/LabelSettings.tres" id="3_7qvq5"]
 [ext_resource type="AudioStream" uid="uid://daqsxkuvtggbo" path="res://Áudio/Alikia - Derrota - Versão Final.mp3" id="4_0ttt5"]
+[ext_resource type="Texture2D" uid="uid://de8t2086mu1mq" path="res://Assets/UI/BotaoVoltar1.png" id="4_1mcnx"]
+[ext_resource type="Texture2D" uid="uid://jeskqoefjham" path="res://Assets/UI/BotaoVoltar2.png" id="5_5s8rx"]
 [ext_resource type="AudioStream" uid="uid://e6wadcp8rcve" path="res://Áudio/UI_decline.mp3" id="5_xcd4c"]
 
 [node name="Defeat" type="Control"]
@@ -19,24 +21,33 @@ script = ExtResource("1_x4c2r")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 358.0
-texture = ExtResource("2_t7d2x")
+texture = ExtResource("2_b37if")
+expand_mode = 2
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.909804, 0.164706, 0, 1)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 363.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 235.0
-offset_top = 103.0
-offset_right = 275.0
-offset_bottom = 126.0
+offset_left = 136.0
+offset_top = 104.0
+offset_right = 328.0
+offset_bottom = 129.0
+scale = Vector2(2, 2.005)
 text = "Você perdeu!"
 label_settings = ExtResource("3_7qvq5")
 
-[node name="ReturnButton" type="Button" parent="."]
+[node name="ReturnButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 274.0
-offset_top = 212.0
-offset_right = 351.0
-offset_bottom = 243.0
-text = "Retornar"
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 385.0
+offset_bottom = 240.0
+texture_normal = ExtResource("4_1mcnx")
+texture_pressed = ExtResource("5_5s8rx")
 
 [node name="defeatBackground" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0ttt5")

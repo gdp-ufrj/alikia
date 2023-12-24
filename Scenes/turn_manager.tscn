@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Turn/turn_manager.gd" id="1_n7uk5"]
 [ext_resource type="AudioStream" uid="uid://mlh3x4fyl5h8" path="res://Áudio/UI_turn_passed.mp3" id="2_opb0v"]
 [ext_resource type="Texture2D" uid="uid://dop00ttffq0de" path="res://Assets/UI/BotãoPularTurno1.png" id="3_yekju"]
-[ext_resource type="Texture2D" uid="uid://dv23vrfkkp62x" path="res://Assets/UI/BotaoTurno.png" id="4_wj28y"]
+[ext_resource type="Texture2D" uid="uid://crlpr8tur6cn6" path="res://Assets/UI/BotaoSkipApertado.png" id="4_op3yi"]
 [ext_resource type="Script" path="res://Scripts/turn_pass_button.gd" id="5_ayclk"]
 
 [node name="TurnManager" type="Node2D" node_paths=PackedStringArray("turn_label_count")]
@@ -28,18 +28,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 200.0
 offset_top = 135.0
-offset_right = 190.0
-offset_bottom = 125.0
+offset_right = 192.0
+offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.746122)
 texture_normal = ExtResource("3_yekju")
-texture_pressed = ExtResource("4_wj28y")
+texture_pressed = ExtResource("4_op3yi")
 stretch_mode = 0
 script = ExtResource("5_ayclk")
 pass_turn_timer = 0.6
 
 [node name="TurnLabel" type="Label" parent="TurnUI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 24.5
@@ -54,6 +55,7 @@ text = "Turno
 atual:"
 
 [node name="TurnLabelCount" type="Label" parent="TurnUI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 27.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Battle/Obstacle/obstacle.gd" id="1_tamxu"]
 [ext_resource type="Texture2D" uid="uid://bdic6p72v27na" path="res://Assets/Effects/Animacao Terra.png" id="2_6jlr5"]
-[ext_resource type="PackedScene" uid="uid://d22gghi4lok2y" path="res://Scenes/effect.tscn" id="3_blmeh"]
+[ext_resource type="PackedScene" path="res://Scenes/effect.tscn" id="3_blmeh"]
 
 [sub_resource type="Animation" id="Animation_w7mct"]
 length = 0.001
@@ -240,7 +240,7 @@ offset_left = -62.0
 offset_top = 18.0
 offset_right = -33.0
 offset_bottom = 24.0
-max_value = 20.0
+max_value = 9.0
 step = 1.0
 show_percentage = false
 
