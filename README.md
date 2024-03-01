@@ -1,2 +1,8 @@
-# grupo-1-2023.2
-Repositório para o Grupo Periódico 1 de 2023.2.
+# Alikia
+[Link para jogar](https://gdpufrj.itch.io/alikia)
+
+Há uma fantástica floresta, escondida e mágica, que possui fauna e flora únicas. Ela também é o único lugar no qual se encontram os aguarás que possuem olhos brilhantes como a luz do luar.
+
+Quando um time de mineradores à procura de materiais valiosos encontrou esse lugar, perceberam que poderiam ganhar rios de dinheiro com os cristais diferentes da região, mas ganhariam o triplo com os olhos brilhantes dos aguarás. Sabendo que ficariam ricos com tudo isso, eles chegam com todos os recursos possíveis para adentrar e extrair tudo que aparecesse à sua frente. O que os mineradores não sabiam é que a beleza e preciosidade da floresta ia muito além de sua superfície; sua magia se faz presente principalmente nas relações e conexões com os seres existentes nela… Sendo assim, a entidade espiritual, que é responsável pela floresta, deu poderes e apoio para que uma mãe da espécie aguarás – "Alikia" pudesse lutar e defender seu lar e seus filhotes, de qualquer um que quisesse destruir ou invadir esse espaço. Todavia, até mesmo nossa querida Alikia, não estava ciente desse fator tão poderoso. Mas, quando ela se viu encurralada com seus filhotes por estes mineradores, o instinto materno conectado com a essência da entidade ativou esses poderes mágicos, afastando eles momentaneamente dali.
+
+Mais tarde, ela perceberia que essa batalha estava só começando e eles trariam armas mais potentes para encarar a magia da floresta. Sem tempo para entender o que estava acontecendo consigo mesma, Alikia seguiu seu instinto, escondeu seus filhotes, deu-lhes um abraço forte e partiu para encarar esse perigo iminente...
